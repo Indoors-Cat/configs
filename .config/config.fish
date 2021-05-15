@@ -14,12 +14,6 @@ set TERMINAL "alacritty"                        #Sets terminal type
 colorscript random
 
 ##ALIASES
-#Navigation
-alias .. "cd .."				        #go up one directory
-alias .2 "cd ../.."				        #go up two directories
-alias .3 "cd ../../.."                  #go up three directories
-
-
 #Package Manager Aliases
 alias pac "sudo pacman -Syu"			    #updates system
 alias pacrem "sudo pacman -R"		       	    #remove package(s)
@@ -31,18 +25,17 @@ alias parusua "paru -Sua"			    #updates only AUR packages
 alias parurem "paru -R"				    #remove package(s)
 alias parusearch "paru -Q"              	    #search for AUR packages
 
+#Navigation
+alias .. "cd .."				        #go up one directory
+alias .2 "cd ../.."				        #go up two directories
+alias .3 "cd ../../.."                  #go up three directories
+
 #Surfshark-VPN Aliases
 alias vpnup "sudo surfshark-vpn attack"             #quick connect to nearest server
 alias vpnmulti "sudo surfshark-vpn multi"           #connects to multi-hop server
 alias vpndown "sudo surfshark-vpn down"             #disconnects vpn
 alias vpnstat "sudo surfshark-vpn status"           #show vpn status
 alias vpnver "sudo surfshark-vpn version"           #show surfshark-vpn version
-
-#General Aliases
-alias c "clear"					    #clear screen
-alias h "history"				    #show command history
-alias nft "neofetch"                                #neofetch
-alias rft "neofetch | lolcat"                       #rgb neofetch
 
 #'cat' to 'bat' swap
 alias cat "bat"                                     #changes cat to bat
@@ -52,6 +45,12 @@ alias ls "exa -al --color=always"		    #show all contents in directory except ".
 alias la "exa -a --color=always"		    #show all contents in directory except "." & ".."
 alias ll "exa -l --color=always"                    #show contents in long format
 alias lt "exa -aT --color=always"                   #show all contents in tree format
+
+#General Aliases
+alias c "clear"					    #clear screen
+alias h "history"				    #show command history
+alias nft "neofetch"                                #neofetch
+alias rft "neofetch | lolcat"                       #rgb neofetch
 
 #General System Tools
 alias cp "cp -i"				    #confirm before overwriting existing file
