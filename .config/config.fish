@@ -63,13 +63,25 @@ alias free "free -m"				    #show sizes in MB
 alias shutdown "sudo shutdown now"		    #shutdown system
 alias reboot "sudo reboot"			    #reboot system
 
-#Text Editor Aliases
-
+##Text Editor & Config File Aliases
+#vim aliases:
+alias v='vim'
+alias vbash='vim ~/.bashrc'
+alias vfish='vim ~/.config/fish/config.fish'
+alias vv='vim ~/.vimrc'
+#alias vnv='vim ~/.config/nvim/init.vim'
+#alias vzsh='vim ~/.zshrc'
+#nvim aliases:
+#alias vim='nvim'
+#alias nvbash='nvim ~/.bashrc'
+#alias nvfish='nvim ~/.config/fish/config.fish'
+#alias nvv='nvim ~/.vimrc'
+#alias nvnv='nvim ~/.config/nvim/init.vim'
+#alias nvzsh='nvim ~/.zshrc'
 
 #humorous commands
 alias cow "fortune | cowsay" 			    #give randomly generated fortune with cow
 alias cowstoned "fortune | cowsay -f bong"	    #give randomly generated fortune with cow smoking a bong
-alias cowsd "fortune | cowsay -f sodomized"	    #give randomly generated fortune with sodomized cow
 alias rgbaqua "asciiquarium | lolcat"		    #rainbow aquarium
 alias aqua "asciiquarium"			    #aqauarium
 alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" 	#do you really have to ask lol
