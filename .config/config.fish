@@ -21,51 +21,58 @@ alias .3 "cd ../../.."                  #go up three directories
 
 
 #Package Manager Aliases
-alias pac "sudo pacman -Syu"			#updates system
-alias pacrem "sudo pacman -R"			#remove package(s)
-alias pacsearch "sudo pacman -Q"		#seach for package
+alias pac "sudo pacman -Syu"			    #updates system
+alias pacrem "sudo pacman -R"		       	    #remove package(s)
+alias pacsearch "sudo pacman -Q"		    #seach for package
 alias yaysua "yay -Sua"				    #updates only AUR packages
 alias yayrem "yay -R"				    #remove package(s)
 alias yaysearch "yay -Q"			    #search for AUR package
 alias parusua "paru -Sua"			    #updates only AUR packages
 alias parurem "paru -R"				    #remove package(s)
-alias parusearch "paru -Q"			    #search for AUR packages
+alias parusearch "paru -Q"              	    #search for AUR packages
+
+#Surfshark-VPN Aliases
+alias vpnup "sudo surfshark-vpn attack"             #quick connect to nearest server
+alias vpnmulti "sudo surfshark-vpn multi"           #connects to multi-hop server
+alias vpndown "sudo surfshark-vpn down"             #disconnects vpn
+alias vpnstat "sudo surfshark-vpn status"           #show vpn status
+alias vpnver "sudo surfshark-vpn version"           #show surfshark-vpn version
 
 #General Aliases
-alias c "clear"					        #clear screen
-alias h "history"				        #show command history
-alias nft "neofetch"                    #neofetch
-alias rft "neofetch | lolcat"           #rgb neofetch
+alias c "clear"					    #clear screen
+alias h "history"				    #show command history
+alias nft "neofetch"                                #neofetch
+alias rft "neofetch | lolcat"                       #rgb neofetch
 
 #'cat' to 'bat' swap
-alias cat "bat"                         #changes cat to bat
+alias cat "bat"                                     #changes cat to bat
 
 #'ls' to 'exa' swap
-alias ls "exa -al --color=always"		#show all contents in directory except "." & ".." in long format
-alias la "exa -a --color=always"		#show all contents in directory except "." & ".."
-alias ll "exa -l --color=always"        #show contents in long format
-alias lt "exa -aT --color=always"       #show all contents in tree format
+alias ls "exa -al --color=always"		    #show all contents in directory except "." & ".." in long format
+alias la "exa -a --color=always"		    #show all contents in directory except "." & ".."
+alias ll "exa -l --color=always"                    #show contents in long format
+alias lt "exa -aT --color=always"                   #show all contents in tree format
 
 #General System Tools
-alias cp "cp -i"				        #confirm before overwriting existing file
-alias mv "mv -i"				        #confirm before overwriting existing file
-alias rm "rm -i"				        #confirm before removing file
-alias df "df -h"				        #list drive space in human readable format
+alias cp "cp -i"				    #confirm before overwriting existing file
+alias mv "mv -i"				    #confirm before overwriting existing file
+alias rm "rm -i"				    #confirm before removing file
+alias df "df -h"				    #list drive space in human readable format
 alias free "free -m"				    #show sizes in MB
 
 #Power Commands
-alias shutdown "sudo shutdown now"		#shutdown system
+alias shutdown "sudo shutdown now"		    #shutdown system
 alias reboot "sudo reboot"			    #reboot system
 
 #Text Editor Aliases
 
 
 #humorous commands
-alias cow "fortune | cowsay" 			                    #give randomly generated fortune with cow
-alias cowstoned "fortune | cowsay -f bong"	                #give randomly generated fortune with cow smoking a bong
-alias cowsd "fortune | cowsay -f sodomized"	                #give randomly generated fortune with sodomized cow
-alias rgbaqua "asciiquarium | lolcat"		                #rainbow aquarium
-alias aqua "asciiquarium"			                        #aqauarium
+alias cow "fortune | cowsay" 			    #give randomly generated fortune with cow
+alias cowstoned "fortune | cowsay -f bong"	    #give randomly generated fortune with cow smoking a bong
+alias cowsd "fortune | cowsay -f sodomized"	    #give randomly generated fortune with sodomized cow
+alias rgbaqua "asciiquarium | lolcat"		    #rainbow aquarium
+alias aqua "asciiquarium"			    #aqauarium
 alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" 	#do you really have to ask lol
 
 #FUNCTIONS
