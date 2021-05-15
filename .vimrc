@@ -61,7 +61,7 @@ syntax enable
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " The lightline.vim theme 
 let g:lightline = {
-	\ 'colorscheme': 'darcula',
+	\ 'colorscheme': 'dracula',
  	\ } 
 
 " Always show statusline set laststatus=2 
