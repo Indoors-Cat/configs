@@ -90,8 +90,7 @@ alias cow "fortune | cowsay" 			#give randomly generated fortune with cow
 alias cowstoned "fortune | cowsay -f bong"	#give randomly generated fortune with cow smoking a bong
 alias rgbaqua "asciiquarium | lolcat"		#rainbow aquarium
 alias aqua "asciiquarium"			#aqauarium
-alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" 	#do you really have to ask lol
-
+alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
 ### PROMPT
 # This is commented out if using starship prompt
 # PS1='[\u@\h \W]\$ '
