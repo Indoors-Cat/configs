@@ -8,10 +8,12 @@ export EDITOR="vim"				#$EDITOR use vim in terminal
 colorscript -r
 
 ###ALIASES
+##Arch
 #pacman
 alias pac='sudo pacman -Syu'            	#update standard packages
 alias pacit='sudo pacman -S'            	#install package(s)
 alias pacrem='sudo pacman -R'           	#remove package(s)
+alias pacremall='sudo pacman -Rncs'		#remove package(s) and all dependencies
 alias pacseach='sudo pacman -Q'         	#Search for package(s)
 #yay
 alias yaysua='sudo yay -Sua'            	#updates only AUR packages
@@ -21,6 +23,14 @@ alias yaysearch='sudo yay -Q'           	#search for package(s)
 alias parusua='sudo paru -Sua'          	#updates only AUR packages
 alias parurem='sudo paru -R'            	#remove package(s)
 alias parusearch='sudo paru -Q'         	#search for package(s)
+
+##Debian
+#apt & apt-get
+alias up='sudo apt-get update'			#downloads updates
+alias upg='sudo apt-get upgrade'		#applies updates to system
+alias it='sudo apt install'			#install package(s)
+alias rem='sudo apt remove'			#remove package(s)
+alias atrm='sudo apt autoremove'		#autoremove no longer needed package(s)
 
 ##navigation shortcuts
 alias ..='cd ..'				#go up one directory
