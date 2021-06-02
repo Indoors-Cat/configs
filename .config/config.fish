@@ -7,105 +7,115 @@
 #        |___/_____|               |_____|                     |___/
 #
 
-set fish_greeting                                   #disables fish greeting
-set TERMINAL "alacritty"                            #Sets terminal type
+#set fish_greeting                              #Disables fish greeting
+#set TERMINAL "alacritty"                       #Sets terminal type
 
 ### Color Script ###
-colorscript random
+#colorscript random
 
 ##ALIASES
-##Arch
-#pacman
-#alias pac "sudo pacman -Syu"            	#update standard packages
-#alias pacit "sudo pacman -S"           	#install package(s)
-#alias pacrem "sudo pacman -R"           	#remove package(s)
-#alias pacremall "sudo pacman -Rncs"		#remove package(s) and all dependencies
+##Arch:
+#pacman:
+#alias pac "sudo pacman -Syu"            	#Update standard packages
+#alias pacit "sudo pacman -S"           	#Unstall package(s)
+#alias pacrem "sudo pacman -R"           	#Remove package(s)
+#alias pacremall "sudo pacman -Rncs"		#Remove package(s) and all dependencies
 #alias pacseach "sudo pacman -Q"         	#Search for package(s)
-#yay
-#alias yaysua "sudo yay -Sua"            	#updates only AUR packages
-#alias yayrem "sudo yay -R"              	#remove package(s)
-#alias yaysearch "sudo yay -Q"           	#search for package(s)
-#paru
-#alias parusua "sudo paru -Sua"          	#updates only AUR packages
-#alias parurem "sudo paru -R"            	#remove package(s)
-#alias parusearch "sudo paru -Q"         	#search for package(s)
+#yay:
+#alias yaysua "sudo yay -Sua"            	#Updates only AUR packages
+#alias yayrem "sudo yay -R"              	#Remove package(s)
+#alias yaysearch "sudo yay -Q"           	#Search for package(s)
+#paru:
+#alias parusua "sudo paru -Sua"          	#Updates only AUR packages
+#alias parurem "sudo paru -R"            	#Remove package(s)
+#alias parusearch "sudo paru -Q"         	#Search for package(s)
 
-##Debian
+##Debian:
 #apt & apt-get
-#alias up "sudo apt-get update"			#downloads updates
-#alias upg "sudo apt-get upgrade"		#applies updates to system
-#alias it "sudo apt install"			#install package(s)
-#alias rem "sudo apt remove"			#remove package(s)
-#alias atrm "sudo apt autoremove"		#autoremove no longer needed package(s)
+#alias up "sudo apt-get update"			#Downloads updates
+#alias upg "sudo apt-get upgrade"		#Applies updates to system
+#alias it "sudo apt install"			#Install package(s)
+#alias rem "sudo apt remove"			#Remove package(s)
+#alias atrm "sudo apt autoremove"		#Autoremove no longer needed package(s)
 
-##BSD
-#alias upg "sudo pkg upgrade"                   
-#alias pkgit "sudo pkg install"
-#alias pkgrem "sudo pkg remove"
-#alias atrm "sudo pkg autoremove"
+##BSD:
+#alias bsdup='sudo freebsd-update fetch'        #Download system updates
+#alias bsdupg='sudo freebsd-update install'     #Install updates to system
+#alias upg='sudo pkg upgrade'                   #Download and apply updates for package(s)
+#alias pkgit='sudo pkg install'                 #Install package(s)
+#alias pkgrem='sudo pkg remove'                 #Remove package(s)
+#alias atrm='sudo pkg autoremove'               #Autoremove orphaned dependencies
+#alias pkglock='sudo pkg lock'                  #Lock package(s) from being removed or edited
+#alias pkgulock='sudo pkg unlock'               #Unlock package(s)
+#alias audit='sudo pkg audit'                   #Audit package(s) for vulnerabilities and bugs
+#alias auditall='sudo pkg audit -F'             #Audit all packages for vulnerabilities and bugs
+#alias chshb='chsh -s /usr/local/bin/bash'      #Changes user shell to 'bash' shell (reboot required)
+#alias chshf='chsh -s /usr/local/bin/fish'      #Changes user shell to 'fish' shell (reboot required)
+#alias chshz='chsh -s /usr/local/bin/zsh'       #Changes user shell to 'zsh' shell (reboot required)
 
-#Navigation
-alias .. "cd .."				    #go up one directory
-alias .2 "cd ../.."				    #go up two directories
-alias .3 "cd ../../.."                              #go up three directories
+#Navigation:
+alias .. "cd .."				#Go up one directory
+alias .2 "cd ../.."				#Go up two directories
+alias .3 "cd ../../.."                          #Go up three directories
 
-#Surfshark-VPN Aliases
-#alias vpnup "sudo surfshark-vpn attack"            #quick connect to nearest server
-#alias vpnmulti "sudo surfshark-vpn multi"          #connects to multi-hop server
-#alias vpndown "sudo surfshark-vpn down"            #disconnects vpn
-#alias vpnstat "sudo surfshark-vpn status"          #show vpn status
-#alias vpnver "sudo surfshark-vpn version"          #show surfshark-vpn version
+#Surfshark-VPN Aliases:
+#alias vpnup "sudo surfshark-vpn attack"        #Quick connect to nearest server
+#alias vpnmulti "sudo surfshark-vpn multi"      #Connects to multi-hop server
+#alias vpndown "sudo surfshark-vpn down"        #Disconnects vpn
+#alias vpnstat "sudo surfshark-vpn status"      #Show vpn status
+#alias vpnver "sudo surfshark-vpn version"      #Show surfshark-vpn version
 
-#'cat' to 'bat' swap
-#alias cat "bat"                                    #changes cat to bat
+#'cat' to 'bat' swap:
+#alias cat "bat"                                #Changes cat to bat
 
-#'ls' to 'exa' swap
-#alias ls "exa -al --color=always"		    #show all contents in directory except "." & ".." in long format
-#alias la "exa -a --color=always"		    #show all contents in directory except "." & ".."
-#alias ll "exa -l --color=always"                   #show contents in long format
-#alias lt "exa -aT --color=always"                  #show all contents in tree format
+#'ls' to 'exa' swap:
+#alias ls "exa -al --color=always"		#Show all contents in directory except "." & ".." in long format
+#alias la "exa -a --color=always"		#Show all contents in directory except "." & ".."
+#alias ll "exa -l --color=always"               #Show contents in long format
+#alias lt "exa -aT --color=always"              #Show all contents in tree format
 
-#General Aliases
-alias c "clear"					    #clear screen
-alias h "history"				    #show command history
-#alias nft "neofetch"                               #neofetch
-#alias rft "neofetch | lolcat"                      #rgb neofetch
+#General Aliases:
+alias c "clear"					#Clear screen
+alias h "history"				#Show command history
+#alias nft "neofetch"                           #Neofetch
+#alias rft "neofetch | lolcat"                  #RGB neofetch
 
-#General System Tools
-alias cp "cp -i"				    #confirm before overwriting existing file
-alias mv "mv -i"				    #confirm before overwriting existing file
-alias rm "rm -i"				    #confirm before removing file
-alias df "df -h"				    #list drive space in human readable format
-alias free "free -m"				    #show sizes in MB
+#General System Tools:
+alias cp "cp -i"				#Confirm before overwriting existing file
+alias mv "mv -i"				#Confirm before overwriting existing file
+alias rm "rm -i"				#Confirm before removing file
+alias df "df -h"				#List drive space in human readable format
+alias free "free -m"				#Show sizes in MB
 
-#Power Commands
-#Linux
-#alias shutdown "sudo shutdown now"		    #shutdown system
-#alias reboot "sudo reboot"			    #reboot system
-#BSD
-#alias shutdown "sudo poweroff"                     #shutdown system
-#alias reboot "sudo init 6"                         #reboot system
-##Text Editor & Config File Aliases
+#Power Commands:
+#Linux:
+#alias shutdown "sudo shutdown now"		#Shutdown system
+#alias reboot "sudo reboot"			#Reboot system
+#BSD:
+#alias shutdown "sudo poweroff"                 #Shutdown system
+#alias reboot "sudo init 6"                     #Reboot system
+
+##Text Editor & Config File Aliases:
 #VIM ALIASES:
-#alias v='vim'
-#alias vbash='vim ~/.bashrc'
-#alias vfish='vim ~/.config/fish/config.fish'
-#alias vv='vim ~/.vimrc'
-#alias vnv='vim ~/.config/nvim/init.vim'
-#alias vzsh='vim ~/.zshrc'
+#alias v='vim'                                  #Shortcut for vim command
+#alias vbash='vim ~/.bashrc'                    #Open bash config in vim
+#alias vfish='vim ~/.config/fish/config.fish'   #Open fish config in vim
+#alias vv='vim ~/.vimrc'                        #Open vim config in vim
+#alias vnv='vim ~/.config/nvim/init.vim'        #Open neovim config in vim
+#alias vzsh='vim ~/.zshrc'                      #Open zsh config in vim
 #NEOVIM ALIASES:
-#alias vim='nvim'
-#alias nvbash='nvim ~/.bashrc'
-#alias nvfish='nvim ~/.config/fish/config.fish'
-#alias nvv='nvim ~/.vimrc'
-#alias nvnv='nvim ~/.config/nvim/init.vim'
-#alias nvzsh='nvim ~/.zshrc'
+#alias vim='nvim'                               #Shortcut for nvim command
+#alias nvbash='nvim ~/.bashrc'                  #Open bash config in neovim
+#alias nvfish='nvim ~/.config/fish/config.fish' #Open fish config in neovim
+#alias nvv='nvim ~/.vimrc'                      #Open vim config in neovim
+#alias nvnv='nvim ~/.config/nvim/init.vim'      #Open neovim config in neovim
+#alias nvzsh='nvim ~/.zshrc'                    #Open zsh config in neovim
 
-#humorous commands
-#alias cow "fortune | cowsay" 			    #give randomly generated fortune with cow
-#alias cowstoned "fortune | cowsay -f bong"	    #give randomly generated fortune with cow smoking a bong
-#alias rgbaqua "asciiquarium | lolcat"		    #rainbow aquarium
-#alias aqua "asciiquarium"			    #aqauarium
+#humorous commands:
+#alias cow "fortune | cowsay" 			#Give randomly generated fortune with cow
+#alias cowstoned "fortune | cowsay -f bong"	#Give randomly generated fortune with cow smoking a bong
+#alias rgbaqua "asciiquarium | lolcat"		#Rainbow aquarium
+#alias aqua "asciiquarium"			#Aqauarium
 #alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" 
 
 #FUNCTIONS
