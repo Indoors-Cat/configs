@@ -32,6 +32,15 @@ export HISTCONTROL=ignoredups:erasedups 	#no dublicate entries
 #alias rem='sudo apt remove'			#Remove package(s)
 #alias atrm='sudo apt autoremove'		#Autoremove no longer needed package(s)
 
+
+#Solus:
+#alias upg='sudo eopkg upgrade'			#Download and apply update(s)
+#alias it='sudo eopkg install'			#Install package(s)
+#alias rem='sudo eopkg remove'			#Remove package(s)
+#alias atrm='sudo eopkg autoremove'		#
+#alias listup='sudo eopkg list-upgrades'	#List available upgrades for package(s)
+#alias esearch='sudo eopkg search'		#Search for package(s)
+
 #BSD:
 #alias bsdup='sudo freebsd-update fetch'     	#Download system updates
 #alias bsdupg='sudo freebsd-update install'  	#Install updates to system
