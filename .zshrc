@@ -173,6 +173,14 @@ source $ZSH/oh-my-zsh.sh
 #alias fan2start='sudo liquidctl set fan2 speed 60'      #Set fan2 speed to 60%
 #alias fan3start='sudo liquidctl set fan3 speed 60'      #Set fan3 speed to 60%
 
+##Timeshift (BTRFS) Aliases
+#alias timelistsnap='sudo timeshift --list-snapshots'    #List snapshots
+#alias timelistdev='sudo timeshift --list-devices'       #List devices
+#alias timecheck='sudo timeshfit --check'                #Create snapshot if scheduled
+#alias timesnap='sudo timeshift --create'                #Create snapshot
+#alias snapcomment='sudo timeshift --comments'           #Set snapshot description
+#alias timerestore='sudo timeshift --restore'            #Restore from snapshot
+
 #General Aliases
 #alias c='clear'                                 #Clear screen
 #alias h='history'                               #Show command history
