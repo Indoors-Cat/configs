@@ -40,19 +40,19 @@
 
 ##Solus:
 #eopkg:
-#alias upg "sudo eopkg upgrade"         #Download and apply update(s)
-#alias it "sudo eopkg install"          #Install package(s)
-#alias rem "sudo eopkg remove"          #Remove package(s)
-#alias atrm "sudo eopkg autoremove"     #Remove orphaned dependencies
-#alias listup "sudo eopkg list-upgrades"    #List available upgrade(s) for package(s)
-#alias esearch "sudo eopkg search"          #Search for package(s)
+#alias upg "sudo eopkg upgrade"                 #Download and apply update(s)
+#alias it "sudo eopkg install"                  #Install package(s)
+#alias rem "sudo eopkg remove"                  #Remove package(s)
+#alias atrm "sudo eopkg autoremove"             #Remove orphaned dependencies
+#alias listup "sudo eopkg list-upgrades"        #List available upgrade(s) for package(s)
+#alias esearch "sudo eopkg search"              #Search for package(s)
 
 ##Fedora/RHEL:
 #dnf:
-#alias upg "sudo dnf upgrade"               #Download and apply update(s)
-#alias dit "sudo dnf install"               #Install package(s)
-#alias drem "sudo dnf remove"               #Remove package(s)
-#alias atrm "sudo dnf autoremove"           #Remove any orphaned packages
+#alias upg "sudo dnf upgrade"                   #Download and apply update(s)
+#alias dit "sudo dnf install"                   #Install package(s)
+#alias drem "sudo dnf remove"                   #Remove package(s)
+#alias atrm "sudo dnf autoremove"               #Remove any orphaned packages
 
 ##BSD:
 #pkg:
@@ -73,7 +73,7 @@
 #Navigation:
 #alias .. "cd .."				#Go up one directory
 #alias .2 "cd ../.."				#Go up two directories
-#alias .3 "cd ../../.."                          #Go up three directories
+#alias .3 "cd ../../.."                         #Go up three directories
 
 #Surfshark-VPN Aliases:
 #alias vpnup "sudo surfshark-vpn attack"        #Quick connect to nearest server
@@ -99,27 +99,19 @@
 #alias timerestore "sudo timeshift --restore"            #Restore from snapshot
 
 #General Aliases:
-#alias c='clear'				#lear screen
+#alias c='clear'				#clear screen
 #alias h='history'				#Show command history
 #alias nft='neofetch'                           #Neofetch
 #alias rft='neofetch | lolcat'                  #Rgb neofetch
 
 ##Command Swaps:
 #'ls' to 'exa':
-#alias la='exa -al --color=always'		#Ls listing all in list format
-#alias la='ls -a --color=always'		#Ls listing all
-#alias ll='ls -l --color=always'		#Ls list format
+#alias ls "exa -al --color=always"		#Ls listing all in list format
+#alias la "ls -a --color=always"		#Ls listing all
+#alias ll "ls -l --color=always"		#Ls list format
+#alias lt "exa -aT --color-always"              #Show all contents in tree format
 #'cat' to 'bat':
-#alias cat='bat'                        #Use bat instead of cat
-
-#'cat' to 'bat' swap:
-#alias cat "bat"                                #Changes cat to bat
-
-#'ls' to 'exa' swap:
-#alias ls "exa -al --color=always"		#Show all contents in directory except "." & ".." in long format
-#alias la "exa -a --color=always"		#Show all contents in directory except "." & ".."
-#alias ll "exa -l --color=always"               #Show contents in long format
-#alias lt "exa -aT --color=always"              #Show all contents in tree format
+#alias cat "bat"                                #Use bat instead of cat
 
 #General Aliases:
 alias c "clear"					#Clear screen
@@ -170,4 +162,3 @@ alias free "free -m"				#Show sizes in MB
 #function mkdircd
         #mkdir $argv && cd $argv
 #end
-
