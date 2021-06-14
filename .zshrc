@@ -205,7 +205,7 @@
 
 ##Command Swaps:
 #'ls' to 'exa':
-#alias la='exa -al --color=always'		#Ls listing all in list format
+#alias ls='exa -al --color=always'		#Ls listing all in list format
 #alias la='ls -a --color=always'		#Ls listing all
 #alias ll='ls -l --color=always'		#Ls list format
 #'cat' to 'bat':
