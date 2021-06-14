@@ -47,7 +47,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme gruvbox
+"colorscheme gruvbox
 set nobackup						        " Disables auto backups
 set noswapfile						        " Disables swap
 set t_Co=256						        " Set if terminal supports 256 colors
@@ -64,10 +64,10 @@ syntax enable
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => StatusLine 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-" The lightline.vim theme 
-let g:lightline = {
-	\ 'colorscheme': 'darcula',
- 	\ } 
+""" The lightline.vim theme 
+"let g:lightline = {
+"	\ 'colorscheme': 'darcula',
+" 	\ } 
 
 " Always show statusline set laststatus=2 
 " Uncomment to prevent non-normal modes showing in powerline and below powerline. 

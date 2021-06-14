@@ -38,25 +38,42 @@
 #alias rem "sudo apt remove"			#Remove package(s)
 #alias atrm "sudo apt autoremove"		#Autoremove no longer needed package(s)
 
+##Solus:
+#eopkg:
+#alias upg "sudo eopkg upgrade"         #Download and apply update(s)
+#alias it "sudo eopkg install"          #Install package(s)
+#alias rem "sudo eopkg remove"          #Remove package(s)
+#alias atrm "sudo eopkg autoremove"     #Remove orphaned dependencies
+#alias listup "sudo eopkg list-upgrades"    #List available upgrade(s) for package(s)
+#alias esearch "sudo eopkg search"          #Search for package(s)
+
+##Fedora/RHEL:
+#dnf:
+#alias upg "sudo dnf upgrade"               #Download and apply update(s)
+#alias dit "sudo dnf install"               #Install package(s)
+#alias drem "sudo dnf remove"               #Remove package(s)
+#alias atrm "sudo dnf autoremove"           #Remove any orphaned packages
+
 ##BSD:
-#alias bsdup='sudo freebsd-update fetch'        #Download system updates
-#alias bsdupg='sudo freebsd-update install'     #Install updates to system
-#alias upg='sudo pkg upgrade'                   #Download and apply updates for package(s)
-#alias pkgit='sudo pkg install'                 #Install package(s)
-#alias pkgrem='sudo pkg remove'                 #Remove package(s)
-#alias atrm='sudo pkg autoremove'               #Autoremove orphaned dependencies
-#alias pkglock='sudo pkg lock'                  #Lock package(s) from being removed or edited
-#alias pkgulock='sudo pkg unlock'               #Unlock package(s)
-#alias audit='sudo pkg audit'                   #Audit package(s) for vulnerabilities and bugs
-#alias auditall='sudo pkg audit -F'             #Audit all packages for vulnerabilities and bugs
-#alias chshb='chsh -s /usr/local/bin/bash'      #Changes user shell to 'bash' shell (reboot required)
-#alias chshf='chsh -s /usr/local/bin/fish'      #Changes user shell to 'fish' shell (reboot required)
-#alias chshz='chsh -s /usr/local/bin/zsh'       #Changes user shell to 'zsh' shell (reboot required)
+#pkg:
+#alias bsdup "sudo freebsd-update fetch"        #Download system updates
+#alias bsdupg "sudo freebsd-update install"     #Install updates to system
+#alias upg "sudo pkg upgrade"                   #Download and apply updates for package(s)
+#alias pkgit "sudo pkg install"                 #Install package(s)
+#alias pkgrem "sudo pkg remove"                 #Remove package(s)
+#alias atrm "sudo pkg autoremove"               #Autoremove orphaned dependencies
+#alias pkglock "sudo pkg lock"                  #Lock package(s) from being removed or edited
+#alias pkgulock "sudo pkg unlock"               #Unlock package(s)
+#alias audit "sudo pkg audit"                   #Audit package(s) for vulnerabilities and bugs
+#alias auditall "sudo pkg audit -F"             #Audit all packages for vulnerabilities and bugs
+#alias chshb "chsh -s /usr/local/bin/bash"      #Changes user shell to 'bash' shell (reboot required)
+#alias chshf "chsh -s /usr/local/bin/fish"      #Changes user shell to 'fish' shell (reboot required)
+#alias chshz "chsh -s /usr/local/bin/zsh"       #Changes user shell to 'zsh' shell (reboot required)
 
 #Navigation:
-alias .. "cd .."				#Go up one directory
-alias .2 "cd ../.."				#Go up two directories
-alias .3 "cd ../../.."                          #Go up three directories
+#alias .. "cd .."				#Go up one directory
+#alias .2 "cd ../.."				#Go up two directories
+#alias .3 "cd ../../.."                          #Go up three directories
 
 #Surfshark-VPN Aliases:
 #alias vpnup "sudo surfshark-vpn attack"        #Quick connect to nearest server
@@ -64,6 +81,36 @@ alias .3 "cd ../../.."                          #Go up three directories
 #alias vpndown "sudo surfshark-vpn down"        #Disconnects vpn
 #alias vpnstat "sudo surfshark-vpn status"      #Show vpn status
 #alias vpnver "sudo surfshark-vpn version"      #Show surfshark-vpn version
+
+##'liquidctl' Aliases (Corsair Commander Pro):
+#alias liqlist "sudo liquidctl list"			#List available devices
+#alias liqstart "sudo liquidctl initialize"		#Initialize all available device(s)
+#alias liqstart "sudo liquidctl status"			#Show status of available device(s)
+#alias fan1start "sudo liquidctl set fan1 speed 60"	#Set fan1 to 60% speed
+#alias fan2start "sudo liquidctl set fan2 speed 60"	#Set fan2 to 60% speed
+#alias fan3start "sudo liquidctl set fan3 speed 60"	#Set fan3 to 60% speed
+
+##Timeshift (BTRFS) Aliases
+#alias timelistsnap "sudo timeshift --list-snapshots"    #List snapshots
+#alias timelistdev "sudo timeshift --list-devices"       #List devices
+#alias timecheck "sudo timeshfit --check"                #Create snapshot if scheduled
+#alias timesnap "sudo timeshift --create"                #Create snapshot
+#alias snapcomment "sudo timeshift --comments"           #Set snapshot description
+#alias timerestore "sudo timeshift --restore"            #Restore from snapshot
+
+#General Aliases:
+#alias c='clear'				#lear screen
+#alias h='history'				#Show command history
+#alias nft='neofetch'                           #Neofetch
+#alias rft='neofetch | lolcat'                  #Rgb neofetch
+
+##Command Swaps:
+#'ls' to 'exa':
+#alias la='exa -al --color=always'		#Ls listing all in list format
+#alias la='ls -a --color=always'		#Ls listing all
+#alias ll='ls -l --color=always'		#Ls list format
+#'cat' to 'bat':
+#alias cat='bat'                        #Use bat instead of cat
 
 #'cat' to 'bat' swap:
 #alias cat "bat"                                #Changes cat to bat
