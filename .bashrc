@@ -32,8 +32,8 @@ export HISTCONTROL=ignoredups:erasedups 	#no dublicate entries
 #alias rem='sudo apt remove'			#Remove package(s)
 #alias atrm='sudo apt autoremove'		#Autoremove no longer needed package(s)
 
-
-#Solus:
+##Solus:
+#eopkg
 #alias upg='sudo eopkg upgrade'			#Download and apply update(s)
 #alias it='sudo eopkg install'			#Install package(s)
 #alias rem='sudo eopkg remove'			#Remove package(s)
@@ -41,7 +41,15 @@ export HISTCONTROL=ignoredups:erasedups 	#no dublicate entries
 #alias listup='sudo eopkg list-upgrades'	#List available upgrades for package(s)
 #alias esearch='sudo eopkg search'		#Search for package(s)
 
-#BSD:
+##Fedora/RHEL:
+#dnf
+#alias upg='sudo dnf upgrade'            #Downloads and applys updates
+#alias dit='sudo dnf install'            #Installs specified package(s)
+#alias drem='sudo dnf remove'            #Removes specified package(s)
+#alias atrm='sudo dnf autoremove'        #Removes any orphaned packages
+
+##BSD:
+#pkg
 #alias bsdup='sudo freebsd-update fetch'     	#Download system updates
 #alias bsdupg='sudo freebsd-update install'  	#Install updates to system
 #alias upg='sudo pkg upgrade'                	#Download and apply updates for package(s)
@@ -56,19 +64,19 @@ export HISTCONTROL=ignoredups:erasedups 	#no dublicate entries
 #alias chshf='chsh -s /usr/local/bin/fish'   	#Changes user shell to 'fish' shell (reboot required)
 #alias chshz='chsh -s /usr/local/bin/zsh'    	#Changes user shell to 'zsh' shell (reboot required)
 
-##navigation shortcuts:
-#alias ..='cd ..'				#Go up one directory
+##Navigation Shortcuts:
+#alias ..='cd ..'				    #Go up one directory
 #alias .2='cd ../..'				#Go up two directories
 #alias .3='cd ../../..'				#Go up three directories
 
-#Surfshark-VPN Aliases:
+##Surfshark-VPN Aliases:
 #alias vpnup='sudo surfshark-vpn attack'        #Quick connect to nearest server
 #alias vpnmulti='sudo surfshark-vpn multi'      #Connects to multi-hop server
 #alias vpndown='sudo surfshark-vpn down'        #Disconnects vpn
 #alias vpnstat='sudo surfshark-vpn status'      #Show vpn status
 #alias vpnver='sudo surfshark-vpn version'      #Show surfshark-vpn version
 
-#'liquidctl' Aliases (Corsair Commander Pro):
+##'liquidctl' Aliases (Corsair Commander Pro):
 #alias liqlist='sudo liquidctl list'			#List available devices
 #alias liqstart='sudo liquidctl initialize'		#Initialize all available device(s)
 #alias liqstart='sudo liquidctl status'			#Show status of available device(s)
@@ -76,19 +84,27 @@ export HISTCONTROL=ignoredups:erasedups 	#no dublicate entries
 #alias fan2start='sudo liquidctl set fan2 speed 60'	#Set fan2 to 60% speed
 #alias fan3start='sudo liquidctl set fan3 speed 60'	#Set fan3 to 60% speed
 
-##"cat" to "bat" swap:
-#alias cat='bat'                         	#Use bat and not cat
-
-##'ls' to 'exa' swap:
-#alias la='exa -al --color=always'		#Ls listing all in list format
-#alias la='ls -a --color=always'		#Ls listing all
-#alias ll='ls -l --color=always'		#Ls list format
+##Timeshift (BTRFS) Aliases
+#alias timelistsnap='sudo timeshift --list-snapshots'    #List snapshots
+#alias timelistdev='sudo timeshift --list-devices'       #List devices
+#alias timecheck='sudo timeshfit --check'                #Create snapshot if scheduled
+#alias timesnap='sudo timeshift --create'                #Create snapshot
+#alias snapcomment='sudo timeshift --comments'           #Set snapshot description
+#alias timerestore='sudo timeshift --restore'            #Restore from snapshot
 
 #General Aliases:
 #alias c='clear'				#lear screen
 #alias h='history'				#Show command history
 #alias nft='neofetch'                           #Neofetch
 #alias rft='neofetch | lolcat'                  #Rgb neofetch
+
+##Command Swaps:
+#'ls' to 'exa':
+#alias la='exa -al --color=always'		#Ls listing all in list format
+#alias la='ls -a --color=always'		#Ls listing all
+#alias ll='ls -l --color=always'		#Ls list format
+#'cat' to 'bat':
+#alias cat='bat'                        #Use bat instead of cat
 
 ##General System Tools:
 #alias mv='mv -i'				#Interactive move of file

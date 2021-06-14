@@ -11,7 +11,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/brandon/.oh-my-zsh"
+#export ZSH="/home/brandon/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -85,7 +85,7 @@ export ZSH="/home/brandon/.oh-my-zsh"
 #
 #    )
 #
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -138,6 +138,22 @@ source $ZSH/oh-my-zsh.sh
 #alias rem='sudo apt remove'                    #Remove package(s)
 #alias atrm='sudo apt autoremove'               #Autoremove no longer needed package(s)
 
+##Solus:
+#eopkg
+#alias upg='sudo eopkg upgrade'			#Download and apply update(s)
+#alias it='sudo eopkg install'			#Install package(s)
+#alias rem='sudo eopkg remove'			#Remove package(s)
+#alias atrm='sudo eopkg autoremove'		#
+#alias listup='sudo eopkg list-upgrades'	#List available upgrades for package(s)
+#alias esearch='sudo eopkg search'		#Search for package(s)
+
+##Fedora/RHEL:
+#dnf
+#alias upg='sudo dnf upgrade'            #Downloads and applys updates
+#alias dit='sudo dnf install'            #Installs specified package(s)
+#alias drem='sudo dnf remove'            #Removes specified package(s)
+#alias atrm='sudo dnf autoremove'        #Removes any orphaned packages
+
 ##BSD
 #alias bsdup='sudo freebsd-update fetch'        #Download system updates
 #alias bsdupg='sudo freebsd-update install'     #Install updates to system
@@ -187,14 +203,13 @@ source $ZSH/oh-my-zsh.sh
 #alias nft='neofetch'                            #Show system information
 #alias rft='neofetch | lolcat'                   #Show system information using lolcat
 
-##"cat" to "bat" swap
-#alias cat='bat'                                 #Use bat and not cat
-
-##'ls' to 'exa' swap
-#alias ls='exa -al'                              #List all in list format
-#alias la='exa -a'                               #list all
-#alias ll='exa -l'                               #List format
-#alias lt='exa -aT'                              #List all in tree format
+##Command Swaps:
+#'ls' to 'exa':
+#alias la='exa -al --color=always'		#Ls listing all in list format
+#alias la='ls -a --color=always'		#Ls listing all
+#alias ll='ls -l --color=always'		#Ls list format
+#'cat' to 'bat':
+#alias cat='bat'                        #Use bat instead of cat
 
 #General System Tools
 #alias cp='cp -i'                                #Interactive copy function
@@ -237,4 +252,4 @@ source $ZSH/oh-my-zsh.sh
 #eval "$(starship init zsh)"                     #Enable starship prompt for zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

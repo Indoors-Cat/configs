@@ -8,7 +8,7 @@
 """
 set nocompatible              " be iMproved, required
 filetype off                  " required
-set shell=/bin/bash
+"set shell=/bin/bash
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-plug for Managing Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -44,7 +44,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme palenight
+#colorscheme palenight
 set nobackup						        " Disables auto backups
 set noswapfile						        " Disables swap
 set t_Co=256						        " Set if terminal supports 256 colors
@@ -62,12 +62,12 @@ syntax enable
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => StatusLine 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-" The lightline.vim theme 
-let g:rigel_lightline = 1
-let g:lightline = { 'colorscheme': 'rigel'}
+""" The lightline.vim theme 
+"let g:rigel_lightline = 1
+"let g:lightline = { 'colorscheme': 'rigel'}
 
-set laststatus=2                                    		" for lightline plugin
-set noshowmode                                      		" hide statusbar while using lightline.vim
+"set laststatus=2                                    		" for lightline plugin
+"set noshowmode                                      		" hide statusbar while using lightline.vim
 " Always show statusline set laststatus=2 
 " Uncomment to prevent non-normal modes showing in powerline and below powerline. 
 " set noshowmode
