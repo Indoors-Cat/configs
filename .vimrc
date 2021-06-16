@@ -11,6 +11,8 @@ filetype off                  " required
 "set shell=/bin/bash
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-plug for Managing Plugins
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Specify a Directory for Plugins
 " - For Neovim: stdpath('data') . '/plugged'
