@@ -1,3 +1,10 @@
+# __  __           _________  _   _     ____             __ _       
+#|  \/  |_   _    |__  / ___|| | | |   / ___|___  _ __  / _(_) __ _ 
+#| |\/| | | | |     / /\___ \| |_| |  | |   / _ \| '_ \| |_| |/ _` |
+#| |  | | |_| |    / /_ ___) |  _  |  | |__| (_) | | | |  _| | (_| |
+#|_|  |_|\__, |___/____|____/|_| |_|___\____\___/|_| |_|_| |_|\__, |
+#        |___/_____|              |_____|                     |___/ 
+#
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -116,51 +123,51 @@
 ###ALIASES
 ##Package Manager Aliasaes
 #Pacman
-#alias pac='sudo pacman -Syu'                   #Updates system
+#alias pac='sudo pacman -Syu'                   #Update standard package(s)
 #alias pacit='sudo pacman -S'                   #Install package(s)
 #alias pacr='sudo pacman -R'                    #Remove package(s)
 #alias pacrall='sudo pacman -Rcns'              #Remove package(s) and all dependencies
-#alias pacsearch='sudo pacman -Q'               #Seach for package
+#alias pacsearch='sudo pacman -Q'               #Seach for package(s)
 #Yay
-#alias yaysua='yay -Sua'                        #Updates only AUR packages
+#alias yaysua='yay -Sua'                        #Updates only AUR package(s)
 #alias yayrem='yay -R'                          #Remove package(s)
-#alias yaysearch='yay -Q'                       #Search for AUR package
+#alias yaysearch='yay -Q'                       #Search for AUR package(s)
 #Paru
-#alias parusua='paru -Sua'                      #Updates only AUR packages
+#alias parusua='paru -Sua'                      #Updates only AUR package(s)
 #alias parurem='paru -R'                        #Remove package(s)
-#alias parusearch='paru -Q'                     #Search for AUR packages
+#alias parusearch='paru -Q'                     #Search for AUR package(s)
 
 ##Debian
 #apt & apt-get
-#alias up='sudo apt-get update'                 #Downloads updates
-#alias upg='sudo apt-get upgrade'               #Applies updates to system
+#alias up='sudo apt-get update'                 #Downloads update(s)
+#alias upg='sudo apt-get upgrade'               #Applies update(s) to system
 #alias it='sudo apt install'                    #Install package(s)
 #alias rem='sudo apt remove'                    #Remove package(s)
-#alias atrm='sudo apt autoremove'               #Autoremove no longer needed package(s)
+#alias atrm='sudo apt autoremove'               #Autoremove orphaned package(s) & dependencies
 
 ##Solus:
 #eopkg
-#alias upg='sudo eopkg upgrade'			#Download and apply update(s)
-#alias it='sudo eopkg install'			#Install package(s)
-#alias rem='sudo eopkg remove'			#Remove package(s)
-#alias atrm='sudo eopkg autoremove'		#
-#alias listup='sudo eopkg list-upgrades'	#List available upgrades for package(s)
-#alias esearch='sudo eopkg search'		#Search for package(s)
+#alias upg='sudo eopkg upgrade'			        #Download and apply update(s)
+#alias it='sudo eopkg install'			        #Install package(s)
+#alias rem='sudo eopkg remove'			        #Remove package(s)
+#alias atrm='sudo eopkg autoremove'		        #Autoremove orphaned package(s) & dependencies
+#alias listup='sudo eopkg list-upgrades'	    #List available upgrades for package(s)
+#alias esearch='sudo eopkg search'		        #Search for package(s)
 
 ##Fedora/RHEL:
 #dnf
-#alias upg='sudo dnf upgrade'            #Downloads and applys updates
-#alias dit='sudo dnf install'            #Installs specified package(s)
-#alias drem='sudo dnf remove'            #Removes specified package(s)
-#alias atrm='sudo dnf autoremove'        #Removes any orphaned packages
+#alias upg='sudo dnf upgrade'                   #Downloads and applys update(s)
+#alias dit='sudo dnf install'                   #Installs specified package(s)
+#alias drem='sudo dnf remove'                   #Removes specified package(s)
+#alias atrm='sudo dnf autoremove'               #Autoremove orphaned package(s) & dependencies
 
 ##BSD
-#alias bsdup='sudo freebsd-update fetch'        #Download system updates
-#alias bsdupg='sudo freebsd-update install'     #Install updates to system
+#alias bsdup='sudo freebsd-update fetch'        #Download system update(s)
+#alias bsdupg='sudo freebsd-update install'     #Install update(s) to system
 #alias upg='sudo pkg upgrade'                   #Download and apply updates for package(s)
 #alias pkgit='sudo pkg install'                 #Install package(s)
 #alias pkgrem='sudo pkg remove'                 #Remove package(s)
-#alias atrm='sudo pkg autoremove'               #Autoremove orphaned dependencies
+#alias atrm='sudo pkg autoremove'               #Autoremove orphaned package(s) & dependencies
 #alias pkglock='sudo pkg lock'                  #Lock package(s) from being removed or edited
 #alias pkgulock='sudo pkg unlock'               #Unlock package(s)
 #alias audit='sudo pkg audit'                   #Audit package(s) for vulnerabilities and bugs
@@ -198,49 +205,57 @@
 #alias timerestore='sudo timeshift --restore'            #Restore from snapshot
 
 #General Aliases
-#alias c='clear'                                 #Clear screen
-#alias h='history'                               #Show command history
-#alias nft='neofetch'                            #Show system information
-#alias rft='neofetch | lolcat'                   #Show system information using lolcat
+#alias c='clear'                                #Clear screen
+#alias h='history'                              #Show command history
+#alias nft='neofetch'                           #Show system information
+#alias rft='neofetch | lolcat'                  #Show system information using lolcat
 
 ##Command Swaps:
 #'ls' to 'exa':
-#alias ls='exa -al --color=always'		#Ls listing all in list format
-#alias la='ls -a --color=always'		#Ls listing all
-#alias ll='ls -l --color=always'		#Ls list format
+#alias ls='exa -al --color=always'		        #Ls listing all in list format
+#alias la='ls -a --color=always'		        #Ls listing all
+#alias ll='ls -l --color=always'		        #Ls list format
 #'cat' to 'bat':
-#alias cat='bat'                        #Use bat instead of cat
+#alias cat='bat'                                #Use bat instead of cat
 
 #General System Tools
-#alias cp='cp -i'                                #Interactive copy function
-#alias mv='mv -i'                                #Interactive move function
-#alias rm='rm -i'                                #Interactive remove funtion
-#alias df='df -h'                                #Shows disk usage listed in 'human-readable format'
-#alias free='free -m'                            #Show memory usage in MB
+#alias cp='cp -i'                               #Interactive copy function
+#alias mv='mv -i'                               #Interactive move function
+#alias rm='rm -i'                               #Interactive remove funtion
+#alias df='df -h'                               #Shows disk usage listed in 'human-readable format'
+#alias free='free -m'                           #Show memory usage in MB
 
 ##Power Commands
 #Linux Power Commands
-#alias shutdown='sudo shutdown now'              #Shutdown system now
-#alias reboot='sudo reboot now'                  #Reboot system now
+#alias shutdown='sudo shutdown now'             #Shutdown system now
+#alias reboot='sudo reboot now'                 #Reboot system now
 #BSD Power Commands
-#alias shutdown='sudo poweroff'                  #Shutdown system
-#alias reboot='sudo init 6'                      #Reboot system now
+#alias shutdown='sudo poweroff'                 #Shutdown system
+#alias reboot='sudo init 6'                     #Reboot system now
 
 ##Text Editor & Config File Aliases
 #vim aliases:
-#alias v='vim'                                   #Shortcut for vim command
-#alias vbash='vim ~/.bashrc'                     #Open bash config in vim
-#alias vfish='vim ~/.config/fish/config.fish'    #Open fish config in vim
-#alias vv='vim ~/.vimrc'                         #Open vim config in vim
-#alias vnv='vim ~/.config/nvim/init.vim'         #Open neovim config in vim
-#alias vz='vim ~/.zshrc'                         #Open zsh config in vim
+#alias v='vim'                                  #Shortcut for vim command
+#alias vbash='vim ~/.bashrc'                    #Open bash config in vim
+#alias vfish='vim ~/.config/fish/config.fish'   #Open fish config in vim
+#alias vv='vim ~/.vimrc'                        #Open vim config in vim
+#alias vnv='vim ~/.config/nvim/init.vim'        #Open neovim config in vim
+#alias vz='vim ~/.zshrc'                        #Open zsh config in vim
 #nvim aliases:
-#alias vim='nvim'                                #Shortcut for nvim command
-#alias nvbash='nvim ~/.bashrc'                   #Open bash config in neovim
-#alias nvfish='nvim ~/.config/fish/config.fish'  #Open fish config in neovim
-#alias nvv='nvim ~/.vimrc'                       #Open vim config in neovim
-#alias nvnv='nvim ~/.config/nvim/init.vim'       #Open neovim config in neovim
-#alias nvzsh='nvim ~/.zshrc'                     #Open zsh config in neovim
+#alias vim='nvim'                               #Shortcut for nvim command
+#alias nvbash='nvim ~/.bashrc'                  #Open bash config in neovim
+#alias nvfish='nvim ~/.config/fish/config.fish' #Open fish config in neovim
+#alias nvv='nvim ~/.vimrc'                      #Open vim config in neovim
+#alias nvnv='nvim ~/.config/nvim/init.vim'      #Open neovim config in neovim
+#alias nvzsh='nvim ~/.zshrc'                    #Open zsh config in neovim
+#DOOM-EMACS ALIASES:
+#alias doomhelp='~/.emacs.d/bin/doom help'      #Show a list of avialble doom commands
+#alias doomsync='~/.emacs.d/bin/doom sync'      #Sync config with Doom Emacs
+#alias doomupg='~/.emacs.d/bin/doom upgrade'    #Update Doom Emacs & its package(s)
+#alias doomdoc='~/.emacs.d/bin/doom doctor'     #Diagnostic tool for Doom Emacs
+#alias doompurge='~/.emacs.d/bin/doom purge'    #Delete old, orphaned package(s)
+#alias doominfo='~/.emacs.d/bin/doom info'      #Output system info in markdown
+#alias doomver='~/.emacs.d/bin/doom version'    #Show version infor for Doom & Emacs
 
 #some quality jokes
 #alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
