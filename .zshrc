@@ -128,7 +128,7 @@
     #alias pacr='sudo pacman -R'                    #Remove package(s)
     #alias pacrall='sudo pacman -Rcns'              #Remove package(s) and all dependencies
     #alias pacsearch='sudo pacman -Q'               #Seach for package(s)
- #Yay
+  #Yay
     #alias yaysua='yay -Sua'                        #Updates only AUR package(s)
     #alias yayrem='yay -R'                          #Remove package(s)
     #alias yaysearch='yay -Q'                       #Search for AUR package(s)
@@ -162,6 +162,7 @@
     #alias atrm='sudo dnf autoremove'               #Autoremove orphaned package(s) & dependencies
 
 ##BSD
+  #pkg
     #alias bsdup='sudo freebsd-update fetch'        #Download system update(s)
     #alias bsdupg='sudo freebsd-update install'     #Install update(s) to system
     #alias upg='sudo pkg upgrade'                   #Download and apply updates for package(s)
@@ -259,8 +260,8 @@
 
 #some quality jokes
 #alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
-#alias aqua='asciiquarium'                       #ascii aquarium
-#alias rgbaqua='asciiquarium | lolcat'           #rainbow ascii aquarium
+#alias aqua='asciiquarium'                          #ascii aquarium
+#alias rgbaqua='asciiquarium | lolcat'              #rainbow ascii aquarium
 
 
 ###Starship prompt

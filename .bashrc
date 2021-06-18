@@ -7,8 +7,8 @@
 #source /etc/profile
 
 ###EXPORT
-#export HISTCONTROL=ignoredups:erasedups 	#no dublicate entries
-#export EDITOR="vim"				#$EDITOR use vim in terminal
+#export HISTCONTROL=ignoredups:erasedups 	        #no dublicate entries
+#export EDITOR="vim"				                #$EDITOR use vim in terminal
 
 ### Shell Color Script ###
 #colorscript -r
@@ -152,10 +152,10 @@
     #alias doomver='~/.emacs.d/bin/doom version'    #Show version infor for Doom & Emacs
 
 ##some quality jokes:
-#alias cow "fortune | cowsay" 			        #Give randomly generated fortune with cow
-#alias cowstoned "fortune | cowsay -f bong"	    #Give randomly generated fortune with cow smoking a bong
-#alias rgbaqua "asciiquarium | lolcat"		    #Rainbow aquarium
-#alias aqua "asciiquarium"			            #Aqauarium
+#alias cow "fortune | cowsay" 			            #Give randomly generated fortune with cow
+#alias cowstoned "fortune | cowsay -f bong"	        #Give randomly generated fortune with cow smoking a bong
+#alias rgbaqua "asciiquarium | lolcat"		        #Rainbow aquarium
+#alias aqua "asciiquarium"			                #Aqauarium
 #alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
 ### PROMPT
 
