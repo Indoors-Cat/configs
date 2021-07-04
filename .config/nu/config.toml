@@ -16,19 +16,19 @@ startup = [
 ##ALIASES
 ##Arch:
   #pacman:
-    "alias pac = sudo pacman -Syu",            	   #Update standard package(s)
-    "alias pacit = sudo pacman -S",          	       #Unstall package(s)
-    "alias pacrem = sudo pacman -R",           	   #Remove package(s)
-    "alias pacremall = sudo pacman -Rncs",		       #Remove package(s) and all dependencies
-    "alias pacseach = sudo pacman -Q",         	   #Search for package(s)
+    #"alias pac = sudo pacman -Syu",            	   #Update standard package(s)
+    #"alias pacit = sudo pacman -S",          	       #Unstall package(s)
+    #"alias pacrem = sudo pacman -R",           	   #Remove package(s)
+    #"alias pacremall = sudo pacman -Rncs",		       #Remove package(s) and all dependencies
+    #"alias pacseach = sudo pacman -Q",         	   #Search for package(s)
   #yay:
-    "alias yaysua = sudo yay -Sua",            	   #Updates only AUR package(s)
-    "alias yayrem = sudo yay -R",              	   #Remove package(s)
-    "alias yaysearch = sudo yay -Q",           	   #Search for package(s)
+    #"alias yaysua = sudo yay -Sua",            	   #Updates only AUR package(s)
+    #"alias yayrem = sudo yay -R",              	   #Remove package(s)
+    #"alias yaysearch = sudo yay -Q",           	   #Search for package(s)
   #paru:
-    "alias parusua = sudo paru -Sua",          	   #Updates only AUR package(s)
-    "alias parurem = sudo paru -R",            	   #Remove package(s)
-    "alias parusearch = sudo paru -Q",         	   #Search for package(s)
+    #"alias parusua = sudo paru -Sua",          	   #Updates only AUR package(s)
+    #"alias parurem = sudo paru -R",            	   #Remove package(s)
+    #"alias parusearch = sudo paru -Q",         	   #Search for package(s)
 
 ##Debian:
   #apt & apt-get
@@ -71,24 +71,24 @@ startup = [
     #"alias chshz = chsh -s /usr/local/bin/zsh",       #Changes user shell to 'zsh' shell (reboot required)
 
 ##Navigation:
-    "alias .. = cd ..",				               #Go up one directory
-    "alias .2 = cd ../..",				               #Go up two directories
-    "alias .3 = cd ../../..",                         #Go up three directories
+    #"alias .. = cd ..",				               #Go up one directory
+    #"alias .2 = cd ../..",				               #Go up two directories
+    #"alias .3 = cd ../../..",                         #Go up three directories
 
 ##Surfshark-VPN Aliases:
-    "alias vpnup = sudo surfshark-vpn attack",        #Quick connect to nearest server
-    "alias vpnmulti = sudo surfshark-vpn multi",      #Connects to multi-hop server
-    "alias vpndown = sudo surfshark-vpn down",        #Disconnects vpn
-    "alias vpnstat = sudo surfshark-vpn status",      #Show vpn status
-    "alias vpnver = sudo surfshark-vpn version",      #Show surfshark-vpn version
+    #"alias vpnup = sudo surfshark-vpn attack",        #Quick connect to nearest server
+    #"alias vpnmulti = sudo surfshark-vpn multi",      #Connects to multi-hop server
+    #"alias vpndown = sudo surfshark-vpn down",        #Disconnects vpn
+    #"alias vpnstat = sudo surfshark-vpn status",      #Show vpn status
+    #"alias vpnver = sudo surfshark-vpn version",      #Show surfshark-vpn version
 
 ##'liquidctl' Aliases (Corsair Commander Pro):
-    "alias liqlist = sudo liquidctl list",			            #List available devices
-    "alias liqstart = sudo liquidctl initialize",		        #Initialize all available device(s)
-    "alias liqstart = sudo liquidctl status",			        #Show status of available device(s)
-    "alias fan1start = sudo liquidctl set fan1 speed 60",	    #Set fan1 to 60% speed
-    "alias fan2start = sudo liquidctl set fan2 speed 60",	    #Set fan2 to 60% speed
-    "alias fan3start = sudo liquidctl set fan3 speed 60",	    #Set fan3 to 60% speed
+    #"alias liqlist = sudo liquidctl list",			            #List available devices
+    #"alias liqstart = sudo liquidctl initialize",		        #Initialize all available device(s)
+    #"alias liqstart = sudo liquidctl status",			        #Show status of available device(s)
+    #"alias fan1start = sudo liquidctl set fan1 speed 60",	    #Set fan1 to 60% speed
+    #"alias fan2start = sudo liquidctl set fan2 speed 60",	    #Set fan2 to 60% speed
+    #"alias fan3start = sudo liquidctl set fan3 speed 60",	    #Set fan3 to 60% speed
 
 ##Timeshift (BTRFS) Aliases
     #"alias timelistsnap = sudo timeshift --list-snapshots",    #List snapshots
@@ -99,10 +99,10 @@ startup = [
     #"alias timerestore = sudo timeshift --restore",            #Restore from snapshot
 
 ##General Aliases:
-    "alias c = clear",				                   #clear screen
-    "alias h = history",				               #Show command history
-    "alias nft = neofetch",                           #Neofetch
-    "alias calc = qalc"                                #Terminal-based calculator
+    #"alias c = clear",				                   #clear screen
+    #"alias h = history",				               #Show command history
+    #"alias nft = neofetch",                           #Neofetch
+    #"alias calc = qalc"                                #Terminal-based calculator
 
 ##Text Editor & Config File Aliases:
   #VIM ALIASES:
