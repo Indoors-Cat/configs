@@ -1,26 +1,34 @@
-filesize_format = "B" # can be b, kb, kib, mb, mib, gb, gib, etc
-filesize_metric = true # true => (KB, MB, GB), false => (KiB, MiB, GiB)
-skip_welcome_message = false # Note to nushell developer: This is expected to be false, when testing nushell itself
+complete_from_path = true
+ctrlc_exit = false
 disable_table_indexes = false
+edit_mode = "vi"
+filesize_format = "B"
+filesize_metric = true
+history_duplicates = "ignoreconsecutive"
 nonzero_exit_errors = true
+pivot_mode = "auto"
+plugin_dirs = ["D:\\Src\\GitHub\\nu-plugin-lib\\samples\\Nu.Plugin.Len\\bin\\Debug\\netcoreapp3.1"]
+prompt = "build-string (ansi gb) (pwd) (ansi reset) '(' (ansi cb) (do -i { git rev-parse --abbrev-ref HEAD } | str trim ) (ansi reset) ')' (char newline) (ansi yb) (date format '%m/%d/%Y %I:%M:%S%.3f %p') (ansi reset) '> ' "
+rm_always_trash = "true"
+skip_welcome_message = "true"
 startup = [
     "alias la = ls --long",
 ##ALIASES
 ##Arch:
   #pacman:
-    #"alias pac = sudo pacman -Syu",            	   #Update standard package(s)
-    #"alias pacit = sudo pacman -S",          	       #Unstall package(s)
-    #"alias pacrem = sudo pacman -R",           	   #Remove package(s)
-    #"alias pacremall = sudo pacman -Rncs",		       #Remove package(s) and all dependencies
-    #"alias pacseach = sudo pacman -Q",         	   #Search for package(s)
+    "alias pac = sudo pacman -Syu",            	   #Update standard package(s)
+    "alias pacit = sudo pacman -S",          	       #Unstall package(s)
+    "alias pacrem = sudo pacman -R",           	   #Remove package(s)
+    "alias pacremall = sudo pacman -Rncs",		       #Remove package(s) and all dependencies
+    "alias pacseach = sudo pacman -Q",         	   #Search for package(s)
   #yay:
-    #"alias yaysua = sudo yay -Sua",            	   #Updates only AUR package(s)
-    #"alias yayrem = sudo yay -R",              	   #Remove package(s)
-    #"alias yaysearch = sudo yay -Q",           	   #Search for package(s)
+    "alias yaysua = sudo yay -Sua",            	   #Updates only AUR package(s)
+    "alias yayrem = sudo yay -R",              	   #Remove package(s)
+    "alias yaysearch = sudo yay -Q",           	   #Search for package(s)
   #paru:
-    #"alias parusua = sudo paru -Sua",          	   #Updates only AUR package(s)
-    #"alias parurem = sudo paru -R",            	   #Remove package(s)
-    #"alias parusearch = sudo paru -Q",         	   #Search for package(s)
+    "alias parusua = sudo paru -Sua",          	   #Updates only AUR package(s)
+    "alias parurem = sudo paru -R",            	   #Remove package(s)
+    "alias parusearch = sudo paru -Q",         	   #Search for package(s)
 
 ##Debian:
   #apt & apt-get
@@ -63,24 +71,24 @@ startup = [
     #"alias chshz = chsh -s /usr/local/bin/zsh",       #Changes user shell to 'zsh' shell (reboot required)
 
 ##Navigation:
-    #"alias .. = cd ..",				               #Go up one directory
-    #"alias .2 = cd ../..",				               #Go up two directories
-    #"alias .3 = cd ../../..",                         #Go up three directories
+    "alias .. = cd ..",				               #Go up one directory
+    "alias .2 = cd ../..",				               #Go up two directories
+    "alias .3 = cd ../../..",                         #Go up three directories
 
 ##Surfshark-VPN Aliases:
-    #"alias vpnup = sudo surfshark-vpn attack",        #Quick connect to nearest server
-    #"alias vpnmulti = sudo surfshark-vpn multi",      #Connects to multi-hop server
-    #"alias vpndown = sudo surfshark-vpn down",        #Disconnects vpn
-    #"alias vpnstat = sudo surfshark-vpn status",      #Show vpn status
-    #"alias vpnver = sudo surfshark-vpn version",      #Show surfshark-vpn version
+    "alias vpnup = sudo surfshark-vpn attack",        #Quick connect to nearest server
+    "alias vpnmulti = sudo surfshark-vpn multi",      #Connects to multi-hop server
+    "alias vpndown = sudo surfshark-vpn down",        #Disconnects vpn
+    "alias vpnstat = sudo surfshark-vpn status",      #Show vpn status
+    "alias vpnver = sudo surfshark-vpn version",      #Show surfshark-vpn version
 
 ##'liquidctl' Aliases (Corsair Commander Pro):
-    #"alias liqlist = sudo liquidctl list",			            #List available devices
-    #"alias liqstart = sudo liquidctl initialize",		        #Initialize all available device(s)
-    #"alias liqstart = sudo liquidctl status",			        #Show status of available device(s)
-    #"alias fan1start = sudo liquidctl set fan1 speed 60",	    #Set fan1 to 60% speed
-    #"alias fan2start = sudo liquidctl set fan2 speed 60",	    #Set fan2 to 60% speed
-    #"alias fan3start = sudo liquidctl set fan3 speed 60",	    #Set fan3 to 60% speed
+    "alias liqlist = sudo liquidctl list",			            #List available devices
+    "alias liqstart = sudo liquidctl initialize",		        #Initialize all available device(s)
+    "alias liqstart = sudo liquidctl status",			        #Show status of available device(s)
+    "alias fan1start = sudo liquidctl set fan1 speed 60",	    #Set fan1 to 60% speed
+    "alias fan2start = sudo liquidctl set fan2 speed 60",	    #Set fan2 to 60% speed
+    "alias fan3start = sudo liquidctl set fan3 speed 60",	    #Set fan3 to 60% speed
 
 ##Timeshift (BTRFS) Aliases
     #"alias timelistsnap = sudo timeshift --list-snapshots",    #List snapshots
@@ -91,28 +99,10 @@ startup = [
     #"alias timerestore = sudo timeshift --restore",            #Restore from snapshot
 
 ##General Aliases:
-    #"alias c = clear",				                   #clear screen
-    #"alias h = history",				               #Show command history
-    #"alias nft = neofetch",                           #Neofetch
-
-##Command Swaps:
-  #'cat' to 'bat':
-    #"alias cat = bat",                                #Use bat instead of cat
-
-##General System Tools:
-    #"alias cp = cp -i",				               #Confirm before overwriting existing file
-    #"alias mv = mv -i",				               #Confirm before overwriting existing file
-    #"alias rm = rm -i",				               #Confirm before removing file
-    #"alias df = df -h",				               #List drive space in human readable format
-    #"alias free = free -m",				           #Show sizes in MB
-
-##Power Commands:
-  #Linux:
-    #"alias shutdown = sudo shutdown now",		       #Shutdown system
-    #"alias reboot = sudo reboot",			           #Reboot system
-  #BSD:
-    #"alias shutdown = sudo poweroff",                 #Shutdown system
-    #"alias reboot = sudo init 6",                     #Reboot system
+    "alias c = clear",				                   #clear screen
+    "alias h = history",				               #Show command history
+    "alias nft = neofetch",                           #Neofetch
+    "alias calc = qalc"                                #Terminal-based calculator
 
 ##Text Editor & Config File Aliases:
   #VIM ALIASES:
@@ -137,88 +127,55 @@ startup = [
     #"alias doompurge = ~/.emacs.d/bin/doom purge",    #Delete old, orphaned package(s)
     #"alias doominfo = ~/.emacs.d/bin/doom info",      #Output system info in markdown
     #"alias doomver = ~/.emacs.d/bin/doom version",    #Show version info for Doom & Emacs
-
-"def nudown [] {fetch https://api.github.com/repos/nushell/nushell/releases | get assets | select name download_count}",
-    "def nuver [] {version | pivot key value}",
     ]
-table_mode = "other" # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
-plugin_dirs = ["D:\\Src\\GitHub\\nu-plugin-lib\\samples\\Nu.Plugin.Len\\bin\\Debug\\netcoreapp3.1"]
-pivot_mode = "auto" # auto, always, never
-ctrlc_exit = false
-complete_from_path = true
-rm_always_trash = true
-prompt = "build-string (ansi gb) (pwd) (ansi reset) '(' (ansi cb) (do -i { git rev-parse --abbrev-ref HEAD } | str trim ) (ansi reset) ')' (char newline) (ansi yb) (date format '%m/%d/%Y %I:%M:%S%.3f %p') (ansi reset) '> ' "
-
-# for each of the options in the color_config section, you are able to set
-# the color alone or with one of the following attributes.
-# color, abbreviation
-# green  g
-# red    r
-# blue   u
-# black  b
-# yellow y
-# purple p
-# cyan   c
-# white  w
-# attribute, abbreviation
-# bold       b
-# underline  u
-# italic     i
-# dimmed     d
-# reverse    r
-# abbreviated: green bold = gb, red underline = ru, blue dimmed = ud
-# or verbose: green_bold, red_underline, blue_dimmed
+table_mode = "rounded"
 
 [color_config]
-primitive_int = "green"
-primitive_decimal = "red"
-primitive_filesize = "ur"
-primitive_string = "pb"
-primitive_line = "yellow"
-primitive_columnpath = "cyan"
-primitive_pattern = "white"
-primitive_boolean = "green"
-primitive_date = "ru"
-primitive_duration = "blue"
-primitive_range = "purple"
-primitive_path = "yellow"
-primitive_binary = "cyan"
-separator_color = "purple"
-header_align = "l" # left|l, right|r, center|c
-header_color = "c" # green|g, red|r, blue|u, black|b, yellow|y, purple|p, cyan|c, white|w
+header_align = "l"
 header_bold = true
+header_color = "c"
 index_color = "rd"
 leading_trailing_space_bg = "white"
+primitive_binary = "cyan"
+primitive_boolean = "green"
+primitive_columnpath = "cyan"
+primitive_date = "ru"
+primitive_decimal = "red"
+primitive_duration = "blue"
+primitive_filesize = "ur"
+primitive_int = "green"
+primitive_line = "yellow"
+primitive_path = "yellow"
+primitive_pattern = "white"
+primitive_range = "purple"
+primitive_string = "pb"
+separator_color = "purple"
 
 [line_editor]
-max_history_size = 100000
-history_duplicates = "ignoreconsecutive" # alwaysadd,ignoreconsecutive
-history_ignore_space = false
-completion_type = "circular" # circular, list, fuzzy
-completion_prompt_limit = 100
-keyseq_timeout_ms = 500 # ms
-edit_mode = "emacs" # vi, emacs
 auto_add_history = true
-bell_style = "audible" # audible, none, visible
-color_mode = "enabled" # enabled, forced, disabled
+bell_style = "audible"
+color_mode = "enabled"
+completion_prompt_limit = 100
+completion_type = "circular"
+edit_mode = "emacs"
+history_duplicates = "ignoreconsecutive"
+history_ignore_space = false
+keyseq_timeout_ms = 500
+max_history_size = 100000
 tab_stop = 4
 
 [textview]
-term_width = "default" # "default" or a number
-tab_width = 4
 colored_output = true
-true_color = true
+grid = false
 header = true
 line_numbers = true
-grid = false
-vcs_modification_markers = true
-snip = true
-wrapping_mode = "NoWrapping" # Character, NoWrapping
-use_italics = true
-paging_mode = "QuitIfOneScreen" # Always, QuitIfOneScreen, Never
 pager = "less"
+paging_mode = "QuitIfOneScreen"
+snip = true
+tab_width = 4
+term_width = "default"
 theme = "TwoDark"
-
-# To add path and env do this
-# > config set path $nu.path
-# > config set env $nu.env
+true_color = true
+use_italics = true
+vcs_modification_markers = true
+wrapping_mode = "NoWrapping"
