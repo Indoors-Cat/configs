@@ -1,4 +1,7 @@
 #This is a configuration file for the fish shell
+#Requirements/Dependencies for Arch: yay, paru, qalculate(Arch), exa(AUR), bat(AUR), vim(Arch), neovim(Arch), emacs(Arch), curl(Arch)
+#Requirements/Dependencies for Debian: qalc, exa, bat, vim, neovim, emacs, curl
+#Requirements/Dependencies for Fedora: qalc, exa, bat, vim, neovim, emacs, curl
 # __  __           _____ _     _         ____             __ _
 #|  \/  |_   _    |  ___(_)___| |__     / ___|___  _ __  / _(_) __ _
 #| |\/| | | | |   | |_  | / __| '_ \   | |   / _ \| '_ \| |_| |/ _` |
@@ -7,7 +10,7 @@
 #        |___/_____|               |_____|                     |___/
 #
 
-#set fish_greeting                              #Disables fish greeting
+set fish_greeting                              #Disables fish greeting
 #set TERMINAL "alacritty"                       #Sets terminal type
 
 ### Color Script ###
@@ -71,9 +74,9 @@
     #alias chshz "chsh -s /usr/local/bin/zsh"       #Changes user shell to 'zsh' shell (reboot required)
 
 #Navigation:
-    #alias .. "cd .."				                #Go up one directory
-    #alias .2 "cd ../.."				            #Go up two directories
-    #alias .3 "cd ../../.."                         #Go up three directories
+    alias .. "cd .."				                #Go up one directory
+    alias .2 "cd ../.."				            #Go up two directories
+    alias .3 "cd ../../.."                         #Go up three directories
 
 #Surfshark-VPN Aliases:
     #alias vpnup "sudo surfshark-vpn attack"        #Quick connect to nearest server
@@ -99,19 +102,19 @@
     #alias timerestore "sudo timeshift --restore"            #Restore from snapshot
 
 #General Aliases:
-    #alias c "clear"				                #clear screen
-    #alias h "history"				                #Show command history
-    #alias nft "neofetch"                           #Neofetch
-    #alias rft "neofetch | lolcat"                  #Rgb neofetch
+    alias c "clear"				                #clear screen
+    alias h "history"				                #Show command history
+    alias nft "neofetch"                           #Neofetch
+    alias rft "neofetch | lolcat"                  #Rgb neofetch
 
 ##Command Swaps:
   #'ls' to 'exa':
-    #alias ls "exa -al --color=always"		        #Ls listing all in list format
-    #alias la "exa -a --color=always"		        #Ls listing all
-    #alias ll "exa -l --color=always"		        #Ls list format
-    #alias lt "exa -aT --color-always"              #Show all contents in tree format
+    alias ls "exa -al --color=always"		        #Ls listing all in list format
+    alias la "exa -a --color=always"		        #Ls listing all
+    alias ll "exa -l --color=always"		        #Ls list format
+    alias lt "exa -aT --color-always"              #Show all contents in tree format
   #'cat' to 'bat':
-    #alias cat "bat"                                #Use bat instead of cat
+    alias cat "bat"                                #Use bat instead of cat
 
 #General System Tools:
     alias cp "cp -i"				                #Confirm before overwriting existing file
@@ -122,8 +125,8 @@
 
 #Power Commands:
   #Linux:
-    #alias shutdown "sudo shutdown now"		        #Shutdown system
-    #alias reboot "sudo reboot"			            #Reboot system
+    alias shutdown "sudo shutdown now"		        #Shutdown system
+    alias reboot "sudo reboot"			            #Reboot system
   #BSD:
     #alias shutdown "sudo poweroff"                 #Shutdown system
     #alias reboot "sudo init 6"                     #Reboot system
@@ -131,36 +134,36 @@
 ##Text Editor & Config File Aliases:
   #VIM ALIASES:
     #alias v "vim"                                  #Shortcut for vim command
-    #alias vbash "vim ~/.bashrc"                    #Open bash config in vim
-    #alias vfish "vim ~/.config/fish/config.fish"   #Open fish config in vim
-    #alias vv "vim ~/.vimrc"                        #Open vim config in vim
-    #alias vnv "vim ~/.config/nvim/init.vim"        #Open neovim config in vim
-    #alias vzsh "vim ~/.zshrc"                      #Open zsh config in vim
+    alias vbash "vim ~/.bashrc"                    #Open bash config in vim
+    alias vfish "vim ~/.config/fish/config.fish"   #Open fish config in vim
+    alias vv "vim ~/.vimrc"                        #Open vim config in vim
+    alias vnv "vim ~/.config/nvim/init.vim"        #Open neovim config in vim
+    alias vzsh "vim ~/.zshrc"                      #Open zsh config in vim
   #NEOVIM ALIASES:
     #alias vim "nvim"                               #Alias to replace vim with neovim
-    #alias nvbash "nvim ~/.bashrc"                  #Open bash config in neovim
-    #alias nvfish "nvim ~/.config/fish/config.fish" #Open fish config in neovim
-    #alias nvv "nvim ~/.vimrc"                      #Open vim config in neovim
-    #alias nvnv "nvim ~/.config/nvim/init.vim"      #Open neovim config in neovim
-    #alias nvzsh "nvim ~/.zshrc"                    #Open zsh config in neovim
+    alias nvbash "nvim ~/.bashrc"                  #Open bash config in neovim
+    alias nvfish "nvim ~/.config/fish/config.fish" #Open fish config in neovim
+    alias nvv "nvim ~/.vimrc"                      #Open vim config in neovim
+    alias nvnv "nvim ~/.config/nvim/init.vim"      #Open neovim config in neovim
+    alias nvzsh "nvim ~/.zshrc"                    #Open zsh config in neovim
   #DOOM-EMACS ALIASES:
-    #alias doomhelp "~/.emacs.d/bin/doom help"      #Show a list of available doom commands
-    #alias doomsync "~/.emacs.d/bin/doom sync"      #Sync config wiht Doom Emacs
-    #alias doomupg "~/.emacs.d/bin/doom upgrade"    #Update Doom Emacs & its package(s)
-    #alias doomdoctor "~/.emacs.d/bin/doom doctor"  #Diagnostic tool for Doom Emacs
-    #alias doompurge "~/.emacs.d/bin/doom purge"    #Delete old, orphaned package(s)
-    #alias doominfo "~/.emacs.d/bin/doom info"      #Output system info in markdown
-    #alias doomver "~/.emacs.d/bin/doom version"    #Show version info for Doom & Emacs
+    alias doomhelp "~/.emacs.d/bin/doom help"      #Show a list of available doom commands
+    alias doomsync "~/.emacs.d/bin/doom sync"      #Sync config wiht Doom Emacs
+    alias doomupg "~/.emacs.d/bin/doom upgrade"    #Update Doom Emacs & its package(s)
+    alias doomdoctor "~/.emacs.d/bin/doom doctor"  #Diagnostic tool for Doom Emacs
+    alias doompurge "~/.emacs.d/bin/doom purge"    #Delete old, orphaned package(s)
+    alias doominfo "~/.emacs.d/bin/doom info"      #Output system info in markdown
+    alias doomver "~/.emacs.d/bin/doom version"    #Show version info for Doom & Emacs
 
 #humorous commands:
 #alias cow "fortune | cowsay" 			            #Give randomly generated fortune with cow
 #alias cowstoned "fortune | cowsay -f bong"	        #Give randomly generated fortune with cow smoking a bong
-#alias rgbaqua "asciiquarium | lolcat"		        #Rainbow aquarium
-#alias aqua "asciiquarium"			                #Aqauarium
-#alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" 
+alias rgbaqua "asciiquarium | lolcat"		        #Rainbow aquarium
+alias aqua "asciiquarium"			                #Aqauarium
+alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" 
 
 #FUNCTIONS
 #mkdircd (cd into directory after creation)
-#function mkdircd
-        #mkdir $argv && cd $argv
-#end
+function mkdircd
+        mkdir $argv && cd $argv
+end

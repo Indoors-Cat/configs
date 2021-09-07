@@ -1,3 +1,7 @@
+#This is a configuration file for the zsh shell
+#Requirements/Dependencies for Arch: ohmyzsh, yay, paru, qalculate(Arch), exa(AUR), bat(AUR), vim(Arch), neovim(Arch), emacs(Arch), curl(Arch)
+#Requirements/Dependencies for Debian: ohmyzsh, qalc, exa, bat, vim, neovim, emacs, curl
+#Requirements/Dependencies for Fedora: ohmyzsh, qalc, exa, bat, vim, neovim, emacs, curl
 # __  __           _________  _   _     ____             __ _       
 #|  \/  |_   _    |__  / ___|| | | |   / ___|___  _ __  / _(_) __ _ 
 #| |\/| | | | |     / /\___ \| |_| |  | |   / _ \| '_ \| |_| |/ _` |
@@ -178,9 +182,9 @@
     #alias chshz='chsh -s /usr/local/bin/zsh'       #Changes user shell to 'zsh' shell (reboot required)
 
 ##Navigation Shortcuts
-    #alias ..='cd ..'                               #Go up a directory
-    #alias .2='cd ../..'                            #Go up 2 directories
-    #alias .3='cd ../../..'                         #Go up 3 directories
+    alias ..='cd ..'                               #Go up a directory
+    alias .2='cd ../..'                            #Go up 2 directories
+    alias .3='cd ../../..'                         #Go up 3 directories
 
 ##Surfshark-VPN Aliases
     #alias vpnup='sudo surfshark-vpn attack'        #Quick connect to nearest server
@@ -206,30 +210,30 @@
     #alias timerestore='sudo timeshift --restore'            #Restore from snapshot
 
 #General Aliases
-    #alias c='clear'                                #Clear screen
-    #alias h='history'                              #Show command history
-    #alias nft='neofetch'                           #Show system information
-    #alias rft='neofetch | lolcat'                  #Show system information using lolcat
+    alias c='clear'                                #Clear screen
+    alias h='history'                              #Show command history
+    alias nft='neofetch'                           #Show system information
+    alias rft='neofetch | lolcat'                  #Show system information using lolcat
 
 ##Command Swaps:
   #'ls' to 'exa':
-    #alias ls='exa -al --color=always'		        #Ls listing all in list format
-    #alias la='exa -a --color=always'		        #Ls listing all
-    #alias ll='exa -l --color=always'		        #Ls list format
+    alias ls='exa -al --color=always'		        #Ls listing all in list format
+    alias la='exa -a --color=always'		        #Ls listing all
+    alias ll='exa -l --color=always'		        #Ls list format
   #'cat' to 'bat':
-    #alias cat='bat'                                #Use bat instead of cat
+    alias cat='bat'                                #Use bat instead of cat
 
 #General System Tools
-    #alias cp='cp -i'                               #Interactive copy function
-    #alias mv='mv -i'                               #Interactive move function
-    #alias rm='rm -i'                               #Interactive remove funtion
-    #alias df='df -h'                               #Shows disk usage listed in 'human-readable format'
-    #alias free='free -m'                           #Show memory usage in MB
+    alias cp='cp -i'                               #Interactive copy function
+    alias mv='mv -i'                               #Interactive move function
+    alias rm='rm -i'                               #Interactive remove funtion
+    alias df='df -h'                               #Shows disk usage listed in 'human-readable format'
+    alias free='free -m'                           #Show memory usage in MB
 
 ##Power Commands
   #Linux Power Commands
-    #alias shutdown='sudo shutdown now'             #Shutdown system now
-    #alias reboot='sudo reboot now'                 #Reboot system now
+    alias shutdown='sudo shutdown now'             #Shutdown system now
+    alias reboot='sudo reboot now'                 #Reboot system now
   #BSD Power Commands
     #alias shutdown='sudo poweroff'                 #Shutdown system
     #alias reboot='sudo init 6'                     #Reboot system now
@@ -237,31 +241,31 @@
 ##Text Editor & Config File Aliases
   #vim aliases:
     #alias v='vim'                                  #Shortcut for vim command
-    #alias vbash='vim ~/.bashrc'                    #Open bash config in vim
-    #alias vfish='vim ~/.config/fish/config.fish'   #Open fish config in vim
-    #alias vv='vim ~/.vimrc'                        #Open vim config in vim
-    #alias vnv='vim ~/.config/nvim/init.vim'        #Open neovim config in vim
-    #alias vz='vim ~/.zshrc'                        #Open zsh config in vim
+    alias vbash='vim ~/.bashrc'                    #Open bash config in vim
+    alias vfish='vim ~/.config/fish/config.fish'   #Open fish config in vim
+    alias vv='vim ~/.vimrc'                        #Open vim config in vim
+    alias vnv='vim ~/.config/nvim/init.vim'        #Open neovim config in vim
+    alias vz='vim ~/.zshrc'                        #Open zsh config in vim
   #nvim aliases:
     #alias vim='nvim'                               #Shortcut for nvim command
-    #alias nvbash='nvim ~/.bashrc'                  #Open bash config in neovim
-    #alias nvfish='nvim ~/.config/fish/config.fish' #Open fish config in neovim
-    #alias nvv='nvim ~/.vimrc'                      #Open vim config in neovim
-    #alias nvnv='nvim ~/.config/nvim/init.vim'      #Open neovim config in neovim
-    #alias nvzsh='nvim ~/.zshrc'                    #Open zsh config in neovim
+    alias nvbash='nvim ~/.bashrc'                  #Open bash config in neovim
+    alias nvfish='nvim ~/.config/fish/config.fish' #Open fish config in neovim
+    alias nvv='nvim ~/.vimrc'                      #Open vim config in neovim
+    alias nvnv='nvim ~/.config/nvim/init.vim'      #Open neovim config in neovim
+    alias nvzsh='nvim ~/.zshrc'                    #Open zsh config in neovim
   #DOOM-EMACS ALIASES:
-    #alias doomhelp='~/.emacs.d/bin/doom help'      #Show a list of avialble doom commands
-    #alias doomsync='~/.emacs.d/bin/doom sync'      #Sync config with Doom Emacs
-    #alias doomupg='~/.emacs.d/bin/doom upgrade'    #Update Doom Emacs & its package(s)
-    #alias doomdoc='~/.emacs.d/bin/doom doctor'     #Diagnostic tool for Doom Emacs
-    #alias doompurge='~/.emacs.d/bin/doom purge'    #Delete old, orphaned package(s)
-    #alias doominfo='~/.emacs.d/bin/doom info'      #Output system info in markdown
-    #alias doomver='~/.emacs.d/bin/doom version'    #Show version infor for Doom & Emacs
+    alias doomhelp='~/.emacs.d/bin/doom help'      #Show a list of avialble doom commands
+    alias doomsync='~/.emacs.d/bin/doom sync'      #Sync config with Doom Emacs
+    alias doomupg='~/.emacs.d/bin/doom upgrade'    #Update Doom Emacs & its package(s)
+    alias doomdoc='~/.emacs.d/bin/doom doctor'     #Diagnostic tool for Doom Emacs
+    alias doompurge='~/.emacs.d/bin/doom purge'    #Delete old, orphaned package(s)
+    alias doominfo='~/.emacs.d/bin/doom info'      #Output system info in markdown
+    alias doomver='~/.emacs.d/bin/doom version'    #Show version infor for Doom & Emacs
 
 #some quality jokes
-#alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
-#alias aqua='asciiquarium'                          #ascii aquarium
-#alias rgbaqua='asciiquarium | lolcat'              #rainbow ascii aquarium
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
+alias aqua='asciiquarium'                          #ascii aquarium
+alias rgbaqua='asciiquarium | lolcat'              #rainbow ascii aquarium
 
 
 ###Starship prompt

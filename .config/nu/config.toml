@@ -1,3 +1,14 @@
+#This is a configuration file for the nu shell
+#Requirements/Dependencies for Arch: yay, paru, qalculate(Arch), exa(AUR), bat(AUR), vim(Arch), neovim(Arch), emacs(Arch), curl(Arch)
+#Requirements/Dependencies for Debian: qalc, exa, bat, vim, neovim, emacs, curl
+#Requirements/Dependencies for Fedora: qalc, exa, bat, vim, neovim, emacs, curl
+# __  __           _   _           ____             __ _       
+#|  \/  |_   _    | \ | |_   _    / ___|___  _ __  / _(_) __ _ 
+#| |\/| | | | |   |  \| | | | |  | |   / _ \| '_ \| |_| |/ _` |
+#| |  | | |_| |   | |\  | |_| |  | |__| (_) | | | |  _| | (_| |
+#|_|  |_|\__, |___|_| \_|\__,_|___\____\___/|_| |_|_| |_|\__, |
+#        |___/_____|         |_____|                     |___/ 
+#
 complete_from_path = true
 ctrlc_exit = false
 disable_table_indexes = false
@@ -71,9 +82,9 @@ startup = [
     #"alias chshz = chsh -s /usr/local/bin/zsh",       #Changes user shell to 'zsh' shell (reboot required)
 
 ##Navigation:
-    #"alias .. = cd ..",				               #Go up one directory
-    #"alias .2 = cd ../..",				               #Go up two directories
-    #"alias .3 = cd ../../..",                         #Go up three directories
+    "alias .. = cd ..",				               #Go up one directory
+    "alias .2 = cd ../..",				               #Go up two directories
+    "alias .3 = cd ../../..",                         #Go up three directories
 
 ##Surfshark-VPN Aliases:
     #"alias vpnup = sudo surfshark-vpn attack",        #Quick connect to nearest server
@@ -99,34 +110,34 @@ startup = [
     #"alias timerestore = sudo timeshift --restore",            #Restore from snapshot
 
 ##General Aliases:
-    #"alias c = clear",				                   #clear screen
-    #"alias h = history",				               #Show command history
-    #"alias nft = neofetch",                           #Neofetch
-    #"alias calc = qalc"                                #Terminal-based calculator
+    "alias c = clear",				                   #clear screen
+    "alias h = history",				               #Show command history
+    "alias nft = neofetch",                           #Neofetch
+    "alias calc = qalc"                                #Terminal-based calculator
 
 ##Text Editor & Config File Aliases:
   #VIM ALIASES:
     #"alias v = vim",                                  #Shortcut for vim command
-    #"alias vbash = vim ~/.bashrc",                    #Open bash config in vim
-    #"alias vfish = vim ~/.config/fish/config.fish",   #Open fish config in vim
-    #"alias vv = vim ~/.vimrc",                        #Open vim config in vim
-    #"alias vnv = vim ~/.config/nvim/init.vim",        #Open neovim config in vim
-    #"alias vzsh = vim ~/.zshrc",                      #Open zsh config in vim
+    "alias vbash = vim ~/.bashrc",                    #Open bash config in vim
+    "alias vfish = vim ~/.config/fish/config.fish",   #Open fish config in vim
+    "alias vv = vim ~/.vimrc",                        #Open vim config in vim
+    "alias vnv = vim ~/.config/nvim/init.vim",        #Open neovim config in vim
+    "alias vzsh = vim ~/.zshrc",                      #Open zsh config in vim
   #NEOVIM ALIASES:
     #"alias vim = nvim",                               #Alias to replace vim with neovim
-    #"alias nvbash = nvim ~/.bashrc",                  #Open bash config in neovim
-    #"alias nvfish = nvim ~/.config/fish/config.fish", #Open fish config in neovim
-    #"alias nvv = nvim ~/.vimrc",                      #Open vim config in neovim
-    #"alias nvnv = nvim ~/.config/nvim/init.vim",      #Open neovim config in neovim
-    #"alias nvzsh = nvim ~/.zshrc",                    #Open zsh config in neovim
+    "alias nvbash = nvim ~/.bashrc",                  #Open bash config in neovim
+    "alias nvfish = nvim ~/.config/fish/config.fish", #Open fish config in neovim
+    "alias nvv = nvim ~/.vimrc",                      #Open vim config in neovim
+    "alias nvnv = nvim ~/.config/nvim/init.vim",      #Open neovim config in neovim
+    "alias nvzsh = nvim ~/.zshrc",                    #Open zsh config in neovim
   #DOOM-EMACS ALIASES:
-    #"alias doomhelp = ~/.emacs.d/bin/doom help",      #Show a list of available doom commands
-    #"alias doomsync = ~/.emacs.d/bin/doom sync",      #Sync config wiht Doom Emacs
-    #"alias doomupg = ~/.emacs.d/bin/doom upgrade",    #Update Doom Emacs & its package(s)
-    #"alias doomdoctor = ~/.emacs.d/bin/doom doctor",  #Diagnostic tool for Doom Emacs
-    #"alias doompurge = ~/.emacs.d/bin/doom purge",    #Delete old, orphaned package(s)
-    #"alias doominfo = ~/.emacs.d/bin/doom info",      #Output system info in markdown
-    #"alias doomver = ~/.emacs.d/bin/doom version",    #Show version info for Doom & Emacs
+    "alias doomhelp = ~/.emacs.d/bin/doom help",      #Show a list of available doom commands
+    "alias doomsync = ~/.emacs.d/bin/doom sync",      #Sync config wiht Doom Emacs
+    "alias doomupg = ~/.emacs.d/bin/doom upgrade",    #Update Doom Emacs & its package(s)
+    "alias doomdoctor = ~/.emacs.d/bin/doom doctor",  #Diagnostic tool for Doom Emacs
+    "alias doompurge = ~/.emacs.d/bin/doom purge",    #Delete old, orphaned package(s)
+    "alias doominfo = ~/.emacs.d/bin/doom info",      #Output system info in markdown
+    "alias doomver = ~/.emacs.d/bin/doom version",    #Show version info for Doom & Emacs
     ]
 table_mode = "rounded"
 

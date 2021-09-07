@@ -1,3 +1,8 @@
+#This is a configuration file for the bash shell
+#Requirements/Dependencies for Arch: yay, paru, qalculate(Arch), neofetch(Arch), lolcat(Arch) exa(AUR), bat(AUR), vim(Arch), neovim(Arch), emacs(Arch), curl(Arch)
+#Requirements/Dependencies for Debian: qalc, neofetch, lolcat, exa, bat, vim, neovim, emacs, curl
+#Requirements/Dependencies for Fedora: qalc, neofetch, lolcat, exa, bat, vim, neovim, emacs, curl
+#All depend on the shell-color-scripts package. There are a number of them, but I use the one from gitlab.com/dwt1/shell-color-scripts
 # __  __           ____            _         ____             __ _       
 #|  \/  |_   _    | __ )  __ _ ___| |__     / ___|___  _ __  / _(_) __ _ 
 #| |\/| | | | |   |  _ \ / _` / __| '_ \   | |   / _ \| '_ \| |_| |/ _` |
@@ -99,18 +104,18 @@
     #alias timerestore='sudo timeshift --restore'            #Restore from snapshot
 
 #General Aliases:
-    #alias c='clear'				                #clear screen
-    #alias h='history'				                #Show command history
-    #alias nft='neofetch'                           #Neofetch
-    #alias rft='neofetch | lolcat'                  #Rgb neofetch
+    alias c='clear'				                #clear screen
+    alias h='history'				                #Show command history
+    alias nft='neofetch'                           #Neofetch
+    alias rft='neofetch | lolcat'                  #Rgb neofetch
 
 ##Command Swaps:
   #'ls' to 'exa':
-    #alias ls='exa -al --color=always'		        #Ls listing all in list format
-    #alias la='exa -a --color=always'		        #Ls listing all
-    #alias ll='exa -l --color=always'		        #Ls list format
+    alias ls='exa -al --color=always'		        #Ls listing all in list format
+    alias la='exa -a --color=always'		        #Ls listing all
+    alias ll='exa -l --color=always'		        #Ls list format
   #'cat' to 'bat':
-    #alias cat='bat'                                #Use bat instead of cat
+    alias cat='bat'                                #Use bat instead of cat
 
 ##General System Tools:
     alias mv='mv -i'				                #Interactive move of file
@@ -121,8 +126,8 @@
 
 ##Power Commands:
   #Linux Power Commands:
-    #alias shutdown='sudo shutdown now'		        #Shutdown system
-    #alias reboot='sudo reboot now'			        #Reboot system
+    alias shutdown='sudo shutdown now'		        #Shutdown system
+    alias reboot='sudo reboot now'			        #Reboot system
   ##BSD Commands:
     #alias shutdown='sudo poweroff'			        #Shutdown system
     #alias reboot='sudo init 6'			            #Reboot system
@@ -130,33 +135,33 @@
 ##Text Editor & Config File Aliases
   #VIM ALIASES:
     #alias v='vim'					                #Aliases for vim editor
-    #alias vbash='vim ~/.bashrc'			        #Open bashrc in vim
-    #alias vfish='vim ~/.config/fish/config.fish'	#Open config.fish in vim
-    #alias vv='vim ~/.vimrc'			            #Open vimrc in vim
-    #alias vnv='vim ~/.config/nvim/init.vim'	    #Open neovim config file in vim
-    #alias vzsh='vim ~/.zshrc'			            #Open zshrc in vim
+    alias vbash='vim ~/.bashrc'			        #Open bashrc in vim
+    alias vfish='vim ~/.config/fish/config.fish'	#Open config.fish in vim
+    alias vv='vim ~/.vimrc'			            #Open vimrc in vim
+    alias vnv='vim ~/.config/nvim/init.vim'	    #Open neovim config file in vim
+    alias vzsh='vim ~/.zshrc'			            #Open zshrc in vim
   #NEOVIM ALIASES:
     #alias vim='nvim'				                #Alias to replace vim with neovim
-    #alias nvbash='nvim ~/.bashrc'			        #Open bash config in neovim
-    #alias nvfish='nvim ~/.config/fish/config.fish'	#Open fish config in neovim
-    #alias nvv='nvim ~/.vimrc'			            #Open vim config in neovim
-    #alias nvnv='nvim ~/.config/nvim/init.vim'	    #Open neovim config in neovim
-    #alias nvzsh='nvim ~/.zshrc'			        #Open zshrc in neovim
+    alias nvbash='nvim ~/.bashrc'			        #Open bash config in neovim
+    alias nvfish='nvim ~/.config/fish/config.fish'	#Open fish config in neovim
+    alias nvv='nvim ~/.vimrc'			            #Open vim config in neovim
+    alias nvnv='nvim ~/.config/nvim/init.vim'	    #Open neovim config in neovim
+    alias nvzsh='nvim ~/.zshrc'			        #Open zshrc in neovim
   #DOOM-EMACS ALIASES:
-    #alias doomhelp='~/.emacs.d/bin/doom help'      #Show a list of avialble doom commands
-    #alias doomsync='~/.emacs.d/bin/doom sync'      #Sync config with Doom Emacs
-    #alias doomupg='~/.emacs.d/bin/doom upgrade'    #Update Doom Emacs & its package(s)
-    #alias doomdoc='~/.emacs.d/bin/doom doctor'     #Diagnostic tool for Doom Emacs
-    #alias doompurge='~/.emacs.d/bin/doom purge'    #Delete old, orphaned package(s)
-    #alias doominfo='~/.emacs.d/bin/doom info'      #Output system info in markdown
-    #alias doomver='~/.emacs.d/bin/doom version'    #Show version infor for Doom & Emacs
+    alias doomhelp='~/.emacs.d/bin/doom help'      #Show a list of avialble doom commands
+    alias doomsync='~/.emacs.d/bin/doom sync'      #Sync config with Doom Emacs
+    alias doomupg='~/.emacs.d/bin/doom upgrade'    #Update Doom Emacs & its package(s)
+    alias doomdoc='~/.emacs.d/bin/doom doctor'     #Diagnostic tool for Doom Emacs
+    alias doompurge='~/.emacs.d/bin/doom purge'    #Delete old, orphaned package(s)
+    alias doominfo='~/.emacs.d/bin/doom info'      #Output system info in markdown
+    alias doomver='~/.emacs.d/bin/doom version'    #Show version infor for Doom & Emacs
 
 ##some quality jokes:
 #alias cow "fortune | cowsay" 			            #Give randomly generated fortune with cow
 #alias cowstoned "fortune | cowsay -f bong"	        #Give randomly generated fortune with cow smoking a bong
-#alias rgbaqua "asciiquarium | lolcat"		        #Rainbow aquarium
-#alias aqua "asciiquarium"			                #Aqauarium
-#alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
+alias rgbaqua "asciiquarium | lolcat"		        #Rainbow aquarium
+alias aqua "asciiquarium"			                #Aqauarium
+alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
 ### PROMPT
 
 ### PATH
