@@ -8,9 +8,13 @@
 #        |___/_____|                   |_____|                     |___/ 
 #
 ###EXPORTS:
-export HISTCONTROL=ignoredups:erasedups 	        #no dublicate entries
+export HISTCONTROL=ignoredups:erasedups 	    #no dublicate entries
 export EDITOR="vim"				                #$EDITOR use vim in terminal
 export PS1="\[\033[38;5;14m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;134m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;14m\]\W\[$(tput sgr0)\]\\$\[$(tput sgr0)\]"
+
+HISTFILE=~/.config/bash/bash_history
+HISTSIZE=10000
+SAVEHIST=20000
 
 ###Shell Color Script:
 colorscript -e 31
