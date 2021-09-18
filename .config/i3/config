@@ -1,3 +1,4 @@
+###Depenedencies: i3-wm, i3-gaps, i3status, python-i3ipc (Optional: i3lock-color, autotiling, betterlockscreen-git)
 ###Key definitions to remember:
 # $MOD = Windows/Super key or Mod4
 # Mod1 = ALT key
