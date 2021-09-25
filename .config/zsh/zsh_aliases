@@ -1,19 +1,29 @@
+###Aliases for zsh:
+#Requirements/Dependencies for Arch: yay, paru, libqalculate(Arch), exa(AUR), bat(AUR), vim(Arch), neovim(Arch), emacs(Arch), curl(Arch)
+#Requirements/Dependencies for Debian: qalc, exa, bat, vim, neovim, emacs, curl
+#Requirements/Dependencies for Fedora: qalc, exa, bat, vim, neovim, emacs, curl
+#All depend on the shell-color-scripts package. There are a number of them, but I use the one from gitlab.com/dwt1/shell-color-scripts
+
 ###ALIASES
 ##Package Manager Aliasaes
   #Pacman
-    #alias pac='sudo pacman -Syu'                   #Update standard package(s)
-    #alias pacit='sudo pacman -S'                   #Install package(s)
-    #alias pacr='sudo pacman -R'                    #Remove package(s)
-    #alias pacrall='sudo pacman -Rcns'              #Remove package(s) and all dependencies
-    #alias pacsearch='sudo pacman -Q'               #Seach for package(s)
+    alias pac='sudo pacman -Syu'            	    #Update standard package(s)
+    alias pacit='sudo pacman -S'            	    #Install package(s)
+    alias pacrem='sudo pacman -R'           	    #Remove package(s)
+    alias pacremall='sudo pacman -Rncs'		        #Remove package(s) and all dependencies
+    alias pacsrch='sudo pacman -Si'         	    #Search for package(s) & display information {External}
+    alias pacisrch='sudo pacman -Qi                 #Search for package(s) & display information {Internal}
+    alias paccleanup='sudo pacman -Rns $(pacman -Qtdq)' #Cleanup orphaned packages --Do not overuse this command!
   #Yay
     #alias yaysua='yay -Sua'                        #Updates only AUR package(s)
     #alias yayrem='yay -R'                          #Remove package(s)
-    #alias yaysearch='yay -Q'                       #Search for AUR package(s)
+    alias yaysrch='yay -Si'           	            #Search for package(s) & display information {External}
+    alias yayisrch='yay -Qi'                        #Search for package(s) & display information {Internal}
   #Paru
     #alias parusua='paru -Sua'                      #Updates only AUR package(s)
     #alias parurem='paru -R'                        #Remove package(s)
-    #alias parusearch='paru -Q'                     #Search for AUR package(s)
+    alias parusrch='paru -Si'                       #Search for package(s) & display information {Extenral}
+    alias paruisrch='paru -Qi'         	            #Search for package(s) & display information {Internal}
 
 ##Debian
   #apt & apt-get
@@ -56,9 +66,9 @@
     #alias chshz='chsh -s /usr/local/bin/zsh'       #Changes user shell to 'zsh' shell (reboot required)
 
 ##Navigation Shortcuts
-    alias ..='cd ..'                               #Go up a directory
-    alias .2='cd ../..'                            #Go up 2 directories
-    alias .3='cd ../../..'                         #Go up 3 directories
+    alias ..='cd ..'                                #Go up a directory
+    alias .2='cd ../..'                             #Go up 2 directories
+    alias .3='cd ../../..'                          #Go up 3 directories
 
 ##Surfshark-VPN Aliases
     #alias vpnup='sudo surfshark-vpn attack'        #Quick connect to nearest server
@@ -84,32 +94,35 @@
     #alias timerestore='sudo timeshift --restore'            #Restore from snapshot
 
 #General Aliases
-    alias c='clear'                                #Clear screen
-    alias h='history'                              #Show command history
-    alias nft='neofetch'                           #Show system information
-    alias rft='neofetch | lolcat'                  #Show system information using lolcat
+    alias c='clear'                                 #Clear screen
+    alias h='history'                               #Show command history
+    alias nft='neofetch'                            #Show system information
+    alias rft='neofetch | lolcat'                   #Show system information using lolcat
+    #alias calc='qalc'                              #Terminal-based calculator
+    #alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+    #alias kittytheme='kitten +kitten themes'       #Prompt you to select theme for kitty terminal
 
 ##Command Swaps:
   #'ls' to 'exa':
-    alias ls='exa -al --icons'		        #Ls listing all in list format
-    alias sl='exa -alr --icons'           #Ls listing all in reverse list format
-    alias la='exa -a --icons'		        #Ls listing all
-    alias ll='exa -l --icons'		        #Ls list format
-    alias lr='exa -ar --icons'          #ls all files and recursively
+    alias ls='exa -al --icons'		                #Ls listing all in list format
+    alias sl='exa -alr --icons'                     #Ls listing all in reverse list format
+    alias la='exa -a --icons'		                #Ls listing all
+    alias ll='exa -l --icons'		                #Ls list format
+    alias lr='exa -ar --icons'                      #ls all files and recursively
   #'cat' to 'bat':
-    alias cat='bat'                                #Use bat instead of cat
+    alias cat='bat'                                 #Use bat instead of cat
 
 #General System Tools
-    alias cp='cp -i'                               #Interactive copy function
-    alias mv='mv -i'                               #Interactive move function
-    alias rm='rm -i'                               #Interactive remove funtion
-    alias df='df -h'                               #Shows disk usage listed in 'human-readable format'
-    alias free='free -m'                           #Show memory usage in MB
+    alias cp='cp -i'                                #Interactive copy function
+    alias mv='mv -i'                                #Interactive move function
+    alias rm='rm -i'                                #Interactive remove funtion
+    alias df='df -h'                                #Shows disk usage listed in 'human-readable format'
+    alias free='free -m'                            #Show memory usage in MB
 
 ##Power Commands
   #Linux Power Commands
-    alias shutdown='sudo shutdown now'             #Shutdown system now
-    alias reboot='sudo reboot now'                 #Reboot system now
+    alias shutdown='sudo shutdown now'              #Shutdown system now
+    alias reboot='sudo reboot now'                  #Reboot system now
   #BSD Power Commands
     #alias shutdown='sudo poweroff'                 #Shutdown system
     #alias reboot='sudo init 6'                     #Reboot system now
@@ -119,9 +132,9 @@
     #alias v='vim'                                  #Shortcut for vim command
     #alias vbash='vim ~/.bashrc'                    #Open bash config in vim
     #alias vfish='vim ~/.config/fish/config.fish'   #Open fish config in vim
-    alias vv='vim ~/.vimrc'                        #Open vim config in vim
+    alias vv='vim ~/.vimrc'                         #Open vim config in vim
     #alias vnv='vim ~/.config/nvim/init.vim'        #Open neovim config in vim
-    alias vz='vim ~/.zshrc'                        #Open zsh config in vim
+    alias vz='vim ~/.zshrc'                         #Open zsh config in vim
   #nvim aliases:
     #alias vim='nvim'                               #Shortcut for nvim command
     #alias nvbash='nvim ~/.bashrc'                  #Open bash config in neovim
@@ -138,7 +151,12 @@
     #alias doominfo='~/.emacs.d/bin/doom info'      #Output system info in markdown
     #alias doomver='~/.emacs.d/bin/doom version'    #Show version infor for Doom & Emacs
 
+##Git Aliases:
+
+##Script Aliases:
+
 #some quality jokes
-#alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
-#alias aqua='asciiquarium'                          #ascii aquarium
-#alias rgbaqua='asciiquarium | lolcat'              #rainbow ascii aquarium
+alias cow="fortune | cowsay" 			            #Give randomly generated fortune with cow
+alias rgbaqua="asciiquarium | lolcat"		        #Rainbow aquarium
+alias aqua="asciiquarium"			                #Aqauarium
+alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"

@@ -1,7 +1,8 @@
 #This is a configuration file for the fish shell
-#Requirements/Dependencies for Arch: yay, paru, qalculate(Arch), exa(AUR), bat(AUR), vim(Arch), neovim(Arch), emacs(Arch), curl(Arch)
+#Requirements/Dependencies for Arch: yay, paru, libqalculate(Arch), exa(AUR), bat(AUR), vim(Arch), neovim(Arch), emacs(Arch), curl(Arch)
 #Requirements/Dependencies for Debian: qalc, exa, bat, vim, neovim, emacs, curl
 #Requirements/Dependencies for Fedora: qalc, exa, bat, vim, neovim, emacs, curl
+#All depend on the shell-color-scripts package. There are a number of them, but I use the one from gitlab.com/dwt1/shell-color-scripts
 # __  __           _____ _     _         ____             __ _
 #|  \/  |_   _    |  ___(_)___| |__     / ___|___  _ __  / _(_) __ _
 #| |\/| | | | |   | |_  | / __| '_ \   | |   / _ \| '_ \| |_| |/ _` |
@@ -10,11 +11,11 @@
 #        |___/_____|               |_____|                     |___/
 #
 
-set fish_greeting                              #Disables fish greeting
-#set TERMINAL "alacritty"                       #Sets terminal type
+set fish_greeting                                   #Disables fish greeting
+#set TERMINAL "alacritty"                           #Sets terminal type
 
 ### Color Script ###
-#colorscript random
+#colorscript -r
 
 ##ALIASES
 ##Arch:
@@ -23,19 +24,23 @@ set fish_greeting                              #Disables fish greeting
     #alias pacit "sudo pacman -S"           	    #Unstall package(s)
     #alias pacrem "sudo pacman -R"           	    #Remove package(s)
     #alias pacremall "sudo pacman -Rncs"		    #Remove package(s) and all dependencies
-    #alias pacseach "sudo pacman -Q"         	    #Search for package(s)
+    #alias pacsrch "sudo pacman -Si"                #Search for package(s) & display information {External}
+    #alias pacisrch "sudo pacman -Qi"         	    #Search for package(s) & display information {Internal}
+    #alias paccelanup "sudo pacman -Rns $(pacman -Qtdq)" #Cleanup orphaned packages --Do not overuse this command!
   #yay:
     #alias yaysua "sudo yay -Sua"            	    #Updates only AUR package(s)
     #alias yayrem "sudo yay -R"              	    #Remove package(s)
-    #alias yaysearch "sudo yay -Q"           	    #Search for package(s)
+    #alias yaysrch='yay -Si'           	        #Search for package(s) & display information {External}
+    #alias yayisrch='yay -Qi'                       #Search for package(s) & display information {Internal}
   #paru:
     #alias parusua "sudo paru -Sua"          	    #Updates only AUR package(s)
     #alias parurem "sudo paru -R"            	    #Remove package(s)
-    #alias parusearch "sudo paru -Q"         	    #Search for package(s)
+    #alias parusrch='paru -Si'                      #Search for package(s) & display information {Extenral}
+    #alias paruisrch='paru -Qi'         	        #Search for package(s) & display information {Internal}
 
 ##Debian:
   #apt & apt-get
-    #alias up "sudo apt-get update"			        #Downloads updates
+    #alias up "sudo apt-get update"			    #Downloads updates
     #alias upg "sudo apt-get upgrade"		        #Applies updates to system
     #alias it "sudo apt install"			        #Install package(s)
     #alias rem "sudo apt remove"			        #Remove package(s)
@@ -76,7 +81,7 @@ set fish_greeting                              #Disables fish greeting
 #Navigation:
     alias .. "cd .."				                #Go up one directory
     alias .2 "cd ../.."				            #Go up two directories
-    alias .3 "cd ../../.."                         #Go up three directories
+    alias .3 "cd ../../.."                          #Go up three directories
 
 #Surfshark-VPN Aliases:
     #alias vpnup "sudo surfshark-vpn attack"        #Quick connect to nearest server
@@ -102,12 +107,13 @@ set fish_greeting                              #Disables fish greeting
     #alias timerestore "sudo timeshift --restore"            #Restore from snapshot
 
 #General Aliases:
-    alias c "clear"				                #clear screen
-    alias h "history"				                #Show command history
+    alias c "clear"				               #clear screen
+    alias h "history"				               #Show command history
     alias nft "neofetch"                           #Neofetch
     alias rft "neofetch | lolcat"                  #Rgb neofetch
     alias calc "qalc"                              #Termianl-based calculator
     #alias update-grub "sudo grub-mkconfig -o /boot/grub/grub.cfg"
+    #alias kittytheme "kitten +kitten themes"      #Prompt you to select theme for kitty terminal
 
 ##Command Swaps:
   #'ls' to 'exa':
@@ -140,28 +146,30 @@ set fish_greeting                              #Disables fish greeting
     alias vbash "vim ~/.bashrc"                    #Open bash config in vim
     alias vfish "vim ~/.config/fish/config.fish"   #Open fish config in vim
     alias vv "vim ~/.vimrc"                        #Open vim config in vim
-    #alias vnv "vim ~/.config/nvim/init.vim"        #Open neovim config in vim
-    #alias vzsh "vim ~/.zshrc"                      #Open zsh config in vim
+    #alias vnv "vim ~/.config/nvim/init.vim"       #Open neovim config in vim
+    #alias vzsh "vim ~/.zshrc"                     #Open zsh config in vim
   #NEOVIM ALIASES:
-    #alias vim "nvim"                               #Alias to replace vim with neovim
+    #alias vim "nvim"                              #Alias to replace vim with neovim
     alias nvbash "nvim ~/.bashrc"                  #Open bash config in neovim
     alias nvfish "nvim ~/.config/fish/config.fish" #Open fish config in neovim
-    #alias nvv "nvim ~/.vimrc"                      #Open vim config in neovim
+    #alias nvv "nvim ~/.vimrc"                     #Open vim config in neovim
     alias nvnv "nvim ~/.config/nvim/init.vim"      #Open neovim config in neovim
-    #alias nvzsh "nvim ~/.zshrc"                    #Open zsh config in neovim
+    #alias nvzsh "nvim ~/.zshrc"                   #Open zsh config in neovim
   #DOOM-EMACS ALIASES:
-    #alias doomhelp "~/.emacs.d/bin/doom help"      #Show a list of available doom commands
-    #alias doomsync "~/.emacs.d/bin/doom sync"      #Sync config wiht Doom Emacs
-    #alias doomupg "~/.emacs.d/bin/doom upgrade"    #Update Doom Emacs & its package(s)
-    #alias doomdoctor "~/.emacs.d/bin/doom doctor"  #Diagnostic tool for Doom Emacs
-    #alias doompurge "~/.emacs.d/bin/doom purge"    #Delete old, orphaned package(s)
-    #alias doominfo "~/.emacs.d/bin/doom info"      #Output system info in markdown
-    #alias doomver "~/.emacs.d/bin/doom version"    #Show version info for Doom & Emacs
+    #alias doomhelp "~/.emacs.d/bin/doom help"     #Show a list of available doom commands
+    #alias doomsync "~/.emacs.d/bin/doom sync"     #Sync config wiht Doom Emacs
+    #alias doomupg "~/.emacs.d/bin/doom upgrade"   #Update Doom Emacs & its package(s)
+    #alias doomdoctor "~/.emacs.d/bin/doom doctor" #Diagnostic tool for Doom Emacs
+    #alias doompurge "~/.emacs.d/bin/doom purge"   #Delete old, orphaned package(s)
+    #alias doominfo "~/.emacs.d/bin/doom info"     #Output system info in markdown
+    #alias doomver "~/.emacs.d/bin/doom version"   #Show version info for Doom & Emacs
 
-#humorous commands:
-#alias cow "fortune | cowsay" 			            #Give randomly generated fortune with cow
-alias rgbaqua "asciiquarium | lolcat"		        #Rainbow aquarium
-alias aqua "asciiquarium"			                #Aqauarium
-alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" 
+##Git Aliases:
 
-#FUNCTIONS
+##Script Aliases:
+
+##some quality jokes:
+alias cow="fortune | cowsay" 			            #Give randomly generated fortune with cow
+alias rgbaqua="asciiquarium | lolcat"		        #Rainbow aquarium
+alias aqua="asciiquarium"			                #Aqauarium
+alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"

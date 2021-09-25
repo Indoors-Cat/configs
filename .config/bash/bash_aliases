@@ -11,16 +11,19 @@
     #alias pac='sudo pacman -Syu'            	    #Update standard package(s)
     #alias pacit='sudo pacman -S'            	    #Install package(s)
     #alias pacrem='sudo pacman -R'           	    #Remove package(s)
-    #alias pacremall='sudo pacman -Rncs'		        #Remove package(s) and all dependencies
-    #alias pacseach='sudo pacman -Q'         	    #Search for package(s)
+    #alias pacremall='sudo pacman -Rncs'		    #Remove package(s) and all dependencies
+    #alias pacsrch='sudo pacman -Si'                #Search for package(s) & display information {External}
+    #alias pacisrch='sudo pacman -Qi'         	    #Search for package(s) & display information {Internal}
   #yay
-    #alias yaysua='sudo yay -Sua'            	    #Updates only AUR package(s)
-    #alias yayrem='sudo yay -R'              	    #Remove package(s)
-    #alias yaysearch='sudo yay -Q'           	    #Search for package(s)
+    #alias yaysua='yay -Sua'            	        #Updates only AUR package(s)
+    #alias yayrem='yay -R'              	        #Remove package(s)
+    #alias yaysrch='yay -Si'                        #Search for package(s) & display information {External}
+    #alias yaysearch='yay -Qi'           	        #Search for package(s) & display information {Internal}
   #paru
-    #alias parusua='sudo paru -Sua'          	    #Updates only AUR package(s)
-    #alias parurem='sudo paru -R'            	    #Remove package(s)
-    #alias parusearch='sudo paru -Q'         	    #Search for package(s)
+    #alias parusua='paru -Sua'          	        #Updates only AUR package(s)
+    #alias parurem='paru -R'            	        #Remove package(s)
+    #alias parusrch='paru -Si'                      #Search for package(s) & display information {External}
+    #alias parusearch='paru -Qi'         	        #Search for package(s) & display information {Internal}
 
 ##Debian:
   #apt & apt-get
@@ -68,12 +71,12 @@
     alias .3='cd ../../..'				            #Go up three directories
 
 ##Surfshark-VPN Aliases:
-    #alias vpn='sudo surfshark-vpn'                  #Connect Surfshark-VPN
-    #alias vpnup='sudo surfshark-vpn attack'         #Quick connect to nearest server
-    #alias vpnmulti='sudo surfshark-vpn multi'       #Connects to multi-hop server
-    #alias vpndown='sudo surfshark-vpn down'         #Disconnects vpn
-    #alias vpnstat='sudo surfshark-vpn status'       #Show vpn status
-    #alias vpnver='sudo surfshark-vpn version'       #Show surfshark-vpn version
+    #alias vpn='sudo surfshark-vpn'                 #Connect Surfshark-VPN
+    #alias vpnup='sudo surfshark-vpn attack'        #Quick connect to nearest server
+    #alias vpnmulti='sudo surfshark-vpn multi'      #Connects to multi-hop server
+    #alias vpndown='sudo surfshark-vpn down'        #Disconnects vpn
+    #alias vpnstat='sudo surfshark-vpn status'      #Show vpn status
+    #alias vpnver='sudo surfshark-vpn version'      #Show surfshark-vpn version
 
 ##'liquidctl' Aliases (Corsair Commander Pro):
     #alias liqlist='sudo liquidctl list'			         #List available devices
@@ -92,21 +95,22 @@
     #alias timerestore='sudo timeshift --restore'            #Restore from snapshot
 
 #General Aliases:
-    alias c='clear'				                #clear screen
+    alias c='clear'				                    #clear screen
     #alias c='clear && colorscript -r'              #clear screen & show random colorscript
     alias h='history'				                #Show command history
     alias nft='neofetch'                            #Neofetch
     alias rft='neofetch | lolcat'                   #Rgb neofetch
     alias calc='qalc'                               #Terminal-based calculator
     #alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+    #alias kittytheme='kitten +kitten theme'        #Change kitty terminal theme
 
 ##Command Swaps:
   #'ls' to 'exa':
-    alias ls='exa -al --icons'		        #ls listing all in list format
-    alias sl='exa -alr --icons'             #ls listing all in reverse list format
-    alias la='exa -a --icons'		        #ls listing all
-    alias ll='exa -l --icons'		        #ls list format
-    alias lr='exa -ar --icons'              #ls all files recursively
+    alias ls='exa -al --icons'		                #ls listing all in list format
+    alias sl='exa -alr --icons'                     #ls listing all in reverse list format
+    alias la='exa -a --icons'		                #ls listing all
+    alias ll='exa -l --icons'		                #ls list format
+    alias lr='exa -ar --icons'                      #ls all files recursively
   #'cat' to 'bat':
     alias cat='bat'                                 #Use bat instead of cat
 
@@ -131,7 +135,7 @@
     alias vbash='vim ~/.bashrc'			            #Open bashrc in vim
     #alias vfish='vim ~/.config/fish/config.fish'	#Open config.fish in vim
     alias vv='vim ~/.vimrc'			                #Open vimrc in vim
-    #alias vnv='vim ~/.config/nvim/init.vim'	        #Open neovim config file in vim
+    #alias vnv='vim ~/.config/nvim/init.vim'	    #Open neovim config file in vim
     #alias vzsh='vim ~/.zshrc'			            #Open zshrc in vim
   #NEOVIM ALIASES:
     #alias vim='nvim'				                #Alias to replace vim with neovim
@@ -139,15 +143,17 @@
     #alias nvfish='nvim ~/.config/fish/config.fish'	#Open fish config in neovim
     #alias nvv='nvim ~/.vimrc'			            #Open vim config in neovim
     alias nvnv='nvim ~/.config/nvim/init.vim'	    #Open neovim config in neovim
-    #alias nvzsh='nvim ~/.zshrc'			            #Open zshrc in neovim
+    #alias nvzsh='nvim ~/.zshrc'			        #Open zshrc in neovim
   #DOOM-EMACS ALIASES:
-    #alias doomhelp='~/.emacs.d/bin/doom help'       #Show a list of avialble doom commands
-    #alias doomsync='~/.emacs.d/bin/doom sync'       #Sync config with Doom Emacs
-    #alias doomupg='~/.emacs.d/bin/doom upgrade'     #Update Doom Emacs & its package(s)
-    #alias doomdoc='~/.emacs.d/bin/doom doctor'      #Diagnostic tool for Doom Emacs
-    #alias doompurge='~/.emacs.d/bin/doom purge'     #Delete old, orphaned package(s)
-    #alias doominfo='~/.emacs.d/bin/doom info'       #Output system info in markdown
-    #alias doomver='~/.emacs.d/bin/doom version'     #Show version infor for Doom & Emacs
+    #alias doomhelp='~/.emacs.d/bin/doom help'      #Show a list of avialble doom commands
+    #alias doomsync='~/.emacs.d/bin/doom sync'      #Sync config with Doom Emacs
+    #alias doomupg='~/.emacs.d/bin/doom upgrade'    #Update Doom Emacs & its package(s)
+    #alias doomdoc='~/.emacs.d/bin/doom doctor'     #Diagnostic tool for Doom Emacs
+    #alias doompurge='~/.emacs.d/bin/doom purge'    #Delete old, orphaned package(s)
+    #alias doominfo='~/.emacs.d/bin/doom info'      #Output system info in markdown
+    #alias doomver='~/.emacs.d/bin/doom version'    #Show version infor for Doom & Emacs
+
+##Git Aliases:
 
 ##Script Aliases:
 
