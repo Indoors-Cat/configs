@@ -113,7 +113,7 @@ set fish_greeting                                   #Disables fish greeting
     alias rft "neofetch | lolcat"                  #Rgb neofetch
     alias calc "qalc"                              #Termianl-based calculator
     #alias update-grub "sudo grub-mkconfig -o /boot/grub/grub.cfg"
-    #alias kittytheme "kitten +kitten themes"      #Prompt you to select theme for kitty terminal
+    #alias kittytheme "kitty +kitten themes"      #Prompt you to select theme for kitty terminal
 
 ##Command Swaps:
   #'ls' to 'exa':
