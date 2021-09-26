@@ -102,7 +102,7 @@
     alias rft='neofetch | lolcat'                   #Rgb neofetch
     alias calc='qalc'                               #Terminal-based calculator
     #alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-    #alias kittytheme='kitten +kitten theme'        #Change kitty terminal theme
+    #alias kittytheme='kitty +kitten theme'        #Change kitty terminal theme
 
 ##Command Swaps:
   #'ls' to 'exa':
