@@ -12,8 +12,8 @@
     #alias pacit='sudo pacman -S'            	    #Install package(s)
     #alias pacrem='sudo pacman -R'           	    #Remove package(s)
     #alias pacremall='sudo pacman -Rncs'		    #Remove package(s) and all dependencies
-    #alias pacsrch='sudo pacman -Si'                #Search for package(s) & display information {External}
-    #alias pacisrch='sudo pacman -Qi'         	    #Search for package(s) & display information {Internal}
+    #alias pacsrch='pacman -Si'                #Search for package(s) & display information {External}
+    #alias pacisrch='pacman -Qi'         	    #Search for package(s) & display information {Internal}
   #yay
     #alias yaysua='yay -Sua'            	        #Updates only AUR package(s)
     #alias yayrem='yay -R'              	        #Remove package(s)
@@ -158,7 +158,7 @@
 ##Script Aliases:
 
 ##some quality jokes:
-alias cow="fortune | cowsay" 			            #Give randomly generated fortune with cow
-alias rgbaqua="asciiquarium | lolcat"		        #Rainbow aquarium
-alias aqua="asciiquarium"			                #Aqauarium
-alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
+alias cow='fortune | cowsay' 			            #Give randomly generated fortune with cow
+alias rgbaqua='asciiquarium | lolcat'		        #Rainbow aquarium
+alias aqua='asciiquarium'			                #Aqauarium
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
