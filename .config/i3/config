@@ -1,4 +1,4 @@
-###Depenedencies: i3-wm, i3-gaps, i3status, python-i3ipc (Optional: i3lock-color, autotiling, betterlockscreen-git)
+###Depenedencies: i3-gaps, i3status, python-i3ipc (Optional: i3lock-color, autotiling, betterlockscreen-git, i3status-rust)
 ###Key definitions to remember:
 # $MOD = Windows/Super key or Mod4
 # Mod1 = ALT key
@@ -18,12 +18,23 @@ set $down j
 set $left h
 set $right l
 
+###Software variables:
+set $browser librewolf
+set $browser2 brave
+
+set $edit emacs
+set $edit2 neovide
+
+set $term alacritty
+set $term2 kitty
+
 ### Single or Dual screen:
 ## Setting variables for later use:
 ## Use xrandr or arandr to know the names of your mointor(s)
 exec --no-startup-id xrandr --output HDMI2 --right-of HDMI1 --auto
 
-set $firstMonitor HDMI1
+set $firstMonitor DisplayPort1
+set $secondMonitor HDMI0
 
 workspace 1 output $firstMonitor
 workspace 2 output $firstMonitor
@@ -35,6 +46,17 @@ workspace 7 output $firstMonitor
 workspace 8 output $firstMonitor
 workspace 9 output $firstMonitor
 workspace 10 output $firstMonitor
+
+workspace 1 output $secondMonitor
+workspace 2 output $secondMonitor
+workspace 3 output $secondMonitor
+workspace 4 output $secondMonitor
+workspace 5 output $secondMonitor
+workspace 6 output $secondMonitor
+workspace 7 output $secondMonitor
+workspace 8 output $secondMonitor
+workspace 9 output $secondMonitor
+workspace 10 output $secondMonitor
 
 ###My Keybindings:
 
@@ -68,34 +90,20 @@ bindsym $mod+Shift+8 move container to workspace 8; workspace 8
 bindsym $mod+Shift+9 move container to workspace 9; workspace 9
 bindsym $mod+Shift+0 move container to workspace 10; workspace 10
 
-##Arco Linux Tools:
-bindsym $mod+a mode "$arco"
-        mode "$arco" {
-             bindsym b exec --no-startup-id arcolinux-betterlockscreen
-             bindsym d exec --no-startup-id arcolinux-desktop-trasher
-             bindsym t exec --no-startup-id arcolinux-tweak-tool
-             bindsym w exec --no-startup-id arcolinux-welcome-app
-             bindsym x exec --no-startup-id arcolinux-logout
-
-             bindsym e mode "default"
-             bindsym Escape mode "default"
-             }
-
 ##i3/System Submap:
-set $sys (b) bar, (c) conky, (p) picom, (r) recompile, (t) task-mgr, (v) volume, (x) logout, (space) float
+set $sys (b) bar, (p) picom, (r) recompile, (t) task-mgr, (v) volume, (x) logout, (space) float
 bindsym $mod+i mode "$sys"
         mode "$sys" {
              bindsym b bar mode toggle
              bindsym Shift+b exec --no-startup-id i3-msg border toggle
-             bindsym c exec --no-startup-id conky-toggle
              bindsym p exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
              bindsym r exec i3 reload && i3 restart
-             bindsym t exec --no-startup-id xfce4-task-manager;focus
+             bindsym t exec --no-startup-id htop;focus
              bindsym v exec --no-startup-id pavucontrol;focus
-             bindsym x exec --no-startup-id arcolinux-logout
+             bindsym x exec --no-startup-id i3-msg exit
              bindsym space floating toggle
 
-             bindsym e mode "default"
+#             bindsym e mode "default"
              bindsym Escape mode "default"
         }
 
@@ -111,7 +119,6 @@ bindsym $mod+r mode "$resize"
              bindsym k  resize shrink height 2 px or 2 ppt
              bindsym l  resize grow width 2 px or 2 ppt
 
-             bindsym Return mode "default"
              bindsym Escape mode "default"
         }
 
@@ -123,12 +130,11 @@ gaps outer 5
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+g mode "$mode_gaps
+bindsym $mod+g mode "$mode_gaps"
         mode "$mode_gaps" {
              bindsym o mode "$mode_gaps_outer"
              bindsym i mode "$mode_gaps_inner"
 
-             bindsym e mode "default"
              bindsym Escape mode "default"
         }
 
@@ -140,8 +146,7 @@ bindsym $mod+g mode "$mode_gaps
              bindsym Shift+minus gaps outer all minus 5
              bindsym Shift+0     gaps outer all set 0
 
-             bindsym e mode "defaults"
-             bindsym Escape mode "defaults"
+             bindsym Escape mode "default"
         }
 
         mode "$mode_gaps_inner" {
@@ -152,19 +157,18 @@ bindsym $mod+g mode "$mode_gaps
              bindsym Shift+minus gaps inner all minus 5
              bindsym Shift+0     gaps inner all set 0
 
-             bindsym e mode "defaults"
-             bindsym Escape mode "defaults"
+             bindsym Escape mode "default"
         }
 
 ##My Applications:
-bindsym $mod+t exec --no-startup-id kitty;focus
-bindsym $mod+Shift+t exec --no-startup-id alacritty;focus
-bindsym $mod+b exec --no-startup-id brave;focus
-bindsym $mod+Shift+b exec --no-startup-id firefox;focus
-bindsym $mod+e exec --no-startup-id emacs;focus
-bindsym $mod+Shift+e exec --no-startup-id neovide;focus
-bindsym $mod+f exec --no-startup-id nautilus;focus
-bindsym $mod+Shift+f exec --no-startup-id thunar;focus
+bindsym $mod+t exec --no-startup-id $term;focus
+bindsym $mod+Shift+t exec --no-startup-id $term2;focus
+bindsym $mod+b exec --no-startup-id $browser;focus
+bindsym $mod+Shift+b exec --no-startup-id $browser2;focus
+bindsym $mod+e exec --no-startup-id $edit;focus
+bindsym $mod+Shift+e exec --no-startup-id $edit2;focus
+bindsym $mod+f exec --no-startup-id thunar;focus
+bindsym $mod+Shift+f exec --no-startup-id pcmanfm;focus
 bindsym $mod+m exec --no-startup-id spotify;focus
 bindsym $mod+w exec --no-startup-id nitrogen;focus
 
@@ -230,18 +234,22 @@ font pango:Noto Mono Regular 13
 #  -> 1
 
 ###Autostart:
-exec_always --no-startup-id autotiling
-exec nitrogen --restore
-exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
+exec_always --no-startup-id autotiling &
+exec nitrogen --restore &
+exec_always --no-startup-id picom --config ~/.config/i3/picom.conf &
+exec radeon-profile --no-startup-id &
 
 ###System Applications:
-exec --no-startup-id xfce4-power-manager &
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+exec_always --no-startup-id /home/brandon/.screenlayout/monitorlayout.sh &
+exec_always --no-startup-id radeon-profile-daemon &
+exec_always --no-startup-id /usr/bin/emacs --daemon &
+exec_always --no-startup-id ckb-next &
 
 ###Window Rules:
 for_window [class="Arcolinux-welcome-app.py"] floating enable #Enable floating mode
 for_window [class="Pavucontrol"] floating disabled            #Disable floating mode
-for_window [class="Kitty"] focus          #Give focus to kitty
+for_window [class="Kitty"] focus                              #Give focus to kitty
+for_window [class="Alacritty"] focus
 
 ###Border Control:
 hide_edge_borders both
