@@ -103,7 +103,6 @@ bindsym $mod+i mode "$sys"
              bindsym x exec --no-startup-id i3-msg exit
              bindsym space floating toggle
 
-#             bindsym e mode "default"
              bindsym Escape mode "default"
         }
 
@@ -240,13 +239,12 @@ exec_always --no-startup-id picom --config ~/.config/i3/picom.conf &
 exec radeon-profile --no-startup-id &
 
 ###System Applications:
-exec_always --no-startup-id /home/brandon/.screenlayout/monitorlayout.sh &
+exec_always --no-startup-id /home/$USER/.screenlayout/monitorlayout.sh &
 exec_always --no-startup-id radeon-profile-daemon &
 exec_always --no-startup-id /usr/bin/emacs --daemon &
 exec_always --no-startup-id ckb-next &
 
 ###Window Rules:
-for_window [class="Arcolinux-welcome-app.py"] floating enable #Enable floating mode
 for_window [class="Pavucontrol"] floating disabled            #Disable floating mode
 for_window [class="Kitty"] focus                              #Give focus to kitty
 for_window [class="Alacritty"] focus
@@ -298,17 +296,6 @@ bar {
     #status_command i3blocks -c ~/.config/i3/i3blocks-rainbow.conf
     #status_command i3blocks -c ~/.config/i3/i3blocks-original.conf
     #status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
-
-
-    # OPTION 3 : conky
-
-    # You can also replace the istatus bar with a conky
-    # start-conky-i3statusbar.sh is started and conky will follow
-    # documentation : https://i3wm.org/docs/user-contributed/conky-i3bar.html
-    # conky configuration is in conky-i3statusbar
-
-    #status_command ~/.config/i3/start-conky-i3statusbar.sh
-
 
 
     # OPTION 4 : polybar
