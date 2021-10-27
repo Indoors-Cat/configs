@@ -1,6 +1,6 @@
 ###Aliases for the bash shell:
 ##Dependencies/Requirements:
-#Arch: yay, paru, qalculate(Arch), exa(AUR), bat(AUR), vim(Arch), neovim(Arch), emacs(Arch), curl(Arch)
+#Arch: yay, paru, libqalculate(Arch), exa(AUR), bat(AUR), vim(Arch), neovim(Arch), emacs(Arch), curl(Arch)
 #Debian: qalc, exa, bat, vim, neovim, emacs, curl
 #Fedora: qalc, exa, bat, vim, neovim, emacs, curl
 #There are a number of shell-color-script packages. The one I use is from www.gitlab.com/dwt1/shell-color-scripts
@@ -99,7 +99,7 @@
     #alias c='clear && colorscript -r'              #clear screen & show random colorscript
     alias h='history'				                #Show command history
     alias nft='neofetch'                            #Neofetch
-    alias rft='neofetch | lolcat'                   #Rgb neofetch
+    #alias rft='neofetch | lolcat'                   #Rgb neofetch
     alias calc='qalc'                               #Terminal-based calculator
     #alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
     #alias kittytheme='kitty +kitten theme'        #Change kitty terminal theme
