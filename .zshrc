@@ -7,13 +7,11 @@
 #|_|  |_|\__, |___/____|____/|_| |_|___\____\___/|_| |_|_| |_|\__, |
 #        |___/_____|              |_____|                     |___/ 
 #
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.config/zsh/.histfile
 HISTSIZE=10000
 SAVEHIST=20000
 setopt autocd beep extendedglob nomatch notify
 bindkey -v
-# End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/$USER/.zshrc'
 

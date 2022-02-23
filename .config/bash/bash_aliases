@@ -98,21 +98,21 @@
     alias c='clear'				                    #clear screen
     #alias c='clear && colorscript -r'              #clear screen & show random colorscript
     alias h='history'				                #Show command history
-    alias nft='neofetch'                            #Neofetch
+    #alias nft='neofetch'                            #Neofetch
     #alias rft='neofetch | lolcat'                   #Rgb neofetch
-    alias calc='qalc'                               #Terminal-based calculator
+    #alias calc='qalc'                               #Terminal-based calculator
     #alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
     #alias kittytheme='kitty +kitten theme'        #Change kitty terminal theme
 
 ##Command Swaps:
   #'ls' to 'exa':
-    alias ls='exa -al --icons'		                #ls listing all in list format
-    alias sl='exa -alr --icons'                     #ls listing all in reverse list format
-    alias la='exa -a --icons'		                #ls listing all
-    alias ll='exa -l --icons'		                #ls list format
-    alias lr='exa -ar --icons'                      #ls all files recursively
+    #alias ls='exa -al --icons'		                #ls listing all in list format
+    #alias sl='exa -alr --icons'                     #ls listing all in reverse list format
+    #alias la='exa -a --icons'		                #ls listing all
+    #alias ll='exa -l --icons'		                #ls list format
+    #alias lr='exa -ar --icons'                      #ls all files recursively
   #'cat' to 'bat':
-    alias cat='bat'                                 #Use bat instead of cat
+    #alias cat='bat'                                 #Use bat instead of cat
 
 ##General System Tools:
     alias mv='mv -i'				                #Interactive move of file

@@ -268,8 +268,8 @@
 ##General Abbreviations:
     abbr c "clear"                                 #Clear screen
     abbr h "history"                               #Show command history
-    abbr nft "neofetch"                            #Neofetch
-    abbr rft "neofetch | lolcat"                   #RGB neofetch
+    #abbr nft "neofetch"                            #Neofetch
+    #abbr rft "neofetch | lolcat"                   #RGB neofetch
     #abbr calc "qalc"                               #Terminal-based calculator
     #abbr update-grub "sudo grub-mkconfig -o /boot/grub/grub.cfg"
     #abbr kittytheme "kitty +kitten themes"         #Prompt you to select theme for kitty terminal

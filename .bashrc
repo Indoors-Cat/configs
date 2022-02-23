@@ -26,6 +26,11 @@ source ~/.config/bash/bash_aliases
 ###Shell Color Script:
 #colorscript -e 37
 
+#Neofetch At Startup:
+#neofetch
+#neofetch --ascii_distro Arch_old   #Displays old Arch logo
+#neofetch --ascii_distro --         #Displays tux
+
 ###PROMPT:
 #eval "$(starship init bash)"
 

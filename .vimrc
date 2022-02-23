@@ -21,15 +21,15 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 " {{Themes}}
-    Plug 'drewtempelmeyer/palenight.vim'            		" palenight theme
-    Plug 'sonph/onehalf', { 'rtp': 'vim' }          		" onehalf(dark/light) theme
-    Plug 'dracula/vim', {'as': 'dracula'}           		" dracula theme
-    Plug 'Rigellute/rigel'                          		" lightline.vim plugin
+    "Plug 'drewtempelmeyer/palenight.vim'            		" palenight theme
+    "Plug 'sonph/onehalf', { 'rtp': 'vim' }          		" onehalf(dark/light) theme
+    "Plug 'dracula/vim', {'as': 'dracula'}           		" dracula theme
+    "Plug 'Rigellute/rigel'                          		" lightline.vim plugin
     
     
 " {{Utilities}}
-    Plug 'itchyny/lightline.vim'                    		" statusline plugin
-    Plug 'frazrepo/vim-rainbow'                     		" changes the colors of parenthesis & brackets to help differentiate
+    "Plug 'itchyny/lightline.vim'                    		" statusline plugin
+    "Plug 'frazrepo/vim-rainbow'                     		" changes the colors of parenthesis & brackets to help differentiate
 
     " Initialize plugin system
 call plug#end()
