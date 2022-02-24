@@ -24,50 +24,12 @@ source ~/.config/bash/inputrc
 source ~/.config/bash/bash_aliases
 
 ###Shell Color Script:
-colorscript -e 37
+#colorscript -e 37
 
 ###PROMPT:
 #eval "$(starship init bash)"
 
 ###FUNCTIONS:
-##Extract:(syntax is "extract <file>")
-#Yes, I am aware that there is technically an extra end parenthesis 16 lines down. If deleted bash complains so I suppose it's needed.
-extract() {
-    local c e i
-
-    (($#)) || return
-
-    for i; do
-        c=''
-        e=1
-
-        if [[ ! -r $i ]]; then
-            echo "$0: file is unreadable: \`$i'" >&2
-            continue
-        fi
-
-        case $i in
-            *.t@(gz|lz|xz|b@(2|z?(2))|a@(z|r?(.@(Z|bz?(2)|gz|lzma|xz)))))
-                   c=(bsdtar xvf);;
-            *.7z)  c=(7z x);;
-            *.Z)   c=(uncompress);;
-            *.bz2) c=(bunzip2);;
-            *.exe) c=(cabextract);;
-            *.gz)  c=(gunzip);;
-            *.rar) c=(unrar x);;
-            *.xz)  c=(unxz);;
-            *.zip) c=(unzip);;
-            *.zst) c=(unzstd);;
-            *)     echo "$0: unrecognized file extension: \`$i'" >&2
-                   continue;;
-        esac
-
-        command "${c[@]}" "$i"
-        ((e = e || $?))
-    done
-    return "$e"
-}
-
 ##Change List:(Change directory and list contents)
 cl() {
 	local dir="$1"
