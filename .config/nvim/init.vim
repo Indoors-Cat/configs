@@ -20,20 +20,20 @@ set shell=/bin/bash
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-    Plug 'itchyny/lightline.vim'                        " Lightline statusbar
-    Plug 'frazrepo/vim-rainbow'                         " 
+    "Plug 'itchyny/lightline.vim'                        " Lightline statusbar
+    "Plug 'frazrepo/vim-rainbow'                         " 
 " {{Themes}}
-    Plug 'drewtempelmeyer/palenight.vim'                	" Palenight theme
-    Plug 'sonph/onehalf', { 'rtp': 'vim' }              	" Onehalf light/dark theme
-    Plug 'dracula/vim', {'as': 'dracula'}               	" Dracula theme
-    Plug 'shaunsingh/moonlight.nvim'                    	" Moonlight Theme
-    Plug 'gruvbox-community/gruvbox'                    	" Gruvbox Theme
+    "Plug 'drewtempelmeyer/palenight.vim'                	" Palenight theme
+    "Plug 'sonph/onehalf', { 'rtp': 'vim' }              	" Onehalf light/dark theme
+    "Plug 'dracula/vim', {'as': 'dracula'}               	" Dracula theme
+    "Plug 'shaunsingh/moonlight.nvim'                    	" Moonlight Theme
+    "Plug 'gruvbox-community/gruvbox'                    	" Gruvbox Theme
 
 " {{Utilities}}
-    Plug 'jiangmiao/auto-pairs'                         	" Auto pair '[] {} ()' 
-    Plug 'scrooloose/nerdtree'                          	" Terminal file explorer
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'      	" Highlighting for nerdtree
-    Plug 'ryanoasis/vim-devicons'                       	" Icons for nerdtree
+    "Plug 'jiangmiao/auto-pairs'                         	" Auto pair '[] {} ()' 
+    "Plug 'scrooloose/nerdtree'                          	" Terminal file explorer
+    "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'      	" Highlighting for nerdtree
+    "Plug 'ryanoasis/vim-devicons'                       	" Icons for nerdtree
 " Initialize plugin system
 call plug#end()
 
