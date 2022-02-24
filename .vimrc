@@ -46,7 +46,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-#colorscheme palenight
+"colorscheme palenight
 set nobackup						        " Disables auto backups
 set noswapfile						        " Disables swap
 set t_Co=256						        " Set if terminal supports 256 colors
