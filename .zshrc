@@ -7,14 +7,18 @@
 #|_|  |_|\__, |___/____|____/|_| |_|___\____\___/|_| |_|_| |_|\__, |
 #        |___/_____|              |_____|                     |___/ 
 #
+###Set history file location, and size:
 HISTFILE=~/.config/zsh/.histfile
 HISTSIZE=10000
 SAVEHIST=20000
+
 setopt autocd beep extendedglob nomatch notify
-bindkey -v
+
+###Set Vim Keybindings:
+#bindkey -v
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/$USER/.zshrc'
-
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -26,8 +30,7 @@ source ~/.config/zsh/zsh_aliases
 #source ~/.config/zsh/zsh_spaceship
 
 ##ZSH Syntax Highlighting:
-#source .config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source .config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ##ZSH Auto-suggestions:
-#source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
