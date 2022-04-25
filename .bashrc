@@ -10,18 +10,26 @@
 ###EXPORTS:
 export HISTCONTROL=ignoredups:erasedups 	        #no dublicate entries
 export EDITOR="vim"				                    #$EDITOR use vim in terminal
-export PS1="\[\033[38;5;14m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;134m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;14m\]\W\[$(tput sgr0)\]\\$\[$(tput sgr0)\]"
 
+###Set history file location, and size:
 HISTFILE=~/.config/bash/bash_history
 HISTSIZE=10000
 SAVEHIST=20000
+
 shopt -s autocd
 
 ###Realine(Used for colorized completion of filenames):
 source ~/.config/bash/inputrc
 
-###Aliases:
+###Setting location for alias file:
 source ~/.config/bash/bash_aliases
+
+###PROMPT:
+##Starship Prompt:
+#eval "$(starship init bash)"
+
+##Custom Bash Prompt:
+export PS1="\[\033[38;5;14m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;134m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;14m\]\W\[$(tput sgr0)\]\\$\[$(tput sgr0)\]"
 
 ###Shell Color Script:
 #colorscript -e 37
@@ -29,10 +37,7 @@ source ~/.config/bash/bash_aliases
 #Neofetch At Startup:
 #neofetch
 #neofetch --ascii_distro Arch_old   #Displays old Arch logo
-#neofetch --ascii_distro --         #Displays tux
-
-###PROMPT:
-#eval "$(starship init bash)"
+#neofetch --ascii_distro LFS         #Displays tux
 
 ###FUNCTIONS:
 ##Change List:(Change directory and list contents)
