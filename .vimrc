@@ -8,7 +8,7 @@
 """
 set nocompatible              " be iMproved, required
 filetype off                  " required
-"set shell=/bin/bash
+set shell=/bin/bash
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-plug for Managing Plugins
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -21,15 +21,15 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 " {{Themes}}
-    "Plug 'drewtempelmeyer/palenight.vim'            		" palenight theme
-    "Plug 'sonph/onehalf', { 'rtp': 'vim' }          		" onehalf(dark/light) theme
-    "Plug 'dracula/vim', {'as': 'dracula'}           		" dracula theme
-    "Plug 'Rigellute/rigel'                          		" lightline.vim plugin
+    Plug 'drewtempelmeyer/palenight.vim'            		" palenight theme
+    Plug 'sonph/onehalf', { 'rtp': 'vim' }          		" onehalf(dark/light) theme
+    Plug 'dracula/vim', {'as': 'dracula'}           		" dracula theme
+    Plug 'Rigellute/rigel'                          		" lightline.vim plugin
     
     
 " {{Utilities}}
-    "Plug 'itchyny/lightline.vim'                    		" statusline plugin
-    "Plug 'frazrepo/vim-rainbow'                     		" changes the colors of parenthesis & brackets to help differentiate
+    Plug 'itchyny/lightline.vim'                    		" statusline plugin
+    Plug 'frazrepo/vim-rainbow'                     		" changes the colors of parenthesis & brackets to help differentiate
 
     " Initialize plugin system
 call plug#end()
@@ -65,14 +65,13 @@ syntax enable
 " => StatusLine 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 """ The lightline.vim theme 
-"let g:rigel_lightline = 1
-"let g:lightline = { 'colorscheme': 'rigel'}
+let g:rigel_lightline = 1
+let g:lightline = { 'colorscheme': 'rigel'}
 
-"set laststatus=2                                    		" for lightline plugin
-"set noshowmode                                      		" hide statusbar while using lightline.vim
+set laststatus=2                                    		" for lightline plugin
+set noshowmode                                      		" hide statusbar while using lightline.vim
 " Always show statusline set laststatus=2 
 " Uncomment to prevent non-normal modes showing in powerline and below powerline. 
-" set noshowmode
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, Tab, and Indents
