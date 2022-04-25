@@ -36,6 +36,8 @@ function zshplugincfg {
 function vimcfg {
     cp /home/$USER/.vimrc /home/$USER/.vimrc.bak &&
         cp .vimrc /home/$USER/.vimrc
+        curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     return
 }
 
@@ -43,6 +45,8 @@ function vimcfg {
 function nvimcfg {
     cp /home/$USER/.config/nvim/init.vim /home/$USER/.config/nvim/init.vim.bak &&
         cp -r .config/nvim /home/$USER/.config/
+        sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     return
 }
 
@@ -135,6 +139,7 @@ function dnfinstall {
 
 #####Installation:
 echo "What distro are we installing onto?"
+echo "Arch, Debian, or Fedora?"
 read distro
 
 ###Arch/Arch-Based Distros:
@@ -216,5 +221,5 @@ else
     return
 fi
 
-exit 0
 echo "Script has now exited"
+exit 0
