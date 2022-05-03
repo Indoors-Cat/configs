@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
-#V0.5.0
+#V0.5.3
 
-#####Shell Functions:
-####Distro Agnostic:
+####Shell Functions:
+
+###Distro Agnostic:
+
 ##Shells:
 #Bash Shell:
 function bashcfg {
     cp /home/$USER/.bashrc /home/$USER/.bashrc.bak &&
         cp .bashrc /home/$USER/.bashrc &&
-        cp -r .config/bash/ /home/$USER/.config/ &&
+        cp -r .config/bash /home/$USER/.config/ &&
         mv /home/$USER/.bash_history /home/$USER/.config/bash/bash_history
     return
 }
@@ -27,26 +29,36 @@ function zshplugincfg {
         #zsh-syntax-highlighting:
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git &&
         #zsh-autosuggestions:
-        git clone https://github.com/zsh-users/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-autosuggestions.git
     return
 }
 
-##Editors:
-#Vim:
-function vimcfg {
-    cp /home/$USER/.vimrc /home/$USER/.vimrc.bak &&
-        cp .vimrc /home/$USER/.vimrc
-        curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+###Spaceship Prompt with Powerline fonts for ZSH:
+##Debian/Ubuntu:
+function zshspaceapt {
+   sudo apt-get install curl fonts-powerline -y &&
+       curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/install.zsh | zsh
+   return
+}
+
+##Arch Linux:
+function zshspacepac {
+    git clone https://aur.archlinux.org/spaceship-prompt-git.git -depth=1 &&
+        cd spaceship-prompt-git &&
+        makepkg -si &&
+        #Powerline Fonts:'
+        git clone https://github.com/powerline/fonts.git -depth=1 &&
+        cd fonts &&
+        ./install.sh &&
+        cd .. &&
+        rm -rf fonts/
     return
 }
 
-#Nvim:
-function nvimcfg {
-    cp /home/$USER/.config/nvim/init.vim /home/$USER/.config/nvim/init.vim.bak &&
-        cp -r .config/nvim /home/$USER/.config/
-        sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+##RHEL/Fedora:
+function zshspacednf {
+    sudo dnf install curl powerline-fonts -y &&
+       curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/install.zsh | zsh
     return
 }
 
@@ -63,22 +75,57 @@ function kittycfg {
     return
 }
 
+##Editors:
+#Vim:
+function vimcfg {
+    cp /home/$USER/.vimrc /home/$USER/.vimrc.bak &&
+        cp .vimrc /home/$USER/.vimrc &&
+        #Installing VimPlug:
+        curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    return
+}
+
+#Neovim:
+function nvimcfg {
+    cp /home/$USER/.config/nvim/init.vim /home/$USER/.config/nvim/init.vim.bak &&
+        cp -r .config/nvim /home/$USER/.config/ &&
+        #Installing VimPlug:
+        sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    return
+}
+
+
+####Distro Specific:
 ###Arch-Based:
+
+#Repository Sync:
+function archsync {
+    sudo pacman -Sy
+    return
+}
+
+#System Update:
 function archupdate {
     sudo pacman -Syu
     return
 }
 
-function pacfullinstall {
-    sudo pacman -S alacritty kitty zsh vim neovim lolcat exa bat git
-    return
-}
-
+#Minimal Installation (Arch-Repos Only):
 function pacmininstall {
-    sudo pacman -S alacritty vim curl wget git
+    sudo pacman -S kitty vim firefox git curl wget
     return
 }
 
+#Full Installation (Arch-Repos Only):
+function pacfullinstall {
+    sudo pacman -S alacritty kitty firefox zsh vim neovim exa bat git curl wget
+    return
+}
+
+##AUR Helpers:
+#Paru: (Has Rust Dependencies)
 function paruinstall {
     sudo pacman -S --needed base-devel &&
         git clone https://aur.archlinux.org/paru.git &&
@@ -87,47 +134,65 @@ function paruinstall {
     return
 }
 
-function aurpkginstall {
-    paru -S *insert packages here*
+#Yay: (Has GO Dependencies)
+function yayinstall {
+    sudo pacman -S --needed base-devel git &&
+        git clone https://aur.archlinux.org/yay.git &&
+        cd yay &&
+        makepkg -si
     return
 }
 
-function zshspace {
-    #Spaceship Prompt with Powerline fonts:
-    git clone https://aur.archlinux.org/spaceship-prompt-git.git -depth=1 &&
-        cd spaceship-prompt-git &&
-        makepkg -si &&
-        git clone https://github.com/powerline/fonts.git -depth=1 &&
-        cd fonts &&
-        install.sh &&
-        cd .. &&
-        rm -r fonts/
+#Aura: (Has Haskell Dependencies)
+function aurainstall {
+    sudo pacman -S --needed base-devel git &&
+        git clone https://aur.archlinux.org/aura-bin.git &&
+        cd aura-bin &&
+        makepkg -si
     return
 }
 
 ###Debian-Based:
+
+#Repository Sync:
+function debsync {
+    sudo apt-get update
+    return
+}
+
+#System Update:
 function debupdate {
-    sudo apt-get update && sudo apt-get upgrade
+    sudo apt-get update &&
+        sudo apt-get upgrade
     return
 }
 
-function aptfullinstall {
-    sudo apt-get install neofetch lolcat kitty vim curl wget qalc exa bat
-    return
-}
-
+#Minimal Installation:
 function aptmininstall {
-    sudo apt-get install kitty vim curl wget git
-}
-
-function instpacstall {
-    sudo bash -c "$(curl -fsSL https://git.io/JsADh || wget -q https://git.io/JsADh -O -)" &&
-        pacstall -I alacritty bat emacs-git neovim-git
+    sudo apt-get install kitty vim firefox-esr git curl wget
     return
 }
 
-###RHEL-Based:
-function fedupdate {
+#Full Installation:
+function aptfullinstall {
+    sudo apt-get install vim neovim kitty firefox-esr git curl wget exa
+    return
+}
+
+#Install Pacstall:
+function instpacstall {
+    sudo bash -c "$(curl -fsSL https://git.io/JsADh || wget -q https://git.io/JsADh -O -)"
+    return
+}
+
+#Install packages using Pacstall:
+function pacstallinstall {
+    pacstall -I alacritty emacs-git
+    return
+}
+
+###RHEL Based:
+function dnfupdate {
     sudo dnf upgrade
     return
 }
@@ -137,87 +202,77 @@ function dnfinstall {
     return
 }
 
-#####Installation:
+
+####Installation:
 echo "What distro are we installing onto?"
 echo "Arch, Debian, or Fedora?"
 read distro
 
 ###Arch/Arch-Based Distros:
-if [ $distro = "Arch" ]; then
+if [ $distro = "Arch"  ]; then
     echo "Full or Minimal installation?"
     read answer
 
-    if [ $answer = "full" ]; then
-        bashcfg
-        zshcfg
-        vimcfg
-        nvimcfg
-        alaccfg
-        kittycfg
+    if [ $answer = "Full" ]; then
         archupdate
         pacfullinstall
         paruinstall
-        aurpkginstall
-        zshplugincfg
-        zshspace
-    elif [ $answer = "minimal" ]; then
         bashcfg
-        vimcfg
+        zshcfg
+        zshplugincfg
+        zshspacepac
         alaccfg
+        kittycfg
+        vimcfg
+        nvimcfg
+    elif [ $answer = "Minimal" ]; then
         archupdate
         pacmininstall
+        bashcfg
+        kittycfg
     else
         echo "Error in submission"
+        echo "Exiting Installation Now"
         return
     fi
 
 ###Debian/Debian-Based Distros:
-elif [ $distro = "Debian" ]; then
-    echo "Full or Minimal installation?"
-    read answer
-
-    if [ $answer = "full" ]; then
-        bashcfg
-        zshcfg
-        vimcfg
-        nvimcfg
-        alaccfg
-        kittycfg
-        debupdate
-        aptinstall
-        installpacstall
-    elif [ $answer = "minimal" ]; then
-        bashcfg
-        vimcfg
-        kittycfg
-        debupdate
-    else
-        echo "Error in submission"
-        return
-    fi
-
-###Fedora/RHEL-Based Distros:
-elif [ $distro = "Fedora" ]; then
+if [ $distro = "Debian" ]; then
     echo "Full or Minimal Installation?"
     read answer
 
-    if [ $answer = "full" ]; then
+    if [ $answer = "Full" ]; then
+        debupdate
+        aptfullinstall
+        instpacstall
+        pacstallinstall
         bashcfg
         zshcfg
-        vimcfg
-        nvimcfg
+        zshplugincfg
+        zshspaceapt
         alaccfg
         kittycfg
-        dnfupdate
-        dnfintsall
-    elif [ $answer = "minimal" ]; then
+        vimcfg
+        nvimcfg
+    elif [ $answer = "Minimal" ]; then
+        debupdate
         bashcfg
         vimcfg
         kittycfg
-        dnfupdate
+    else
+        echo "Error in submission"
+        echo "Exiting Installation Now"
+        return
     fi
+
+##Fedora/RHEL-Based Distros:
+if [ $distro = "Fedora" ]; then
+    echo "Option is currently Unavailable"
+    echo "Option is still under development"
+
 else
-    echo "Unsupported Distro. Exiting installation now."
+    echo "Error in submission"
+    echo "Exiting Installation Now"
     return
 fi
 
