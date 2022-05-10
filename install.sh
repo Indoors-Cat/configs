@@ -11,7 +11,7 @@ dir=$(pwd)
 ###Bash:
 function bashcfg {
     cp /home/$USER/.bashrc /home/$USER/.bashrc.bak &&
-        cp .bashrc /home/$USER/.bashrc &&
+        cp "$dir"/.bashrc /home/$USER/.bashrc &&
         mkdir -p /home/$USER/.bashrc &&
         cp -r "$dir"/.config/bash /home/$USER/.config &&
         mv /home/$USER/.bash_history /home/$USER/.config/bash/bash_history
@@ -20,8 +20,8 @@ function bashcfg {
 
 ###ZSH:
 function zshcfg {
-    cp /home/$USER/.zshrc /home/$USER/.zshrc.bak &&
-        cp .zshrc /home/$USER/.zshrc &&
+    cp /home/$USER/.zshrc /home/$USER/.zshrc.bak ;
+        cp "$dir"/.zshrc /home/$USER/.zshrc &&
         mkdir -p /home/$USER/.config/zsh &&
         cp -r "$dir"/.config/zsh /home/$USER/.config/
     return
@@ -67,7 +67,7 @@ function zshspacednf {
 
 ###Fish
 function fishcfg {
-    cp /home/$USER/.config/fish/config.fish /home/$USER/config.fish.bak &&
+    cp /home/$USER/.config/fish/config.fish /home/$USER/config.fish.bak ;
         mkdir -p /home/$USER/.config/fish &&
         cp -r "$dir"/.config/fish/config.fish /home/$USER/.config/fish/config.fish
     return
@@ -88,7 +88,7 @@ function kittycfg {
 ####Editors:
 ###Vim:
 function vimcfg {
-    cp /home/$USER/.vimrc /home/$USER/.vimrc.bak &&
+    cp /home/$USER/.vimrc /home/$USER/.vimrc.bak ;
         cp .vimrc /home/$USER/.vimrc &&
         #Installing Vim-Plug:
         curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -98,7 +98,7 @@ function vimcfg {
 
 ###Neovim:
 function nvimcfg {
-    cp /home/$USER/.config/nvim/init.vim /home/$USER/.config/nvim/init.vim.bak &&
+    cp /home/$USER/.config/nvim/init.vim /home/$USER/.config/nvim/init.vim.bak ;
         mkdir -p /home/$USER/.config/nvim &&
         cp -r "$dir"/.config/nvim /home/$USER/.config &&
         #Installing Vim-Plug:
@@ -146,6 +146,7 @@ function pacfullinstall {
 ##Aura: (Has Haskell Dependencies)
 function aurainstall {
     sudo pacman -S base-devel git --needed &&
+        cd /home/$USER/Downloads &&
         git clone https://aur.archlinux.org/aura-bin.git &&
         cd aura-bin &&
         makepkg -si
@@ -155,6 +156,7 @@ function aurainstall {
 ##Paru: (Has Rust Dependencies)
 function paruinstall {
     sudo pacman -S base-devel git --needed &&
+        cd /home/$USER/Downloads &&
         git clone https://aur.archlinux.org/paru.git &&
         cd paru &&
         makepkg -si
@@ -164,6 +166,7 @@ function paruinstall {
 ##Yay: (Has GO Dependencies)
 function yayinstall {
     sudo pacman -S base-devel git --needed &&
+        cd /home/$USER/Downloads &&
         git clone https://aur.archlinux.org/yay.git &&
         cd yay &&
         makepkg -si
