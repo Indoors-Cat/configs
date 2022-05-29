@@ -1,20 +1,24 @@
+#####Imports:
 import os
 import subprocess
 import psutil
 
+from libqtile import qtile
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
-###Personal Varibales:
+#####Personal Variables:
+##Mod Key: (Use Mod4 for the Super/Windows Key, or Mod1 for the Alt Key)
 mod = "mod4"
 
+##Application Variables:
 browser = ("librewolf")
 browser2 = ("brave")
 editor = ("vim")
-geditor = ("emacs -c -a emacs")
-files = ("thunar")
+geditor = ("emacsclient -c -a emacs")
+files = ("pcmanfm")
 music = ("spotify")
 terminal = ("kitty")
 terminal2 = ("alacritty")
@@ -65,6 +69,8 @@ keys = [
         desc="Move Focus to Next Monitor"),
     Key([mod], "comma", lazy.prev_screen(),
         desc="Move Focus to Previous Monitor"),
+    Key([mod], "Return", lazy.layout.toggle_split(),
+        desc="Make window with focus full height when in a stack"),
 
     #Moving Windows:
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
@@ -93,8 +99,6 @@ keys = [
         desc="Toggle Split & Unsplit Sides of Stack"),
     Key([mod], "Tab", lazy.next_layout(),
         desc="Toggle Layouts"),
-    Key([mod], "f", lazy.window.toggle_fullescreen(),
-        desc="Toggle Fullscreen"),
 
     ##Qtile System:
     Key([mod], "q", lazy.window.kill(),
@@ -122,30 +126,35 @@ keys = [
 
 ]
 
-###Workspaces: (Default)
-groups = [Group(i) for i in "123456789"]
+#####Groups(Workspaces):
+groups = [
+    Group('1', label="", matches=[Match()], layout="column"),
+    Group('2', label="", matches=[Match()], layout="column"),
+    Group('3', label="", matches=[Match()], layout="column"),
+    Group('4', label="", matches=[Match(wm_class='spotify')], layout="column"),
+    Group('5', label="", matches=[Match()], layout="column"),
+    Group('6', label="", matches=[Match()], layout="column"),
+    Group('7', label="", matches=[Match()], layout="column"),
+    Group('8', label="", matches=[Match(wm_class="virt-manager")], layout="column"),
+    Group('9', label="", matches=[Match()], layout="column"),
+    Group('0', label="", matches=[Match(wm_class='ckb-next')], layout="column")
+]
 
 for i in groups:
     keys.extend(
         [
-            # mod1 + letter of group = switch to group
+            # mod + character of group = switch to group
             Key(
                 [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
+                i.name, lazy.group[i.name].toscreen(),
                 desc="Switch to group {}".format(i.name),
             ),
-            # mod1 + shift + letter of group = switch to & move focused window to group
+            # mod + shift + character of group = move focused window to & switch to selected group:
             Key(
                 [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
+                i.name, lazy.window.togroup(i.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(i.name),
             ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
         ]
     )
 
@@ -159,31 +168,31 @@ layouts = [
         margin=2
     ),
     layout.Max(
-        border_width=0
+        border_width=0,
     ),
-    layout.MonadTall(
-        align='right',
-        border_focus='#9508EC',
-        border_width=2,
-        magin=2,
-        max_ratio='0.75',
-        min_ratio='0.25',
-        new_client_position='after_current',
-        ratio='0.5'
-    ),
-    layout.MonadWide(),
+    #layout.MonadTall(
+        #border_focus='#9508EC',
+        #border_width=1,
+        #change_ratio=0.05,
+        #change_size=6,
+        #magin=2,
+        #max_ratio='0.75',
+        #min_ratio='0.25',
+        #new_client_position='after_current',
+    #),
+    #layout.MonadWide(),
     #layout.RatioTle(),
-    layout.Spiral(
-        border_focus='#9508EC',
-        clockwise=True,
-        main_pane='left',
-        margin=2
-    ),
-    layout.Tile(
-        border_focus='#9508EC',
-        margin_on_single=False,
-        margin=2
-    ),
+    #layout.Spiral(
+        #border_focus='#9508EC',
+        #clockwise=True,
+        #main_pane='left',
+        #margin=2
+    #),
+    #layout.Tile(
+        #border_focus='#9508EC',
+        #margin_on_single=False,
+        #margin=2
+    #),
 ]
 
 ###Widgets & The Qtile Bar:
@@ -194,209 +203,285 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+###Colorschemes:
+#Dracula:
+#colors = [["#6272a4", "#6272a4"], #Blue Background
+          #["#bd93f9", "#bd93f9"], #Purple Background
+          #["#8be9fd", "#8be9fd"], #Light Blue Icon/Text Color
+          #["#FF0000", "#FF0000"], #Red Alert Color
+          #["#ffffff", "#ffffff"], #White Text Color
+          #["#ceadfd", "#ceadfd"]] #Purple Icon Color
+
+#Nord:
+colors = [["#2E3440", "#2E3440"], #Black
+          ["#434C5E", "#434C5E"], #Dark Grey
+          ["#5E81AC", "#5E81AC"], #Blue
+          ["#8FBCBB", "#8FBCBB"], #Light Blue
+          ["#BF616A", "#BF616A"], #Red
+          ["#A3BE8C", "#A3BE8C"], #Green
+          ["#B48EAD", "#B48EAD"], #Peach?
+          ["#D8DEE9", "#D8DEE9"]] #White
+
 ##Bar Settings::
 screens = [
     Screen(
         top=bar.Bar(
             [
                 widget.CurrentScreen(
-                    active_color='#8be9fd',
-                    active_text='契',
-                    inactive_color='#ff79c6',
-                    inactive_text='',
+                    active_color = colors[2],
+                    active_text = '契',
+                    inactive_color = colors[6],
+                    inactive_text = '',
                     padding = 6
                 ),
                 widget.CurrentLayout(
-                    foreground='#8be9fd',
-                    padding=None,
+                    foreground = colors[2],
+                    padding = 0,
                 ),
                 widget.GroupBox(
-                    active='#bd93f9',
-                    borderwidth=2,
-                    center_aligned=False,
-                    hide_unused=False,
-                    highlight_method='line',
-                    margin=2,
-                    rounded=True,
-                    this_current_screen_border='#8be9fd',
-                    other_screen_border='#ff79c6',
-                    urgent_alert_method='block',
-                    urgent_border='#FF0000',
+                    active = colors[2],
+                    borderwidth = 2,
+                    center_aligned = False,
+                    fontsize = 18,
+                    hide_unused = False,
+                    highlight_method = 'line',
+                    margin = 2,
+                    padding = 4,
+                    rounded = True,
+                    this_current_screen_border = colors[2],
+                    other_screen_border = colors[5],
+                    urgent_alert_method = 'block',
+                    urgent_border = colors[4],
                 ),
                 widget.WindowName(
-                    foreground="#bd93f9"
-                ),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                    foreground = colors[3],
                 ),
                 widget.TextBox(
                     text = '',
-                    foreground = '#6272a4',
+                    foreground = colors[0],
                     padding = -7,
                     fontsize = 54
                 ),
                 widget.CheckUpdates(
-                    background='#6272a4',
-                    colour_have_updates='ffffff',
-                    colour_no_updates='ffffff',
-                    display_format='Updates: {updates}',
-                    distro = "Arch",
-                    execute='kitty -e sudo pacman -Syu',
-                    foreground='#8be9fd',
+                    background = colors[0],
+                    foreground = colors[3],
+                    colour_have_updates = 'ffffff',
+                    colour_no_updates = 'ffffff',
+                    display_format = 'Arch: {updates}',
+                    distro = "Arch_checkupdates",
+                    execute = "kitty -e /home/$USER/Documents/scripts/sysupdate.sh",
                     no_update_string = 'None',
                     padding = 4,
-                    update_interval='60'
+                    update_interval = 60
+                ),
+                widget.CheckUpdates(
+                    background = colors[0],
+                    foreground = colors[3],
+                    colour_have_updates = 'ffffff',
+                    colour_no_updates = 'ffffff',
+                    display_format = 'AUR: {updates}',
+                    distro = "Arch_paru",
+                    execute = "kitty -e /home/$USER/Documents/scripts/sysupdate.sh",
+                    no_update_string = 'None',
+                    padding = 4,
+                    update_interval = 60
                 ),
                 widget.TextBox(
                     text = '',
-                    background='#6272a4',
-                    foreground='#bd93f9',
+                    background = colors[0],
+                    foreground = colors[1],
                     padding = -7,
                     fontsize = 54
                 ),
                 widget.TextBox(
                     text = ' ',
-                    background='#bd93f9',
-                    foreground='#8be9fd',
+                    background = colors[1],
+                    foreground = colors[3],
                     fontsize = 20
                 ),
                 widget.ThermalSensor(
-                    background='#bd93f9',
-                    foreground='#8be9fd',
-                    foreground_alert='#ff0000',
-                    metric=True,
-                    mouse_callbacks={"Button1" : lazy.spawn("kitty -e htop -s PERCENT_CPU")},
-                    show_tag=False,
-                    tag_sensor='Tctl',
-                    threshold=70,
-                    update_interval=1,
+                    background = colors[1],
+                    foreground = colors[3],
+                    foreground_alert = colors[5],
+                    metric = True,
+                    mouse_callbacks = {"Button1" : lazy.spawn("kitty -e htop -s PERCENT_CPU")},
+                    show_tag = False,
+                    tag_sensor = 'Tctl',
+                    threshold = 70,
+                    update_interval = 1,
                 ),
                 widget.CPU(
-                    background='#bd93f9',
-                    foreground='#8be9fd',
-                    format='/ {load_percent}%',
-                    mouse_callbacks={"Button1" : lazy.spawn("kitty -e htop -s PERCENT_CPU")},
+                    background = colors[1],
+                    foreground = colors[3],
+                    format = '/ {load_percent}%',
+                    mouse_callbacks = {"Button1" : lazy.spawn("kitty -e htop -s PERCENT_CPU")},
                     padding = 2,
                 ),
                 widget.TextBox(
                     text = '',
-                    background='#bd93f9',
-                    foreground='#6272a4',
+                    background = colors[1],
+                    foreground = colors[0],
+                    padding = -7,
+                    fontsize = 54
+                ),
+                widget.ThermalSensor(
+                    background = colors[0],
+                    foreground = colors[6],
+                    foreground_alert = colors[4],
+                    metric = True,
+                    show_tag = False,
+                    tag_sensor = 'edge',
+                    update_interval = 1,
+                ),
+                widget.TextBox(
+                    text = '',
+                    background = colors[0],
+                    foreground = colors[5],
                     padding = -7,
                     fontsize = 54
                 ),
                 widget.TextBox(
                     text = ' ',
-                    background='#6272a4',
-                    foreground='#ceadfd',
-                    textsize = 12
+                    background = colors[5],
+                    foreground = colors[1],
+                    textsize = 20
                 ),
                 widget.Memory(
-                    background='#6272a4',
-                    format='{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}',
-                    foreground='#8be9fd',
-                    measure_mem='M',
-                    mouse_callbacks={"Button1" : lazy.spawn("kitty -e htop -s PERCENT_MEM")},
+                    background = colors[5],
+                    foreground = colors[1],
+                    format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}',
+                    measure_mem = 'M',
+                    mouse_callbacks = {"Button1" : lazy.spawn("kitty -e htop -s PERCENT_MEM")},
                     padding = 4,
-                    update_interval=1.0,
+                    update_interval = 1.0,
                 ),
                 widget.TextBox(
                     text = '',
-                    background='#6272a4',
-                    foreground='#bd93f9',
+                    background = colors[5],
+                    foreground = colors[2],
                     padding = -7,
                     fontsize = 54
                 ),
                 widget.TextBox(
                     text = ' ',
-                    background='#bd93f9',
-                    foreground='#8be9fd',
-                    fontsize = 20
+                    background = colors[2],
+                    foreground = colors[3],
+                    fontsize = 20,
                 ),
                 widget.Net(
-                    background='#bd93f9',
-                    foreground='8be9fd',
-                    format='{down} ↓↑ {up}',
-                    interface='enp4s0',
+                    background = colors[2],
+                    foreground = colors[3],
+                    format = '{down} ↓↑ {up}',
+                    interface = 'enp3s0',
                 ),
                 widget.TextBox(
                     text = '',
-                    background='#bd93f9',
-                    foreground='#6272a4',
+                    background = colors[2],
+                    foreground = colors[6],
                     padding = -7,
-                    fontsize = 54
+                    fontsize = 54,
                 ),
                 widget.TextBox(
                     text = ' ',
-                    background='#6272a4',
-                    foreground='#ceadfd',
-                    textsize = 20
+                    background = colors[6],
+                    foreground = colors[7],
+                    textsize = 20,
                 ),
                 widget.Clock(
-                    background='#6272a4',
-                    foreground='#8be9fd',
-                    format="%m/%d/%y %a %H:%M",
+                    background = colors[6],
+                    foreground = colors[7],
+                    format = "%m/%d/%y %a %H:%M",
                 ),
                 widget.TextBox(
                     text = '',
-                    background='#6272a4',
-                    foreground='#bd93f9',
+                    background = colors[6],
+                    foreground = colors[1],
                     padding = -7,
                     fontsize = 54
                 ),
                 widget.WidgetBox(
-                    background='#bd93f9',
-                    foreground='#8be9fd',
+                    background = colors[1],
+                    foreground = colors[3],
                     widgets=[
                         widget.PulseVolume(
-                            background='#bd93f9',
-                            foreground='#8be9fd',
-                            volume_app='pavucontrol'
+                            background = colors[1],
+                            foreground = colors[3],
+                            volume_app = 'pavucontrol'
                         ),
                         widget.TextBox(
                             text = '墳 ',
-                            background='#bd93f9',
-                            foreground='#8be9fd',
+                            background = colors[1],
+                            foreground = colors[3],
                             fontsize = 20
                         ),
                         widget.DF(
-                            background='#bd93f9',
-                            foreground='#8be9fd',
-                            partition='/',
-                            visible_on_warn=False,
-                            measure='G',
-                            padding=None,
-                            update_interval='60'
+                            background = colors[1],
+                            foreground = colors[3],
+                            partition = '/',
+                            visible_on_warn = False,
+                            measure = 'G',
+                            padding = None,
+                            update_interval = '60'
                         ),
                         widget.TextBox(
                             text = ' ',
-                            background='#bd93f9',
-                            foreground='#8be9fd',
+                            background = colors[1],
+                            foreground = colors[3],
                             fontsize = 20
                         ),
                 ]),
                 widget.QuickExit(
-                    background='#6272a4',
-                    foreground='#8be9fd',
-                    default_text='[Exit]'
+                    background = colors[0],
+                    foreground = colors[2],
+                    default_text = '[Exit]'
                 ),
                 widget.Systray(
-                    background='#6272a4',
-                    icon_size=20,
-                    padding=2,
+                    background = colors[0],
+                    icon_size = 20,
+                    padding = 2,
                 ),
                 #widget.Mirror
             ],
-            24,
-            margin=4,
-            opacity=0.75
+            30,
+            margin = 4,
+            opacity = 0.75
+        ),
+    ),
+    Screen(
+        top=bar.Bar(
+            [
+                widget.CurrentScreen(
+                    active_color = colors[2],
+                    active_text = '契',
+                    inactive_color = colors[6],
+                    inactive_text = '',
+                    padding = 6,
+                ),
+                widget.GroupBox(
+                    active = colors[2],
+                    borderwidth = 2,
+                    center_aligned = False,
+                    fontsize = 18,
+                    hide_unused = False,
+                    highlight_method = 'line',
+                    margin = 2,
+                    padding = 4,
+                    rounded = True,
+                    this_current_screen_border = colors[2],
+                    other_screen_border = colors[5],
+                    urgent_alert_method = 'block',
+                    urgent_border = colors[4],
+                ),
+                widget.WindowName(
+                    foreground = colors[3],
+                ),
+            ],
+            26,
+            margin = 2,
+            opacity = 0.75,
         ),
     ),
 ]
-
 
 ###Drag Floating Windows:
 mouse = [
@@ -427,5 +512,6 @@ focus_on_window_activation = "smart"
 reconfigure_screens = True
 auto_minimize = True
 wl_input_rules = None
+follow_mouse_focus = True
 
 wmname = "Qtile"
