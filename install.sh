@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-#V0.1.0
+#V0.1.2
 
-######Variables:
+#####Variables:
 dir=$(pwd)
 
 ######Shell Functions:
@@ -14,11 +14,11 @@ function bashcfg {
         cp "$dir"/.bashrc /home/$USER/.bashrc &&
         mkdir -p /home/$USER/.bashrc &&
         cp -r "$dir"/.config/bash /home/$USER/.config &&
-        mv /home/$USER/.bash_history /home/$USER/.config/bash/bash_history
+        mv /home/$USER/.bash_history home/$USER/.config/bash_history
     return
 }
 
-###ZSH:
+###ZSH: (Dependencies=git)
 function zshcfg {
     cp /home/$USER/.zshrc /home/$USER/.zshrc.bak ;
         cp "$dir"/.zshrc /home/$USER/.zshrc &&
@@ -37,11 +37,14 @@ function zshplugincfg {
 }
 
 ##Spaceship Prompt with Powerline fonts for ZSH:
-#Arch:
+#Arch: (Dependencies=git)
 function zshspacepac {
-    git clone https://aur.archlinux.org/spaceship-prompt-git.git --depth=1 &&
+    cd /home/$USER/Downloads &&
+        #Spaceship Prompt:
+        git clone https://aur.archlinux.org/spaceship-prompt-git.git --depth=1 &&
         cd spaceship-prompt-git &&
         makepkg -si &&
+        cd .. &&
         #Powerline Fonts:
         git clone https://github.com/powerline/fonts.git --depth=1 &&
         cd fonts &&
@@ -51,14 +54,14 @@ function zshspacepac {
     return
 }
 
-#Debian/Ubuntu:
+#Debian/Ubuntu: (Dependencies=curl)
 function zshspaceapt {
     sudo apt-get install curl fonts-powerline -y &&
         curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/install.zsh | zsh
     return
 }
 
-#RHEL/Fedora:
+#RHEL/Fedora: (Dependencies=curl)
 function zshspacednf {
     sudo dnf install curl powerline-fonts -y &&
         curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/install.zsh | zsh
@@ -82,11 +85,12 @@ function alaccfg {
 
 ###Kitty:
 function kittycfg {
-    cp -r "$dir"/.config/kitty /home/$USER/.config/kitty
+    cp -r "$dir"/.config/kitty /home/$USER/.config
+    return
 }
 
 ####Editors:
-###Vim:
+###Vim: (Dependencies=curl)
 function vimcfg {
     cp /home/$USER/.vimrc /home/$USER/.vimrc.bak ;
         cp .vimrc /home/$USER/.vimrc &&
@@ -96,7 +100,7 @@ function vimcfg {
     return
 }
 
-###Neovim:
+###Neovim: (Dependencies=curl)
 function nvimcfg {
     cp /home/$USER/.config/nvim/init.vim /home/$USER/.config/nvim/init.vim.bak ;
         mkdir -p /home/$USER/.config/nvim &&
@@ -107,7 +111,7 @@ function nvimcfg {
     return
 }
 
-###Doom-Emacs:
+###Doom-Emacs: (Dependencies=git)
 function doomemacs {
     git clone --depth=1 https://github.com/hlissner/doom-emacs ~/.emacs.d &&
         ~/.emacs.d/bin/doom install
@@ -115,35 +119,39 @@ function doomemacs {
 }
 
 #####Distro Specific:
-####Arch/Arch-Based:
-##Sync Repos:
+####Arch:
+###Sync Repos:
 function archsync {
     sudo pacman -Sy
     return
 }
 
-##Arch Update:
+###Arch Update System:
 function archupdate {
-    sudo pacman -Syu
+    sudo pacman -Syu --needed
     return
 }
 
-##Server Install: (Future)
+###Server Installation: (Future)
+#function pacserverinstall {
+    #sudo pacman -S sudo vim git curl
+    #return
+#}
 
-##Minimal Install:
+###Minimal Installation:
 function pacmininstall {
-    sudo pacman -S kitty vim firefox git curl wget
+    sudo pacman -S sudo xfce4-terminal vim firefox git curl wget htop
     return
 }
 
-##Full Installation:
+###Full Installation:
 function pacfullinstall {
-    sudo pacman -S alacritty kitty firefox fish zsh vim neovim emacs exa bat git curl wget ripgrep
-    return
+   sudo pacman -S sudo alacritty kitty firefox zsh vim neovim emacs exa bat git curl wget ripgrep htop
+   return
 }
 
-###Aur Helpers:
-##Aura: (Has Haskell Dependencies)
+###AUR Helpers:
+##Aura (Has Haskell Dependencies): (Dependencies=git)
 function aurainstall {
     sudo pacman -S base-devel git --needed &&
         cd /home/$USER/Downloads &&
@@ -153,7 +161,7 @@ function aurainstall {
     return
 }
 
-##Paru: (Has Rust Dependencies)
+##Paru (Has Rust Dependencies): (Dependencies=git)
 function paruinstall {
     sudo pacman -S base-devel git --needed &&
         cd /home/$USER/Downloads &&
@@ -163,7 +171,7 @@ function paruinstall {
     return
 }
 
-##Yay: (Has GO Dependencies)
+##Yay (Has GO Dependencies): (Dependencies=git)
 function yayinstall {
     sudo pacman -S base-devel git --needed &&
         cd /home/$USER/Downloads &&
@@ -173,7 +181,49 @@ function yayinstall {
     return
 }
 
-####Debian/Debian-Based: (Future Version)
+###Desktop Environements/Window Managers:
+##Display Servers:
+#Xorg:
+function xorginstall {
+    sudo pacman -S xorg
+    return
+}
+
+#Wayland:
+function waylandinstall {
+    sudo pacman -S wayland
+    return
+}
+
+##Desktop Environements:
+#XFCE4:
+function xfceinstall {
+    sudo pacman -S xorg wayland xfce4
+    return
+}
+
+#KDE Plasma:
+function kdeinstall {
+    sudo pacman -S xorg wayland plasma sddm &&
+        sudo systemctl enable sddm &&
+        sudo systemctl start sddm
+    return
+}
+
+##Window Managers:
+#Qtile:
+function qtileinstall {
+    sudo pacman -S qtile
+    return
+}
+
+#i3-Gaps:
+function i3gapsinstall {
+    sudo pacman -S i3gaps
+    return
+}
+
+####Debian/Debian-Based: (Future)
 
 #####Installation:
 echo "What distro are we installing onto?"
@@ -183,31 +233,98 @@ read distro
 ####Arch/Arch-Based Distros:
 if [ $distro = "Arch" ]; then
     echo "Full or Minimal Installation?"
-    read answer
+    read install
 
-    if [ $answer = "Full" ]; then
+    if [ $install = "Minimal" ]; then
+        archupdate
+        pacmininstall
+        bashcfg
+
+        echo "Would you like an AUR helper?"
+        read aurhelp
+
+        if [ $aurhelp = "yes" ]; then
+        echo "What AUR Helper would you like?"
+        echo "aura(Haskell), paru(Rust), or yay(GO)?"
+        read aurhelper
+
+            if [ $aurhelper = "aura" ]; then
+                aurainstall
+            elif [ $aurhelper = "paru" ]; then
+                paruinstall
+            elif [ $aurhelper = "yay" ]; then
+                yayinstall
+            else
+                echo "Error in submission! Exiting now!"
+            fi
+        elif [ $aurhelp = "no" ]; then
+           echo "No aur helper selected. Proceeding to next step"
+        else
+            echo "Error in submission! Exiting now!"
+        fi
+
+    elif [ $install = "Full" ]; then
         archupdate
         pacfullinstall
-        paruinstall
         bashcfg
         zshcfg
         zshplugincfg
         zshspacepac
-        fishcfg
         alaccfg
         kittycfg
         vimcfg
         nvimcfg
         doomemacs
-    elif [ $answer = "Minimal" ]; then
-        archupdate
-        pacmininstall
-        bashcfg
+
+        echo "What AUR Helper would you like?"
+        echo "aura(Haskell), paru(Rust), or yay(GO)?"
+        read helper
+        if [ $helper = "aura" ]; then
+           aurainstall
+        elif [ $helper = "paru" ]; then
+            paruinstall
+        elif [ $helper = "yay" ]; then
+            yayinstall
+        else
+            echo "Error in submission! Exiting now!"
+        fi
+
+        echo "What Desktop Environment/Window Manager would you like?"
+        read dewm
+        if [ $dewm = "xfce4" ]; then
+            xfceinstall
+        elif [ $dewm = "plasma" ]; then
+            kdeinstall
+        elif [ $dewm = "qtile" ]; then
+            qtileinstall
+
+            echo "What display server would you like?"
+            read dispserver
+
+            if [ $dispserver = "xorg" ]; then
+                xorginstall
+            elif [ $dispserver = "wayland" ]; then
+                waylandinstall
+            else
+                echo "Error in submission! Exiting now!"
+            fi
+        elif [ $dewm = "i3-gaps" ]; then
+            i3install
+
+            echo "What display server would you like?"
+            read dispserver
+
+            if [ $dispserver = "xorg" ]; then
+                xorginstall
+            elif [ $dispserver = "wayland" ]; then
+                waylandinstall
+            else
+                echo "Error in submission! Exiting now!"
+            fi
+        else
+            echo "Error in submission! Exiting now!"
+        fi
     else
-        echo "Error!"
+        echo "Error in submission! Exiting now!"
     fi
 fi
-
-echo "Script has now completed"
-echo "Exiting now"
-exit 0
