@@ -5,7 +5,7 @@ import psutil
 
 from libqtile import qtile
 from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -16,12 +16,13 @@ mod = "mod4"
 ##Application Variables:
 browser = ("librewolf")
 browser2 = ("brave")
-editor = ("vim")
+editor = ("kitty -e vim")
 geditor = ("emacsclient -c -a emacs")
 files = ("pcmanfm")
-music = ("spotify")
+#music = ("spotify")
+music = ("kitty -e cmus")
 terminal = ("kitty")
-terminal2 = ("alacritty")
+terminal2 = ("st")
 virt = ("virt-manager")
 
 ###Enable Autostart Script:
@@ -36,11 +37,11 @@ keys = [
     ##Applications:
     Key([mod], "b", lazy.spawn(browser),
         desc="Launch Primary Browser"),
-    Key([mod, "shift"], "b", lazy.spawn(browser2),
+    Key([mod, "mod1"], "b", lazy.spawn(browser2),
         desc="Launch Secondary Browser"),
     Key([mod], "e", lazy.spawn(geditor),
         desc="Launch GUI Editor"),
-    Key([mod, "shift"], "e", lazy.spawn(editor),
+    Key([mod, "mod1"], "e", lazy.spawn(editor),
         desc="Launch Text Editor"),
     Key([mod], "f", lazy.spawn(files),
         desc="Launch File Manager"),
@@ -50,7 +51,7 @@ keys = [
         desc="Launch Run Launcher"),
     Key([mod], "t", lazy.spawn(terminal),
         desc="Launch Primary Terminal Emulator"),
-    Key([mod, "shift"], "t", lazy.spawn(terminal2),
+    Key([mod, "mod1"], "t", lazy.spawn(terminal2),
         desc="Launch Secondary Terminal Emulator"),
     Key([mod], "v", lazy.spawn(virt),
         desc="Launch Virtualization Host"),
@@ -124,6 +125,29 @@ keys = [
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%"),
         desc="Lower Volume"),
 
+    ##Key Chords:
+    KeyChord(["mod1"], "t", [
+        Key([], "s", lazy.spawn("tabbed -r 2 st -w ''"),
+            desc="Launch ST Terminal"),
+        Key([], "t", lazy.spawn(terminal),
+            desc="Launch Primary Terminal"),
+    ]),
+    KeyChord(["mod1"], "m", [
+        Key([], "c", lazy.spawn("kitty -e cmus"),
+            desc="Launch cmus inside of kitty terminal"),
+        Key([], "v", lazy.spawn("vlc"),
+            desc="Launch VLC Media Player"),
+        Key([], "s", lazy.spawn("spotify"),
+            desc="Launch Spotify"),
+    ]),
+    KeyChord(["mod1"], "e", [
+        Key([], "e", lazy.spawn(geditor),
+            desc="Launch Primary GUI Editor"),
+        Key([], "v", lazy.spawn("kitty -e vim"),
+            desc="Launch Terminal with vim"),
+        Key([], "n", lazy.spawn("kitty -e nvim"),
+            desc="Launch Kitty Termian with neovim"),
+    ]),
 ]
 
 #####Groups(Workspaces):
@@ -131,7 +155,7 @@ groups = [
     Group('1', label="", matches=[Match()], layout="column"),
     Group('2', label="", matches=[Match()], layout="column"),
     Group('3', label="", matches=[Match()], layout="column"),
-    Group('4', label="", matches=[Match(wm_class='spotify')], layout="column"),
+    Group('4', label="", matches=[Match(wm_class='spotify')], layout="column"),
     Group('5', label="", matches=[Match()], layout="column"),
     Group('6', label="", matches=[Match()], layout="column"),
     Group('7', label="", matches=[Match()], layout="column"),
@@ -170,6 +194,7 @@ layouts = [
     layout.Max(
         border_width=0,
     ),
+    #Currently having issues with MonadTall
     #layout.MonadTall(
         #border_focus='#9508EC',
         #border_width=1,
@@ -182,17 +207,8 @@ layouts = [
     #),
     #layout.MonadWide(),
     #layout.RatioTle(),
-    #layout.Spiral(
-        #border_focus='#9508EC',
-        #clockwise=True,
-        #main_pane='left',
-        #margin=2
-    #),
-    #layout.Tile(
-        #border_focus='#9508EC',
-        #margin_on_single=False,
-        #margin=2
-    #),
+    #layout.Spiral(),
+    #layout.Tile(),
 ]
 
 ###Widgets & The Qtile Bar:
@@ -272,7 +288,7 @@ screens = [
                     execute = "kitty -e /home/$USER/Documents/scripts/sysupdate.sh",
                     no_update_string = 'None',
                     padding = 4,
-                    update_interval = 60
+                    update_interval = 600,
                 ),
                 widget.CheckUpdates(
                     background = colors[0],
@@ -284,7 +300,7 @@ screens = [
                     execute = "kitty -e /home/$USER/Documents/scripts/sysupdate.sh",
                     no_update_string = 'None',
                     padding = 4,
-                    update_interval = 60
+                    update_interval = 600
                 ),
                 widget.TextBox(
                     text = '',
@@ -329,6 +345,7 @@ screens = [
                     foreground = colors[6],
                     foreground_alert = colors[4],
                     metric = True,
+                    mouse_callbacks = {"Button1" : lazy.spawn("kitty -e sudo watch -n 0.5 cat /sys/kernel/debug/dri/0/amdgpu_pm_info")},
                     show_tag = False,
                     tag_sensor = 'edge',
                     update_interval = 1,
@@ -474,6 +491,90 @@ screens = [
                 ),
                 widget.WindowName(
                     foreground = colors[3],
+                ),
+                widget.TextBox(
+                    text = '',
+                    foreground = colors[0],
+                    padding = -7,
+                    fontsize = 54
+                ),
+                widget.Cmus(
+                    background = colors[0],
+                    foreground = colors[6],
+                    noplay_color = 'cecece',
+                    padding = 2,
+                    play_color = colors[2],
+                    update_interval = 0.5,
+                    ),
+                widget.TextBox(
+                    text = '',
+                    background = colors[0],
+                    foreground = colors[1],
+                    padding = -7,
+                    fontsize = 54,
+                ),
+                widget.TextBox(
+                    text = ' ',
+                    background = colors[1],
+                    foreground = colors[3],
+                    fontsize = 20
+                ),
+                widget.ThermalSensor(
+                    background = colors[1],
+                    foreground = colors[3],
+                    foreground_alert = colors[5],
+                    metric = True,
+                    mouse_callbacks = {"Button1" : lazy.spawn("kitty -e htop -s PERCENT_CPU")},
+                    show_tag = False,
+                    tag_sensor = 'Tctl',
+                    threshold = 70,
+                    update_interval = 1,
+                ),
+                widget.CPU(
+                    background = colors[1],
+                    foreground = colors[3],
+                    format = '/ {load_percent}%',
+                    mouse_callbacks = {"Button1" : lazy.spawn("kitty -e htop -s PERCENT_CPU")},
+                    padding = 2,
+                ),
+                widget.TextBox(
+                    text = '',
+                    background = colors[1],
+                    foreground = colors[0],
+                    padding = -7,
+                    fontsize = 54
+                ),
+                widget.ThermalSensor(
+                    background = colors[0],
+                    foreground = colors[6],
+                    foreground_alert = colors[4],
+                    metric = True,
+                    mouse_callbacks = {"Button1" : lazy.spawn("kitty -e sudo watch -n 0.5 cat /sys/kernel/debug/dri/0/amdgpu_pm_info")},
+                    show_tag = False,
+                    tag_sensor = 'edge',
+                    update_interval = 1,
+                ),
+                widget.TextBox(
+                    text = '',
+                    background = colors[0],
+                    foreground = colors[5],
+                    padding = -7,
+                    fontsize = 54
+                ),
+                widget.TextBox(
+                    text = ' ',
+                    background = colors[5],
+                    foreground = colors[1],
+                    textsize = 20
+                ),
+                widget.Memory(
+                    background = colors[5],
+                    foreground = colors[1],
+                    format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm} ',
+                    measure_mem = 'M',
+                    mouse_callbacks = {"Button1" : lazy.spawn("kitty -e htop -s PERCENT_MEM")},
+                    padding = 4,
+                    update_interval = 1.0,
                 ),
             ],
             26,
