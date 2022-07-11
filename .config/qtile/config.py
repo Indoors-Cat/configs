@@ -19,8 +19,7 @@ browser2 = ("brave")
 editor = ("kitty -e vim")
 geditor = ("emacsclient -c -a emacs")
 files = ("pcmanfm")
-#music = ("spotify")
-music = ("kitty -e cmus")
+music = ("st -e cmus")
 terminal = ("kitty")
 terminal2 = ("st")
 virt = ("virt-manager")
@@ -70,8 +69,6 @@ keys = [
         desc="Move Focus to Next Monitor"),
     Key([mod], "comma", lazy.prev_screen(),
         desc="Move Focus to Previous Monitor"),
-    Key([mod], "Return", lazy.layout.toggle_split(),
-        desc="Make window with focus full height when in a stack"),
 
     #Moving Windows:
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
@@ -95,9 +92,16 @@ keys = [
     Key([mod], "n", lazy.layout.normalize(),
         desc="Reset Window Sizes"),
 
+    ##Layout Bindings:
+    #Columns:
+    Key([mod, "control", "shift"], "h", lazy.layout.swap_column_left(),
+        desc="Switch column to left side"),
+    Key([mod, "control", "shift"], "l", lazy.layout.swap_column_right(),
+        desc="Switch column to right side"),
+    Key([mod], "n", lazy.layout.normalize(),
+        desc="Reset window sizing to default"),
+
     ##Layout Management:
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
-        desc="Toggle Split & Unsplit Sides of Stack"),
     Key([mod], "Tab", lazy.next_layout(),
         desc="Toggle Layouts"),
 
@@ -108,6 +112,8 @@ keys = [
         desc="Reload Qtile Configuration"),
     Key([mod, "shift"], "q", lazy.shutdown(),
         desc="Shutdown Qtile"),
+    Key([mod], "Tab", lazy.next_layout(),
+        desc="Toggle Layouts"),
 
     ##Multimedia Keys: (Work in Progress)
     Key([], "XF86AudioNext", lazy.spawn("playerctl next"),
@@ -125,28 +131,66 @@ keys = [
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%"),
         desc="Lower Volume"),
 
-    ##Key Chords:
     KeyChord(["mod1"], "t", [
-        Key([], "s", lazy.spawn("tabbed -r 2 st -w ''"),
-            desc="Launch ST Terminal"),
-        Key([], "t", lazy.spawn(terminal),
-            desc="Launch Primary Terminal"),
+        KeyChord([], "a", [
+            Key([], "b", lazy.spawn("alacritty -e bash"),
+                desc="Launch Alacritty with the Bash Shell"),
+            Key([], "z", lazy.spawn("alacritty -e zsh"),
+                desc="Launch Alacritty with the Z Shell"),
+        ]),
+        KeyChord([], "k", [
+            Key([], "b", lazy.spawn("kitty -e bash"),
+                desc="Launch Kitty with the Bash Shell"),
+            Key([], "z", lazy.spawn("kitty -e zsh"),
+                desc="Launch Kitty with the Z Shell"),
+        ]),
+        KeyChord([], "s", [
+            Key([], "b", lazy.spawn("st -e bash"),
+                desc="Launch ST with the Bash Shell"),
+            Key([], "z", lazy.spawn("st -e zsh"),
+                desc="Launch ST with the Z Shell"),
+        ]),
     ]),
+
     KeyChord(["mod1"], "m", [
-        Key([], "c", lazy.spawn("kitty -e cmus"),
-            desc="Launch cmus inside of kitty terminal"),
-        Key([], "v", lazy.spawn("vlc"),
-            desc="Launch VLC Media Player"),
+        Key([], "c", lazy.spawn("st -e cmus"),
+            desc="Launch cmus inside of ST"),
         Key([], "s", lazy.spawn("spotify"),
             desc="Launch Spotify"),
+        Key([], "v", lazy.spawn("vlc"),
+            desc="Launch VLC Media Player"),
     ]),
+
     KeyChord(["mod1"], "e", [
         Key([], "e", lazy.spawn(geditor),
             desc="Launch Primary GUI Editor"),
-        Key([], "v", lazy.spawn("kitty -e vim"),
-            desc="Launch Terminal with vim"),
         Key([], "n", lazy.spawn("kitty -e nvim"),
-            desc="Launch Kitty Termian with neovim"),
+            desc="Launch Neovim inside Kitty Terminal"),
+        Key([], "v", lazy.spawn("kitty -e vim"),
+            desc="Launch Vim inside Kitty Terminal"),
+    ]),
+
+    KeyChord(["mod1"], "b", [
+        KeyChord([], "b", [
+            Key([], "b", lazy.spawn("brave"),
+                desc="Launch Brave Browser normally"),
+            Key([], "d", lazy.spawn("brave duckduckgo.com"),
+                desc="Launch Brave Browser & open duckduckgo.com"),
+            Key([], "p", lazy.spawn("brave --incognito"),
+                desc="Launch Brave Browser in Incognito Window"),
+        ]),
+        KeyChord([], "f", [
+            Key([], "f", lazy.spawn("firefox"),
+                desc="Launch FireFox normally"),
+            Key([], "p", lazy.spawn("firefox --private"),
+                desc="Launch FireFox Browswer in Private Window"),
+        ]),
+        KeyChord([], "l", [
+            Key([], "l", lazy.spawn("librewolf"),
+                desc="Launch Librewolf normally"),
+            Key([], "p", lazy.spawn("librewolf --private-window"),
+                desc="Launch Librewolf Browser in Private Window"),
+        ]),
     ]),
 ]
 
@@ -161,7 +205,7 @@ groups = [
     Group('7', label="", matches=[Match()], layout="column"),
     Group('8', label="", matches=[Match(wm_class="virt-manager")], layout="column"),
     Group('9', label="", matches=[Match()], layout="column"),
-    Group('0', label="", matches=[Match(wm_class='ckb-next')], layout="column")
+    Group('0', label="", matches=[Match()], layout="column")
 ]
 
 for i in groups:
@@ -189,10 +233,16 @@ layouts = [
         border_focus_stack=["#12b3c2", "#25757c"],
         border_on_single=False,
         border_width=1,
-        margin=2
+        fair=False,
+        grow_amount=10,
+        margin=2,
+        margin_on_single=None,
+        num_columns=2,
+        split=True,
     ),
     layout.Max(
         border_width=0,
+        margin=0,
     ),
     #Currently having issues with MonadTall
     #layout.MonadTall(
@@ -288,7 +338,7 @@ screens = [
                     execute = "kitty -e /home/$USER/Documents/scripts/sysupdate.sh",
                     no_update_string = 'None',
                     padding = 4,
-                    update_interval = 600,
+                    update_interval = 3600,
                 ),
                 widget.CheckUpdates(
                     background = colors[0],
@@ -300,7 +350,7 @@ screens = [
                     execute = "kitty -e /home/$USER/Documents/scripts/sysupdate.sh",
                     no_update_string = 'None',
                     padding = 4,
-                    update_interval = 600
+                    update_interval = 3600
                 ),
                 widget.TextBox(
                     text = '',
@@ -504,7 +554,7 @@ screens = [
                     noplay_color = 'cecece',
                     padding = 2,
                     play_color = colors[2],
-                    update_interval = 0.5,
+                    update_interval = 1,
                     ),
                 widget.TextBox(
                     text = '',
@@ -591,11 +641,12 @@ mouse = [
     Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
 ]
 
-dgroups_key_binder = None
-dgroups_app_rules = []
-follow_mouse_focus = True
+###Qtile Boolean Configuration Variables:
+auto_fullscreen = True
 bring_front_click = False
-cursor_warp = False
+cursor_warp = True
+dgroups_key_binder = None
+dgroup_app_rules = []
 floating_layout = layout.Floating(
     float_rules=[
         *layout.Floating.default_float_rules,
@@ -607,12 +658,10 @@ floating_layout = layout.Floating(
         Match(title="pinentry"),
     ]
 )
-
-auto_fullscreen = True
 focus_on_window_activation = "smart"
-reconfigure_screens = True
-auto_minimize = True
-wl_input_rules = None
 follow_mouse_focus = True
-
+reconfigure_screens = True
 wmname = "Qtile"
+auto_minimize = True
+
+wl_input_rules = None
