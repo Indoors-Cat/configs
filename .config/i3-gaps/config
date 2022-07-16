@@ -1,41 +1,69 @@
-###Depenedencies: i3-gaps, i3status, python-i3ipc (Optional: i3lock-color, autotiling, betterlockscreen-git, i3status-rust)
-###Key definitions to remember:
-# $MOD = Windows/Super key or Mod4
-# Mod1 = ALT key
-# KP_Enter = Kepad Enter
-# Pause = PAUSE key
-# Print = PRINT key
+#####Dependencies: i3-gaps, i3status, python-i3ipc (Optional: i3lock-color, autotiling, betterlockscreen-git, i3status-rust)
+####Key Names Guide:
+# Mod1 = ALT Key
+# Mod4 = Super/Windows Key
+# KP_Enter = Keypad Enter
+# Pause = PAUSE Key
+# Print = PRINT Key
 
-### Define the $mod variable/key
-# Key to rule them all : Super(Windows) or Alt Key?
+###Autostart:
+exec_always --no-startup-id autotiling &
+exec --no-startup-id nitrogen --restore &
+exec_always --no-startup-id picom --config ~/.config/i3/picom.conf &
+exec_always --no-startup-id /usr/local/bin/emacs --daemon &
 
+###i3 Gaps:
+for_window [class="^.*"] border pixel 2
+gaps inner 4
+gaps outer 2
+
+###i3 Font:
+font pango:Noto Mono Regular 12
+
+###Border Control:
+hide_edge_borders both
+new_window normal
+new_float normal
+
+###Window Rules:
+for_window [class="Alacritty"] focus
+for_window [class="Kitty"] focus
+
+###Assigning Applications to Workspaces:
+#Workspace1:
+#assign [class="Firefox"]
+#  -> 1
+
+###Popup Control:
+popup_during_fullscreen smart
+
+###Defining Variables:
+##Mod Key:
 set $mod Mod4
 
-### Define the movement keys - variables
-
-set $up k
-set $down j
+##Movement Keys:
 set $left h
+set $down j
+set $up k
 set $right l
 
-###Software variables:
-set $browser librewolf
+##Application Variables:
+#Browsers:
+set $browser firefox
 set $browser2 brave
-
-set $edit emacs
-set $edit2 neovide
-
+#Editors:
+set $edit alacritty -e vim
+set $gedit emacsclient -c -a 'emacs'
+#File Managers:
+set $files pcmanfm
+#Terminals:
 set $term alacritty
 set $term2 kitty
 
-### Single or Dual screen:
-## Setting variables for later use:
-## Use xrandr or arandr to know the names of your mointor(s)
-exec --no-startup-id xrandr --output HDMI2 --right-of HDMI1 --auto
+###Setting Screens:
+set $firstMonitor Screen0
 
-set $firstMonitor DisplayPort1
-set $secondMonitor HDMI0
-
+###Setting Workspaces:
 workspace 1 output $firstMonitor
 workspace 2 output $firstMonitor
 workspace 3 output $firstMonitor
@@ -47,26 +75,17 @@ workspace 8 output $firstMonitor
 workspace 9 output $firstMonitor
 workspace 10 output $firstMonitor
 
-workspace 1 output $secondMonitor
-workspace 2 output $secondMonitor
-workspace 3 output $secondMonitor
-workspace 4 output $secondMonitor
-workspace 5 output $secondMonitor
-workspace 6 output $secondMonitor
-workspace 7 output $secondMonitor
-workspace 8 output $secondMonitor
-workspace 9 output $secondMonitor
-workspace 10 output $secondMonitor
-
-###My Keybindings:
-
+###Setting Keybindings:
 ##i3:
-#Restart i3
-bindsym $mod+Shift+r restart    
-#Recompile i3
-bindsym $mod+Shift+c reload     
+#Recompile i3:
+bindsym $mod+Shift+c reload
+#Restart i3:
+bindsym $mod+Shift+r restart
+#Kill i3:
+bindsym $mod+Shift+q --no-startup-id i3-msg exit
 
-## Switch to workspace:
+##Workspace & Window Management:
+#Switching Workspaces:
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -78,7 +97,7 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
-## Move focused container to workspace:
+#Move Window with Focus to Workspace:
 bindsym $mod+Shift+1 move container to workspace 1; workspace 1
 bindsym $mod+Shift+2 move container to workspace 2; workspace 2
 bindsym $mod+Shift+3 move container to workspace 3; workspace 3
@@ -90,179 +109,128 @@ bindsym $mod+Shift+8 move container to workspace 8; workspace 8
 bindsym $mod+Shift+9 move container to workspace 9; workspace 9
 bindsym $mod+Shift+0 move container to workspace 10; workspace 10
 
-##i3/System Submap:
-set $sys (b) bar, (p) picom, (r) recompile, (t) task-mgr, (v) volume, (x) logout, (space) float
+#Move Window Focus:
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+#Move Window with Focus:
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+#Cycling Workspaces:
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
+bindsym Mod1+Ctrl+Right workspace next
+bindsym Mod1+Ctrl+Left workspace prev
+
+#Layout Control:
+default_orientation horizontal
+bindsym $mod+Mod1+h split h
+bindsym $mod+Mod1+v split v
+bindsym $mod+Ctrl+f fullscreen toggle
+
+#Kill Window:
+bindsym $mod+q kill
+
+##Application Keybindings:
+bindsym $mod+b exec --no-startup-id $browser;focus
+bindsym $mod+Shift+b --no-startup-id $browser2;focus
+bindsym $mod+e exec --no-startup-id $gedit;focus
+bindsym $mod+Shift+e exec --no-startup-id $edit;focus
+bindsym $mod+f exec --no-startup-id $files;focus
+bindsym $mod+r exec dmenu_run
+#bindsym $mod+r exec rofi -show drun -show-icons
+#bindsym $mod+Shift+r exec rofi-theme-selector
+bindsym $mod+t exec --no-startup-id $term;focus
+bindsym $mod+Shift+t exec --no-startup-id $term2;focus
+bindsym $mod+w exec --no-startup-id nitrogen;focus
+
+###Setting KeyChords:
+##System Submap:
+set $sys (b) bar, (p) picom, (r) recompile, (t) task-mgr, (x) logout
 bindsym $mod+i mode "$sys"
         mode "$sys" {
              bindsym b bar mode toggle
-             bindsym Shift+b exec --no-startup-id i3-msg border toggle
              bindsym p exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
              bindsym r exec i3 reload && i3 restart
-             bindsym t exec --no-startup-id htop;focus
-             bindsym v exec --no-startup-id pavucontrol;focus
+             bindsym t exec alacritty -e htop;focus
              bindsym x exec --no-startup-id i3-msg exit
-             bindsym space floating toggle
 
              bindsym Escape mode "default"
         }
 
-##Resize Mode:
-set $resize (b,n,m) border, (h,j,k,l) resize
-bindsym $mod+r mode "$resize"
-        mode "$resize" {
-             bindsym b  border 1pixel
-             bindsym n  border normal
-             bindsym m  border none
-             bindsym h  resize shrink width 2 px or 2 ppt
-             bindsym j  resize grow height 2 px or 2 ppt
-             bindsym k  resize shrink height 2 px or 2 ppt
-             bindsym l  resize grow width 2 px or 2 ppt
-
-             bindsym Escape mode "default"
-        }
-
-##i3 Gaps:
-for_window [class="^.*"] border pixel 2
-gaps inner 5
-gaps outer 5
-
-set $mode_gaps Gaps: (o) outer, (i) inner
+##Size & Border Submap:
+set $mode_select (b) border, (g) gaps, (r) resize
+set $mode_border (b) bordered, (d) default, (n) none
+set $mode_gaps Gaps: (i) inner, (o) outer
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+g mode "$mode_gaps"
-        mode "$mode_gaps" {
-             bindsym o mode "$mode_gaps_outer"
-             bindsym i mode "$mode_gaps_inner"
+set $mode_resize (h), (j), (k), (l)
+bindsym $mod+s mode "$mode_select"
+        mode "$mode_select" {
+             bindsym b mode "$mode_border"
+             bindsym g mode "$mode_gaps"
+             bindsym r mode "$mode_resize"
 
              bindsym Escape mode "default"
         }
 
-        mode "$mode_gaps_outer" {
-             bindsym plus        gaps outer current plus 5
-             bindsym minus       gaps outer current minus 5
-             bindsym 0           gaps outer current set 0
-             bindsym Shift+plus  gaps outer all plus 5
-             bindsym Shift+minus gaps outer all minus 5
-             bindsym Shift+0     gaps outer all set 0
+        mode "$mode_border" {
+             bindsym b border 1pixel
+             bindsym d border normal
+             bindsym n border none
+
+             bindsym Escape mode "default"
+        }
+
+        mode "$mode_gaps" {
+             bindsym i mode "$mode_gaps_inner"
+             bindsym o mode "$mode_gaps_outer"
 
              bindsym Escape mode "default"
         }
 
         mode "$mode_gaps_inner" {
-             bindsym plus        gaps inner current plus 5
-             bindsym minus       gaps inner current minus 5
-             bindsym 0           gaps inner current set 0
-             bindsym Shift+plus  gaps inner all plus 5
-             bindsym Shift+minus gaps inner all minus 5
-             bindsym Shift+0     gaps inner all set 0
+             bindsym plus           gaps inner current plus 5
+             bindsym minus          gaps inner current minus 5
+             bindsym 0              gaps inner current set 0
+             bindsym Shift+plus     gaps inner all plus 5
+             bindsym Shift+minus    gaps inner all minus 5
+             bindsym Shift+0        gaps inner all set 0
 
              bindsym Escape mode "default"
         }
 
-##My Applications:
-bindsym $mod+t exec --no-startup-id $term;focus
-bindsym $mod+Shift+t exec --no-startup-id $term2;focus
-bindsym $mod+b exec --no-startup-id $browser;focus
-bindsym $mod+Shift+b exec --no-startup-id $browser2;focus
-bindsym $mod+e exec --no-startup-id $edit;focus
-bindsym $mod+Shift+e exec --no-startup-id $edit2;focus
-bindsym $mod+f exec --no-startup-id thunar;focus
-bindsym $mod+Shift+f exec --no-startup-id pcmanfm;focus
-bindsym $mod+m exec --no-startup-id spotify;focus
-bindsym $mod+w exec --no-startup-id nitrogen;focus
+        mode "$mode_gaps_outer" {
+             bindsym plus           gaps outer current plus 5
+             bindsym minus          gaps outer current minus 5
+             bindsym 0              gaps outer current set 0
+             bindsym Shift+plus     gaps outer all plus 5
+             bindsym Shift+minus    gaps outer all minus 5
+             bindsym Shift+0        gaps outer all set 0
 
+             bindsym Escape mode "default"
+        }
 
-##Run Prompts:
-bindsym $mod+Return exec rofi -show drun -show-icons    
-bindsym mod1+r exec --no-startup-id rofi-theme-selector 
-bindsym $mod+p exec --no-startup-id dmenu_run           
+        mode "$mode_resize" {
+             bindsym h resize shrink width 2 px or 2 ppt
+             #bindsym j resize grow heigth 2 px or 2 ppt
+             bindsym k resize shrink height 2 px or 2 ppt
+             bindsym l resize grow width 2 px or 2 ppt
 
-##Window Management:
-bindsym $mod+q kill
-
-
-#floating_modifier $mod --- use Mouse+$mod to drag floating windows
-#Use Super+direction to move focus
-bindsym $mod+$left focus left             
-bindsym $mod+$down focus down              
-bindsym $mod+$up focus up                  
-bindsym $mod+$right focus right            
-
-#Use Super+Shift+direction to move the window with focus
-bindsym $mod+Shift+$left move left        
-bindsym $mod+Shift+$down move down        
-bindsym $mod+Shift+$up move up            
-bindsym $mod+Shift+$right move right      
-
-#How to cycle through workspaces
-bindsym Mod1+Tab workspace next           
-bindsym Mod1+Shift+Tab workspace prev     
-bindsym Mod1+Ctrl+Right workspace next    
-bindsym Mod1+Ctrl+Left workspace prev     
-for_window [urgent=latest] focus          
-
-default_orientation horizontal            
-bindsym $mod+Mod1+h split h               
-bindsym $mod+Mod1+v split v               
-bindsym $mod+Ctrl+f fullscreen toggle     
-#bindsym $mod+n layout stacking            
-#bindsym $mod+m layout tabbed              
-#bindsym $mod+, layout toggle split        
-#bindsym $mod+Mod1+space focus mode_toggle 
-
-##Audio Control:
-bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse sset Master '5%+'"
-bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse sset Master '5%-'"
-bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master toggle"
-#https://github.com/acrisci/playerctl/
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioStop exec --no-startup-id playerctl stop
-
-##Brightness Control:
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
-
-###Font:
-font pango:Noto Mono Regular 13
-
-###Assigning applications to workspaces:
-##Workspace 1:
-#assign [class="Firefox|Brave]
-#  -> 1
-
-###Autostart:
-exec_always --no-startup-id autotiling &
-exec nitrogen --restore &
-exec_always --no-startup-id picom --config ~/.config/i3/picom.conf &
-exec radeon-profile --no-startup-id &
-
-###System Applications:
-exec_always --no-startup-id /home/$USER/.screenlayout/monitorlayout.sh &
-exec_always --no-startup-id radeon-profile-daemon &
-exec_always --no-startup-id /usr/bin/emacs --daemon &
-exec_always --no-startup-id ckb-next &
-
-###Window Rules:
-for_window [class="Pavucontrol"] floating disabled            #Disable floating mode
-for_window [class="Kitty"] focus                              #Give focus to kitty
-for_window [class="Alacritty"] focus
-
-###Border Control:
-hide_edge_borders both
-new_window normal
-new_float normal
-
-###Popups Control:
-popup_during_fullscreen smart
+             bindsym Escape mode "default"
+        }
 
 ###Bar Appearance:
 bar {
 
-    height 20
+    height 24
     workspace_buttons yes
-    font pango:Noto Sans 14
+    font pango:Noto Sans 9
 
     position top
     #position bottom
@@ -270,9 +238,6 @@ bar {
     #system icons
     #tray_output none
     #tray_output $firstMonitor
-    #tray_output $secondMonitor
-
-
 
     # OPTION 1 : i3status
 
@@ -292,6 +257,7 @@ bar {
     # put hastag in front if not installed
 
     #status_command i3blocks
+    #status_command i3blocks -c ~/.config/i3/i3blocks/config
     #status_command i3blocks -c ~/.config/i3/i3blocks.conf
     #status_command i3blocks -c ~/.config/i3/i3blocks-rainbow.conf
     #status_command i3blocks -c ~/.config/i3/i3blocks-original.conf
@@ -338,5 +304,3 @@ bar {
     client.urgent           #d42121 #d42121 #f7f7f7 #d42121
 
     client.background       #242424
-
-
