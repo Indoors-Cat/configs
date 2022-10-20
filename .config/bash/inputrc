@@ -1,0 +1,19 @@
+###Input configuration file for readline
+#
+#Color files by type:
+set colored-stats on
+
+#Append character to indicate type
+set visible-stats on
+
+#Mark symlinked directories:
+set mark-symlinked-directories on
+
+#Color the common prefixes:
+set colored-completion-prefix on
+
+#Color the common prefix in menu-completion:
+set menu-complete-display-prefix on
+
+#Set double tab to act as both single and double tab:
+set show-all-if-ambiguous on
