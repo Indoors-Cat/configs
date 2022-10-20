@@ -1,0 +1,94 @@
+" __  __           _   _       _               ____             __ _
+"|  \/  |_   _    | \ | |_   _(_)_ __ ___     / ___|___  _ __  / _(_) __ _
+"| |\/| | | | |   |  \| \ \ / / | '_ ` _ \   | |   / _ \| '_ \| |_| |/ _` |
+"| |  | | |_| |   | |\  |\ V /| | | | | | |  | |__| (_) | | | |  _| | (_| |
+"|_|  |_|\__, |___|_| \_| \_/ |_|_| |_| |_|___\____\___/|_| |_|_| |_|\__, |
+"        |___/_____|                     |_____|                     |___/
+"
+"""
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set shell=/bin/bash
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-plug for Managing Plugins
+"sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+"      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Specify a Directory for Plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+    Plug 'itchyny/lightline.vim'                        " Lightline statusbar
+    Plug 'frazrepo/vim-rainbow'                         " 
+" {{Themes}}
+    Plug 'drewtempelmeyer/palenight.vim'                	" Palenight Theme
+    Plug 'sonph/onehalf', { 'rtp': 'vim' }              	" Onehalf light/dark Theme
+    Plug 'dracula/vim', {'as': 'dracula'}               	" Dracula Theme
+    Plug 'shaunsingh/moonlight.nvim'                    	" Moonlight Theme
+    Plug 'gruvbox-community/gruvbox'                    	" Gruvbox Theme
+    Plug 'EdenEast/nightfox.nvim'                           " Nightfox Theme
+
+" {{Utilities}}
+    Plug 'jiangmiao/auto-pairs'                         	" Auto pair '[] {} ()' 
+    Plug 'scrooloose/nerdtree'                          	" Terminal file explorer
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'      	" Highlighting for nerdtree
+    Plug 'ryanoasis/vim-devicons'                       	" Icons for nerdtree
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdtae'}
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'kyazdani42/nvim-tree.lua'
+    
+" Initialize plugin system
+call plug#end()
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vim-plug for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme nordfox
+set nobackup						        " Disables auto backups
+set noswapfile						        " Disables swap
+set t_Co=256						        " Set if terminal supports 256 colors
+set number 			                                " Display line numbers
+syntax enable
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Key Remaps
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Remap ESC to 'jk'
+:imap jk <ESC>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => StatusLine 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" The lightline.vim theme 
+let g:lightline = {
+    \ 'colorscheme': 'dracula',
+    \ } 
+"
+" Always show statusline set laststatus=2 
+" Uncomment to prevent non-normal modes showing in powerline and below powerline. 
+" set noshowmode
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, Tab, and Indents
+""""""""""""""""""""""""""""""""""""""""""""""""""""""	
+set expandtab							" Use spaces insteaf of tabs
+set smarttab							" 
+set shiftwidth=4						" One tab == four spaces
+set tabstop=4 							" One tab == four spaces
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" => Mouse Scrolling 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set mouse=nicr
