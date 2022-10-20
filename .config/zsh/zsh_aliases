@@ -1,0 +1,145 @@
+#####Aliases for the Z-Shell(ZSH):
+####Check README.md for dependencies:
+
+###Package Managers:
+##Arch:
+  #pacman:
+    #alias pacup='sudo pacman -Syu'            	    #Update standard package(s)
+    #alias pacin='sudo pacman -S'            	    #Install package(s)
+    #alias pacrem='sudo pacman -R'           	    #Remove package(s)
+    #alias pacremall='sudo pacman -Rncs'		    #Remove package(s) and all dependencies
+    #alias pacq='pacman -Si'                        #Search for package(s) & display information {External}
+    #alias pacsrch='pacman -Qi'         	        #Search for package(s) & display information {Internal}
+  #yay(GO)
+    #alias yaysua='yay -Sua'            	        #Updates only AUR package(s)
+    #alias yayrem='yay -R'              	        #Remove package(s)
+    #alias yayq='yay -Si'                           #Search for package(s) & display information {External}
+    #alias yaysearch='yay -Qi'           	        #Search for package(s) & display information {Internal}
+  #paru(RUST)
+    #alias parusua='paru -Sua'          	        #Updates only AUR package(s)
+    #alias parurem='paru -R'            	        #Remove package(s)
+    #alias paruq='paru -Si'                         #Search for package(s) & display information {External}
+    #alias parusearch='paru -Qi'         	        #Search for package(s) & display information {Internal}
+
+##Debian/Ubuntu:
+  #apt/apt-get:
+    #alias up='sudo apt-get update'                 #Sync repositories & update package list
+    #alias upg='sudo apt-get upgrade'               #Apply update(s) to system
+    #alias install='sudo apt install'               #Install package(s)
+    #alias remove='sudo apt remove'                 #Remove package(s)
+    #alias purge='sudo apt purge'                   #Purge package(s) & dependencies
+    #alias atrm='sudo autoremove'                   #Clean up any orphaned package(s) & dependencies
+  #nala:
+    #alias apt='sudo nala'                          #Replace apt with nala (Needs better solution)
+    #alias up='sudo nala update'                    #Sync repositories & update package list
+    #alias upg='sudo nala upgrade'                  #Download & apply update(s) to the system
+    #alias install='sudo nala install'              #Install package(s)
+    #alias remove='sudo nala remove'                #Remove package(s)
+    #alias purge='sudo nala purge'                  #Purge package(s) & configuration files
+    #alias nalahist='sudo nala history'             #Show nala's history of package manipulation
+  #pacstall:('AUR' for Debian/Ubuntu)
+    #alias pacup='pacstall -Up'                     #Update package(s) that have newer versions
+    #alias pacin='pacstall -I'                      #Install packge(s) or pacscript
+    #alias pacrem='pacstall -R'                     #Remove package(s)
+    #alias pacsrch='pacstall -S'                    #Search for a package
+
+ ##Fedora:(Future project)
+  #dnf:
+
+##Navigation Shortcuts:
+    alias ..='cd ..'				                #Go up one directory
+    alias .2='cd ../..'				                #Go up two directories
+    alias .3='cd ../../..'				            #Go up three directories
+
+##General/Misc Aliases:
+    alias c='clear'                                 #Clear screen
+    #alias c='clear && neofetch'                    #Clear screen & display neofetch
+    alias h='history'                               #Show command history
+    #alias update-grub='grub-mkconfig -o /boot/grub/grub.cfg'
+
+###Adding Flags to Default Commands:
+ ##Moving Files:
+    alias cp='cp -i'                                #Interactive copying of file
+    alias mv='mv -i'                                #Interactive moving of file
+    alias rm='rm -i'                                #Interactive removing of file
+ ##Resource Monitoring:
+    alias df='df -h'                                #Show disk space in human-readable format
+    alias free='free -m'                            #Show memory(RAM) usage in MB
+ ##Adding color to standard commands:
+    alias ls='ls -lAh --color=always'               #ls with color in list format
+    alias sl='ls -lAhr --color=always'              #ls with color in reverse list format
+    alias ll='ls -l --color=always'                 #ls with color in list format
+    alias la='ls -a --color=always'                 #ls with color showing all
+
+###Command Swaps:
+ ##'ls' to 'exa':
+    #alias ls='exa -al --icons'		                #ls listing all in list format
+    #alias sl='exa -alr --icons'                    #ls listing all in reverse list format
+    #alias la='exa -a --icons'		                #ls listing all
+    #alias ll='exa -l --icons'		                #ls list format
+    #alias lr='exa -ar --icons'                     #ls all files recursively
+ ##'cat' to 'bat':
+    #alias cat='bat'                                #Use bat instead of cat
+ ##'du' to 'dust':
+    #alias du='dust'                                #Use dust instead of du
+ ##'df' to 'duf':
+    #alias df='duf'                                 #Use duf instead of df
+ ##'ps' to 'procs':
+    #alias ps='procs'                               #Use procs instead of ps
+ ##'grep' to 'ripgrep':
+    #alias grep='rg'                                #Use ripgrep instead of grep
+
+##Power Commands:
+  #Linux:
+    alias shutdown='sudo shutdown now'              #Shutdown system
+    alias reboot='sudo reboot now'                  #Reboot system
+  #BSD:
+    #alias shutdown='poweroff'                      #Shutdown system
+    #alias reboot='init 6'                          #Reboot system
+
+##Text Editor & Config File Aliases
+  #VIM ALIASES:
+    #alias v='vim'					                #Aliases for vim editor
+    #alias vbash='vim ~/.bashrc'			        #Open bashrc in vim
+    #alias vv='vim ~/.vimrc'			            #Open vimrc in vim
+    #alias vnv='vim ~/.config/nvim/init.vim'	    #Open neovim config file in vim
+    #alias vzsh='vim ~/.zshrc'			            #Open zshrc in vim
+  #NEOVIM ALIASES:
+    #alias vim='nvim'				                #Alias to replace vim with neovim
+    #alias nvbash='nvim ~/.bashrc'			        #Open bash config in neovim
+    #alias nvv='nvim ~/.vimrc'			            #Open vim config in neovim
+    #alias nvnv='nvim ~/.config/nvim/init.vim'	    #Open neovim config in neovim
+    #alias nvzsh='nvim ~/.zshrc'			        #Open zshrc in neovim
+  #DOOM-EMACS ALIASES:
+    #alias doomhelp='~/.emacs.d/bin/doom help'      #Show a list of avialble doom commands
+    #alias doomsync='~/.emacs.d/bin/doom sync'      #Sync config with Doom Emacs
+    #alias doomupg='~/.emacs.d/bin/doom upgrade'    #Update Doom Emacs & its package(s)
+    #alias doomdoc='~/.emacs.d/bin/doom doctor'     #Diagnostic tool for Doom Emacs
+    #alias doompurge='~/.emacs.d/bin/doom purge'    #Delete old, orphaned package(s)
+    #alias doominfo='~/.emacs.d/bin/doom info'      #Output system info in markdown
+    #alias doomver='~/.emacs.d/bin/doom version'    #Show version infor for Doom & Emacs
+
+##Application Specific Aliases:
+  #Timeshift (BTRFS) Aliases:
+    #alias timelistsnap='sudo timeshift --list-snapshots'    #List snapshots
+    #alias timelistdev='sudo timeshift --list-devices'       #List devices
+    #alias timecheck='sudo timeshift --check'                #Create snapshot if scheduled
+    #alias timesnap='sudo timeshift --create'                #Create snapshot
+    #alias timerestore='sudo timeshift --restore'            #Restore from snapshot
+    #alias timeremsnap='sudo timeshift --delete --snapshot'  #Delete specified snapshot(s)
+
+  ##'liquidctl' Aliases (Corsair Commander Pro):
+    #alias liqlist='sudo liquidctl list'			         #List available devices
+    #alias liqstart='sudo liquidctl initialize'		         #Initialize all available device(s)
+    #alias liqstat='sudo liquidctl status'			         #Show status of available device(s)
+    #alias fan1start='sudo liquidctl set fan1 speed 60'	     #Set fan1 to 60% speed
+    #alias fan2start='sudo liquidctl set fan2 speed 60'	     #Set fan2 to 60% speed
+    #alias fan3start='sudo liquidctl set fan3 speed 60'	     #Set fan3 to 60% speed
+
+  ##Surfshark-VPN Aliases:
+    #alias vpn='sudo surfshark-vpn'                          #Connect Surfshark-VPN
+    #alias vpnup='sudo surfshark-vpn attack'                 #Quick connect to nearest server
+    #alias vpnmulti='sudo surfshark-vpn multi'               #Connects to multi-hop server
+    #alias vpndown='sudo surfshark-vpn down'                 #Disconnects vpn
+    #alias vpnstat='sudo surfshark-vpn status'               #Show vpn status
+    #alias vpnver='sudo surfshark-vpn version'               #Show surfshark-vpn version
