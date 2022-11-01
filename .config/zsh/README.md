@@ -1,104 +1,207 @@
-*Dependencies for Bournce Again(Bash) Shell
+# Dependencies for Z-Shell
 
-**Arch Linux:
-    ***Arch Repositories:
-        bat
-        duf
-        dust
-        exa
-        liquidctl
-        neofetch
-        neovim
-        procs
-        ripgrep
-        vim
-        zsh
+## Arch Linux:
+### Arch Repositories:
+<!-- Unordered List -->
+* bat
+* duf 
+* dust
+* exa
+* liquidctl
+* neofetch
+* neovim
+* procs
+* ripgrep
+* vim
+* zsh
+<!-- Bash Script Block -->
+```bash
+sudo pacman -S bat duf dust exa liquidctl neofetch neovim procs ripgrep vim zsh
+```
+### Arch User Repository:
+<!-- Unordered List -->
+* surfshark-vpn
+* timeshift
+    * Can use timeshift-bin if desired
+<!-- Bash Script Block -->
+```bash
+sudo paru -S surfshark-vpn timeshift
+```
 
-    ***AUR:
-        surfshark-vpn
-        timeshift
+### Other:
+<!-- Unordered List -->
+* Doom Emacs(git)
+<!-- Bash Script Block -->
+```bash
+git clone https://github.com/doomemacs/doomemacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+```
+* paru(makepkg)
+    * Could use /paru-bin.git instead for prebuilt binary
+<!-- Bash Script Block -->
+```bash
+git clone https://aur.archlinux.org/paru.git
+cd paru && makepkg -si
+```
+* yay(makepkg)
+    * Could use /yay-bin.git instead for prebuilt binary
+<!-- Bash Script Block -->
+```bash
+git clone https://aur.archlinux.org/yay.git
+cd yay && makepkg -si
+```
+---
+## Debian/Ubuntu:
+### Standard Repositories:
+<!-- Unordered List -->
+* bat
+* exa
+* liquidctl
+* neofetch
+* neovim(This is version 0.4.4-1 which does NOT use Lua)
+* ripgrep
+* timeshift
+* vim
+* zsh
+<!-- Bash Script Block -->
+```bash
+sudo apt-get update
+sudo apt install bat exa liquidctl neofetch neovim ripgrep timeshift vim zsh
+```
 
-    ***Other:
-        doom emacs(git)
-            git clone https://github.com/doomemacs/doomemacs ~/.emacs.d
-            ~/.emacs.d/bin/doom install
-        paru(makepkg)
-            git clone https://aur.archlinux.org/paru.git --Use /paru-bin.git for precombiled binary
-            cd paru && makepkg -si
-        yay(makepkg)
-            git clone https://aur.archlinux.org/yay.git --Use /yay-bin.git for precompiled binary
-            cd yay & makepkg -si
+### Pacstall:
+<!-- Unordered List -->
+* duf-deb
+* dust-bin
+* neovim(This is version 0.8.0)
+* surfshark-gui-deb
+<!-- Bash Script Block -->
+```bash
+pacstall -I duf-deb dust-bin neovim surfshark-gui-deb
+```
 
-**Debian/Ubuntu:
-    ***Standard Repositories:
-        bat
-        exa
-        liquidctl
-        neofetch
-        neovim(This is version 0.4.4-1 which does NOT use the Lua language)
-        ripgrep
-        timeshift
-        vim
-        zsh
+### Other:
+<!-- Unordered List -->
+* Doom Emacs(git)
+<!-- Bash Script Block -->
+```bash
+git clone https://github.com/doomemacs/doomemacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+```
+* pacstall(wget)
+<!-- Bash Script Block -->
+```bash
+sudo bash -c "$(wget -q https://git.io/JsADh -O -)"
+```
+* procs(cargo)
+<!-- Bash Script Block -->
+```bash
+cargo install procs
+```
 
-    ***Pacstall:
-        duf-deb
-        dust-bin
-        neovim(This is version 0.8.0)
-        surfshark-gui-deb
+## Fedora: (Future)
 
-    ***Other:
-        doom emacs(git)
-            git clone https://github.com/doomemacs/doomemacs ~/.emacs.d
-            ~/.emacs.d/bin/doom install
-        pacstall(wget)
-            sudo bash -c "$(wget -q https://git.io/JsADh -O -)"
-        procs(cargo)
+---
+## Plugins for ZSH:
+### ZSH-Syntax-Highlighting:
+#### Clone the repository:
+<!-- Bash Script Block -->
+```bash
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+```
+#### Source in your .zshrc
+Example:
+<!-- Bash Script Block -->
+```bash
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+```
 
-**Fedora: (Future)
+### ZSH-Auto-Suggestions:
+#### Clone the repository:
+<!-- Bash Script Block -->
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions
+```
+#### Source in your .zshrc
+Example:
+<!-- Bash Script Block -->
+```bash
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+```
 
-*Plugins for ZSH:
-    ** zsh-syntax-highlighting:
-        *** git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-        *** source in your .zshrc
-    **** example: source ~/.config/zsh/zsh-syntax-highlighting/zshsyntax-highlighting.zsh
+### ZSH-Auto-Notify:
+#### Clone the repository:
+<!-- Bash Script Block -->
+```bash
+git clone https://github.com/MichaelAquilina/zsh-auto-notify.git
+```
+#### Source in your .zshrc
+Example:
+<!-- Bash Script Block -->
+```bash
+source ~/.config/zsh/zsh-auto-notify/zsh-auto-notify.zsh
+```
 
-    ** zsh-auto-suggestions:
-        *** git clone https://github.com/zsh-users/zsh-autosuggestions
-        *** source in your .zshrc
-    **** example: source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+### ZSH-History-Substring-Search:
+#### Clone the repository:
+<!-- Bash Script Block -->
+```bash
+git clone https://github.com/zsh-users/zsh-history-substring-search.git
+```
+#### Source in your .zshrc
+Example:
+<!-- Bash Script Block -->
+```bash
+source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+```
 
-    ** zsh-auto-notify:
-        *** git clone https://github.com/MichaelAquilina/zsh-auto-notify.git
-        *** source in your .zshrc
-    **** example: source ~/.config/zsh/zsh-auto-notify/zsh-auto-notify.zsh
+### ZSH-You-Should-Use:
+#### Clone the repository:
+<!-- Bash Script Block -->
+```bash
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git
+```
+#### Source in your .zshrc
+Example:
+<!-- Bash Script Block -->
+```bash
+source ~/.config/zsh/zsh-you-should-use/zsh-you-should-use.zsh
+```
 
-    ** zsh-history-substring-search:
-        *** git clone https://github.com/zsh-users/zsh-history-substring-search.git
-        *** source in your .zshrc
-    **** example: source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+### Spaceship Prompt: (Requires Powerline Fonts)
+---
+### Arch:
+#### Clone the repository:
+<!-- Bash Script Block -->
+```bash
+git clone https://aur.archlinux.org/spaceship-prompt-git.git --depth=1
+cd spaceship-prompt-git && makepkg -si
+```
+#### Add to your .zshrc:
+Example:
+<!-- Bash Script Block -->
+```bash
+autoload -U promptinit; promptinit 
+prompt spaceship
+```
+### Debian/Ubuntu:
+#### Clone the repository:
+<!-- Bash Script Block -->
+```bash
+git clone https://github.com/spaceship-prompt/spaceship-prompt.git
+```
+#### Source in your .zshrc:
+Example:
+<!-- Bash Script Block -->
+```bash
+source ~/.config/zsh/spaceship-prompt/spaceship.zsh
+```
 
-    ** zsh-you-should-use:
-        *** git clone https://github.com/MichaelAquilina/zsh-you-should-use.git
-        *** source in your .zshrc
-    **** example: source ~/.config/zsh/zsh-you-should-use/zsh-you-should-use.zsh
-
-    ** Spaceship Prompt: (Has dependency on powerline fonts)
-        *** Arch:
-            **** git clone https://aur.archlinux.org/spaceship-prompt-git.git --depth=1
-            **** cd spaceship-prompt-git
-            **** makepkg -si
-            **** add these lines to your .zshrc:
-            autoload -U promptinit; promptinit
-            prompt spaceship
-
-        ***Debina/Ubuntu:
-            **** git clone --depth=1 https://github.com/spaceship-prompt/spaceship-prompt.git
-            **** source in your .zshrc
-        ***** example: source ~/.config/zsh/spaceship-prompt/spaceship.zsh
- 
-    ** Powerline fonts: (Required for Spaceship Prompt)
-        *** git clone https://github.com/powerline/fonts.git --depth=1
-        *** cd fonts && ./install.sh
-        *** cd ..
-        *** rm -rf fonts
+### Powerline Fonts: (Required by Spaceship Prompt)
+#### Clone the repository:
+<!-- Bash Script Block -->
+```bash
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts && ./install.sh
+cd .. && rm -rf fonts/
+```
