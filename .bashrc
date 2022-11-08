@@ -20,7 +20,7 @@ export EDITOR="vim"                             #Set SHELL Editor to use Vim
 
 ###Shell History File Options:
 export HISTCONTROL=ignoreboth:erasedups         #Ignore duplicate entries in history file
-HISTFILE=~/.config/bash/hisfile                 #Setting custom history file path (Usually in $HOME)
+HISTFILE=~/.config/bash/histfile                 #Setting custom history file path (Usually in $HOME)
 HISTTIMEFORMAT="$F $T"                          #Setting timestamps for history file
 HISTSIZE=10000                                  #Setting number of commands to save in history file
 SAVEHIST=20000                                  #Max size of history file
