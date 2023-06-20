@@ -1,0 +1,25 @@
+//@theme "/usr/share/rofi/themes/android_notification.rasi"
+//@theme "/home/$USER/.local/share/rofi/themes/nord.rasi"
+@theme "/home/$USER/.local/share/rofi/themes/nord.rasi"
+
+configuration {
+    modi: "run,drun,window";
+    display-drun: "Applications";
+    display-window: "Windows";
+    drun-display-format: "{name}";
+    font: "mononoki Nerd Font Regular 11";
+}
+
+window {
+    width: 55%;
+}
+
+listview {
+    padding: 8 8;
+    columns: 1;
+    lines: 8;
+}
+
+element-icon {
+    size: 20;
+}
