@@ -37,6 +37,19 @@
     #alias remove='sudo nala remove'                #Remove package(s)
     #alias purge='sudo nala purge'                  #Purge package(s) & configuration files
     #alias nalahist='sudo nala history'             #Show nala's history of package manipulation
+  #Convert Apt to Nala:
+#    apt() {
+#        command nala "$@"
+#    }
+#    sudo() {
+#        if [ "$1" = "apt" ]; then
+#          shift
+#          command sudo nala "$@"
+#        else
+#          command sudo "$@"
+#        fi
+#    }
+#    fi
   #pacstall:('AUR' for Debian/Ubuntu)
     #alias pacup='pacstall -Up'                     #Update package(s) that have newer versions
     #alias pacin='pacstall -I'                      #Install packge(s) or pacscript
