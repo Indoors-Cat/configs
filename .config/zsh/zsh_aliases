@@ -37,6 +37,18 @@
     #alias remove='sudo nala remove'                #Remove package(s)
     #alias purge='sudo nala purge'                  #Purge package(s) & configuration files
     #alias nalahist='sudo nala history'             #Show nala's history of package manipulation
+  #Convert Apt to Nala:
+#apt() {
+#    command nala "$@"
+#}
+#sudo() {
+#    if [ "$1" = "apt" ]; then
+#      shift
+#      command sudo nala "$@"
+#    else
+#      command sudo "$@"
+#    fi
+#}
   #pacstall:('AUR' for Debian/Ubuntu)
     #alias pacup='pacstall -Up'                     #Update package(s) that have newer versions
     #alias pacin='pacstall -I'                      #Install packge(s) or pacscript
@@ -78,6 +90,12 @@
     #alias la='exa -a --icons'		                #ls listing all
     #alias ll='exa -l --icons'		                #ls list format
     #alias lr='exa -ar --icons'                     #ls all files recursively
+ ## 'ls' to 'lsd':
+    #alias ls='lsd -alh'
+    #alias sl='lsd -alhr'
+    #alias la='lsd -a'
+    #alias ll='lsd -l'
+    #alias lr='lsd -ar'
  ##'cat' to 'bat':
     #alias cat='bat'                                #Use bat instead of cat
  ##'du' to 'dust':
@@ -88,6 +106,8 @@
     #alias ps='procs'                               #Use procs instead of ps
  ##'grep' to 'ripgrep':
     #alias grep='rg'                                #Use ripgrep instead of grep
+ ## 'top' to 'btop':
+    #alias top='btop'				   # Use btop instead of top
 
 ##Power Commands:
   #Linux:
