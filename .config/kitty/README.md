@@ -1,6 +1,6 @@
 # Keybindings:
 
-### Kitty Mod (kitty_mod) = Ctrl+Shift
+**Kitty Mod = Ctrl+Shift**
 
 | Clipboard Bindings: | |
 |-------------|-------------------|
@@ -15,6 +15,7 @@
 | kitty_mod+Page_Down | Scroll Page Down|
 | kitty_mod+Home | Scroll Home|
 | kitty_mod+End | Scroll End|
+
 | Window Management: ||
 |---------------|-----------|
 | kitty_mod+Enter | New Window|
@@ -27,6 +28,7 @@
 | kitty_mod+` | Move Window to Top of Stack|
 | kitty_mod+r | Resize Windows Mode|
 | kitty_mod+Tab | Next Layout|
+
 | Tabs: ||
 |---------------|-----------|
 | kitty_mod+t | New Tab|
@@ -41,11 +43,13 @@
 | kitty_mod+4 | Go To Tab 4|
 | kitty_mod+5 | Go To Tab 5|
 | kitty_mod+alt+t | Set Tab Title|
+
 | Fonts: ||
 |---------------|-----------|
 | kitty_mod+equal | Increase Font Size|
 | kitty_mod+minus | Decrease Font Size|
 | kitty_mod+backspace | Restore Font Size to Default|
+
 | Misc: ||
 |---------------|-----------|
 | kitty_mod+f11 | Toggle Fullscreen|
